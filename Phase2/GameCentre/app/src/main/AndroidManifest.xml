@@ -21,13 +21,13 @@
             </intent-filter>
         </activity>
         <activity android:name="csc207phase2.gamecentre.GameActivity"></activity>
-        <activity android:name=".SlidingTilesActivity"></activity>
-        <activity android:name=".SignInActivity"></activity>
-        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name="csc207phase2.gamecentre.SlidingTilesActivity"></activity>
+        <activity android:name="csc207phase2.gamecentre.SignInActivity"></activity>
+        <activity android:name="csc207phase2.gamecentre.SignUpActivity"></activity>
         <activity android:name="csc207phase2.gamecentre.GameSelectActivity"></activity>git
         <activity android:name="csc207phase2.gamecentre.OptionsActivity"></activity>
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name="csc207phase2.gamecentre.ProfileActivity"></activity>
         <activity android:name="csc207phase2.gamecentre.ChooseComplexity"></activity>
-        <activity android:name=".ScoreViewActivity"></activity>
+        <activity android:name="csc207phase2.gamecentre.ScoreViewActivity"></activity>
     </application>
 </manifest>

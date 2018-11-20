@@ -1,8 +1,5 @@
 package csc207phase2.gamecentre;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
