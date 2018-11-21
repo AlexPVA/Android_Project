@@ -5,8 +5,6 @@ import android.widget.Button;
 
 import java.io.Serializable;
 
-import fall2018.csc2017.slidingtiles.R;//not sure what this should be changed to
-
 /**
  * A Tile in a sliding tiles puzzle.
  */
@@ -123,4 +121,9 @@ public class MinesweeperTile implements Comparable<MinesweeperTile>, Serializabl
     public int compareTo(MinesweeperTile o) {
         return o.id - this.id;
     }
+
+    public void setTapped(boolean tapped){
+        this.tapped = tapped;
+    }
+
 }

@@ -196,4 +196,13 @@ public class MinesweeperBoard extends Observable implements Serializable, Iterab
             return result;
         }
     }
+
+    int getNumRows(){
+        return NUM_ROWS;
+    }
+
+    int getNumCols(){
+        return NUM_COLS;
+    }
+
 }

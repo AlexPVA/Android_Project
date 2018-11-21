@@ -17,6 +17,16 @@ class MinesweeperManager implements Serializable {
     private MinesweeperBoard board;
 
     /**
+     * Account name of the current user.
+     */
+    private String accountName;
+
+    /**
+     * The number of moves the boardmanager has processed.
+     */
+    private int numMoves;
+
+    /**
      * Manage a board that has been pre-populated.
      *
      * @param board the board
@@ -31,6 +41,21 @@ class MinesweeperManager implements Serializable {
     MinesweeperBoard getBoard() {
         return board;
     }
+
+    /**
+     * Sorter for the ScoreBoard
+     */
+    private static ScoreSorter<Score> scoreSorter = new MinimumSorter<Score>();
+
+    /**
+     * Stores the scores for sliding tiles game.
+     */
+    private static ScoreBoard<Score> scores = new ScoreBoard<Score>(scoreSorter);
+
+    /**
+     * The game this is a part of.
+     */
+    transient private GameComponent game;
 
     /**
      * Manage a new shuffled board.
@@ -73,31 +98,33 @@ class MinesweeperManager implements Serializable {
      * @return
      */
     boolean isValidTap(int position) {
-        int row = position / board.NUM_COLS;
-        int col = position / board.NUM_ROWS;
+        int row = position / board.getNumCols();
+        int col = position / board.getNumRows();
 
         //if it hasn't been tapped before
         return board.getTile(row, col).getId() == 10;
     }
 
     /**
-     * Process a touch at position in the board, swapping tiles as appropriate.
+     * Process a touch at position in the board.
      *
      * @param position the position
      */
     void touchMove(int position) {
-        int row = position / board.NUM_COLS;
-        int col = position / board.NUM_ROWS;
+        int row = position / board.getNumCols();
+        int col = position / board.getNumRows();
         //if a player touches a bomb it ends
 
-        if (board[row][col].getId() == 9) {
+        MinesweeperTile tile = board.getTile(row, col);
+
+        if (tile.getId() == 9) {
             //ends the game
-            board[row][col].isTapped() = true;
+            tile.setTapped(true);
             numMoves++;
         }
         //if a player touches a number it shows up
-        if (board[row][col].getId() != 9 || board[row][col].getId() != 10) {
-            board[row][col].isTapped() = true;
+        if (tile.getId() != 9 || tile.getId() != 10) {
+            tile.setTapped(true);
             numMoves++;
         }
         //if the player touches a blank it shows all blank tiles until it reaches a number
@@ -115,4 +142,19 @@ class MinesweeperManager implements Serializable {
     public void setGame(GameComponent game){
         this.game = game;
     }
+
+    /**
+     * Return the name of the current user account.
+     * @return the name of the current user account.
+     */
+    public String getAccountName() {return this.accountName; }
+
+    /**
+     * Return the number of moves this boardmanager has processed.
+     * @return the number of moves this boardmanager has processed.
+     */
+    public int getNumMoves() {
+        return numMoves;
+    }
+
 }
