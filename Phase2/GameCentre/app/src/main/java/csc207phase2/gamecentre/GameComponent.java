@@ -20,10 +20,18 @@ import java.io.Serializable;
 abstract class GameComponent extends AppCompatActivity implements Serializable {
 
     /**
-     * The account name of the current user.
+     * Firebase authentication.
      */
     private FirebaseAuth mAuth;
+
+    /**
+     * The current Firebase user account.
+     */
     private FirebaseUser currentUser;
+
+    /**
+     * The account name of the current user.
+     */
     private String accountName;
 
     protected void onCreate(Bundle savedInstanceState) {

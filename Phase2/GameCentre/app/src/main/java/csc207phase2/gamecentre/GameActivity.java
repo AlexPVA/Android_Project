@@ -27,6 +27,9 @@ public class GameActivity extends GameComponent implements Observer {
      */
     private ArrayList<Button> tileButtons;
 
+    /**
+     * The name of this game.
+     */
     static final String NAME = "SlidingTiles";
 
     /**
@@ -41,6 +44,7 @@ public class GameActivity extends GameComponent implements Observer {
     private GestureDetectGridView gridView;
     private static int columnWidth, columnHeight;
 
+
     /**
      * Set up the background image for each button based on the master list
      * of positions, and then call the adapter to set the view.
@@ -51,12 +55,10 @@ public class GameActivity extends GameComponent implements Observer {
         gridView.setAdapter(new CustomAdapter(tileButtons, columnWidth, columnHeight));
     }
 
-    SharedPreferences prefs;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         loadFromFile(ChooseComplexity.TEMP_SAVE_FILENAME);
         createTileButtons(this);
         setContentView(R.layout.activity_main);
@@ -154,20 +156,32 @@ public class GameActivity extends GameComponent implements Observer {
         saveToFile(SlidingTilesActivity.TEMP_SAVE_FILENAME);
     }
 
+    /**
+     * Sets the current GameManager for this game.
+     */
     void setGameManager(GameManager m){
         this.boardManager = (BoardManager)m;
     }
+
+    /**
+     * Returns the current BoardManager for this game.
+     *
+     * @return the current BoardManager.
+     */
     BoardManager getGameManager(){
         return boardManager;
     }
-
-
 
     @Override
     public void update(Observable o, Object arg) {
         display();
     }
 
+    /**
+     * Returns name of this game.
+     *
+     * @return this game's name.
+     */
     String getName(){
         return NAME;
     }

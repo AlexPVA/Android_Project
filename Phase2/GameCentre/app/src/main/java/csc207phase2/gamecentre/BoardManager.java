@@ -13,10 +13,25 @@ import java.util.Iterator;
  */
 class BoardManager extends GameManager {
 
+    /**
+     * Firebase authentication.
+     */
     transient private FirebaseAuth mAuth;
+
+    /**
+     * Firebase user currently signed in.
+     */
     transient private FirebaseUser currentUser;
+
+    /**
+     * Account name of the current user.
+     */
     private String accountName;
-    private int count = 0;
+
+    /**
+     * Count for keeping track of when to autosave.
+     */
+    private int autosaveCount = 0;
 
     /**
      * The board being managed.
@@ -34,9 +49,13 @@ class BoardManager extends GameManager {
     private int numMoves;
 
     /**
-     * Scoreboard stores the scores for sliding tiles game.
+     * Sorter for the ScoreBoard
      */
     private static ScoreSorter<Score> scoreSorter = new MinimumSorter<Score>();
+
+    /**
+     * Stores the scores for sliding tiles game.
+     */
     private static ScoreBoard<Score> scores = new ScoreBoard<Score>(scoreSorter);
 
     /**
@@ -67,6 +86,10 @@ class BoardManager extends GameManager {
 
     public static ScoreBoard<Score> getScoreBoard() {return scores;}
 
+    /**
+     * Return the name of the current user account.
+     * @return the name of the current user account.
+     */
     public String getAccountName() {return this.accountName; }
 
     /**
@@ -156,12 +179,12 @@ class BoardManager extends GameManager {
         int row = position / board.getNumRows();
         int col = position % board.getNumCols();
         int blankId = 25;
-        if (count == 4) {
+        if (autosaveCount == 4) {
             autoSave(SlidingTilesActivity.SAVE_FILENAME);
-            count = 0;
+            autosaveCount = 0;
 
         } else {
-            count += 1;
+            autosaveCount += 1;
         }
 
         if (row > 0 && board.getTile(row - 1, col).getId() == blankId) {

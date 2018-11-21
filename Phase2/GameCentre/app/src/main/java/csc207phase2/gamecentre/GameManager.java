@@ -4,6 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 
 import java.io.Serializable;
 
+/**
+ * Handles commonalities between all game managing classes.
+ */
 abstract class GameManager extends AppCompatActivity implements Serializable {
 
     /**
