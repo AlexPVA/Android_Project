@@ -35,8 +35,8 @@ public class MemoryBoardManager extends GameManager{
         for (int tileNum = 0; tileNum < numTiles; tileNum++) {
             memoryTiles.add(new MemoryTile(tileNum));
             memoryTiles.add(new MemoryTile(tileNum));
-            blankMemoryTiles.add(new MemoryTile(999));
-            blankMemoryTiles.add(new MemoryTile(999));
+            blankMemoryTiles.add(new MemoryTile(-1));
+            blankMemoryTiles.add(new MemoryTile(-1));
         }
 
         Collections.shuffle(memoryTiles);
@@ -106,6 +106,10 @@ public class MemoryBoardManager extends GameManager{
 
     void removeFlipped(MemoryTile tile) {
         flipped.remove(tile);
+    }
+
+    void addSolved(MemoryTile memoryTile) {
+        this.solved.add(memoryTile);
     }
 
     /**

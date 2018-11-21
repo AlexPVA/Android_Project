@@ -51,16 +51,16 @@ public class MemoryTile implements Comparable<MemoryTile>, Serializable {
      * @param backgroundId
      */
     public MemoryTile(int backgroundId) {
-        id = backgroundId + 101;
-        switch (backgroundId + 101) {
+        id = backgroundId + 1;
+        switch (backgroundId + 1) {
             case 1:
-                background = R.drawable.tile_101;
+                background = R.drawable.mg_tile_1;
                 break;
             case 2:
-                background = R.drawable.tile_102;
+                background = R.drawable.mg_tile_2;
                 break;
             default:
-                background = R.drawable.tile_999;
+                background = R.drawable.mg_tile_0;
         }
     }
 
@@ -69,7 +69,7 @@ public class MemoryTile implements Comparable<MemoryTile>, Serializable {
     }
 
     void flipBlank(){
-        background = R.drawable.tile_999;
+        background = R.drawable.mg_tile_0;
     }
 
     @Override
