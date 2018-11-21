@@ -17,6 +17,7 @@ public class GameSelectActivity extends AppCompatActivity{
         setContentView(R.layout.activity_game_select);
 
         addSlidingTilesButtonListener();
+        addMinesweeperButtonListener();
     }
 
     /**
@@ -31,11 +32,33 @@ public class GameSelectActivity extends AppCompatActivity{
             }
         });
     }
+
+    /**
+     * Activate the Minesweeper button.
+     */
+    private void addMinesweeperButtonListener() {
+        Button SlidingTilesButton = findViewById(R.id.Minesweeper);
+        SlidingTilesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchToMinesweeper();
+            }
+        });
+    }
+
     /**
      * Switch to the SlidingTilesActivity to start playing Sliding Tiles.
      */
     private void switchToSlidingTiles() {
         Intent tmp = new Intent(this, SlidingTilesActivity.class);
+        startActivity(tmp);
+    }
+
+    /**
+     * Switch to the MineSweeperMenuActivity to start playing Minesweeper.
+     */
+    private void switchToMinesweeper() {
+        Intent tmp = new Intent(this, MinesweeperMenuActivity.class);
         startActivity(tmp);
     }
 }

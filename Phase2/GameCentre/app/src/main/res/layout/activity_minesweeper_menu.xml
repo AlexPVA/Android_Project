@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="csc207phase2.gamecentre.SlidingTilesActivity">
+
+    <Button
+        android:id="@+id/scoreButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/GameSelect"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="89dp"
+        android:layout_marginEnd="149dp"
+        android:text="scores" />
+
+    <TextView
+        android:id="@+id/GameSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="254dp"
+        android:gravity="center"
+        android:text="Welcome To Minesweeper \n Find all the mines to win the game"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+    <Button
+        android:id="@+id/NewGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/GameSelect"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-1dp"
+        android:layout_marginEnd="150dp"
+        android:text="New Game" />
+
+    <Button
+        android:id="@+id/LoadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/GameSelect"
+        android:layout_marginTop="-1dp"
+        android:layout_toStartOf="@+id/NewGame"
+        android:text="Load Saved Game" />
+
+    <Button
+        android:id="@+id/SaveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/NewGame"
+        android:layout_marginStart="-150dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/NewGame"
+        android:text="Save Game" />
+
+</RelativeLayout>

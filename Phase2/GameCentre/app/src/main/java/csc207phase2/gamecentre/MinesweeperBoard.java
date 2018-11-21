@@ -31,7 +31,7 @@ public class MinesweeperBoard extends Observable implements Serializable, Iterab
     /**
      * The tiles on the board in row-major order.
      */
-    private MinesweeperTile[][] tiles = new MinesweeperTile[NUM_ROWS][NUM_COLS];
+    private MinesweeperTile[][] tiles;
 
     /**
      * A new board
@@ -48,6 +48,8 @@ public class MinesweeperBoard extends Observable implements Serializable, Iterab
         } else {
             setNumBombs(60);
         }
+
+        tiles = new MinesweeperTile[NUM_ROWS][NUM_COLS];
 
         //populate the board with bombs
         while (NUM_BOMBS != 0) {

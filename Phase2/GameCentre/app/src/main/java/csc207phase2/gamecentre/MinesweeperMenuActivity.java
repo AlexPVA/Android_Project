@@ -5,12 +5,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
 import java.util.List;
 
-/**
- * The initial activity for the sliding puzzle tile game.
- */
-public class SlidingTilesActivity extends GameComponent {
+public class MinesweeperMenuActivity extends GameComponent{
 
     /**
      * The main save file.
@@ -23,20 +21,20 @@ public class SlidingTilesActivity extends GameComponent {
     public static final String TEMP_SAVE_FILENAME = "save_file_tmp.ser";
 
     /**
-     * The board manager.
+     * The game's manager.
      */
-    private BoardManager boardManager;
+    private MinesweeperManager manager;
 
     /**
      * The name of this game.
      */
-    static final String NAME = "SlidingTiles";
+    static final String NAME = "Minesweeper";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         saveToFile(TEMP_SAVE_FILENAME);
-        setContentView(R.layout.activity_starting_);
+        setContentView(R.layout.activity_minesweeper_menu);
         addStartButtonListener();
         addLoadButtonListener();
         addSaveButtonListener();
@@ -73,7 +71,7 @@ public class SlidingTilesActivity extends GameComponent {
      * Goes to complexity selection activity.
      */
     private void goToComplexity(){
-        Intent chooseComplex = new Intent(this, ChooseComplexity.class);
+        Intent chooseComplex = new Intent(this, MinesweeperComplexity.class);
         startActivity(chooseComplex);
     }
 
@@ -86,7 +84,7 @@ public class SlidingTilesActivity extends GameComponent {
             @Override
             public void onClick(View v) {
                 loadFromFile(SAVE_FILENAME);
-                if(boardManager != null){
+                if(manager != null){
                     saveToFile(TEMP_SAVE_FILENAME);
                     makeToastLoadedText();
                     switchToGame();
@@ -124,7 +122,7 @@ public class SlidingTilesActivity extends GameComponent {
                 saveToFile(TEMP_SAVE_FILENAME);
                 makeToastSavedText();
             }
-            });
+        });
     }
 
     /**
@@ -147,7 +145,7 @@ public class SlidingTilesActivity extends GameComponent {
      * Switch to the GameActivity view to play the game.
      */
     private void switchToGame() {
-        Intent tmp = new Intent(this, GameActivity.class);
+        Intent tmp = new Intent(this, MinesweeperGameActivity.class);
         saveToFile(SlidingTilesActivity.TEMP_SAVE_FILENAME);
         startActivity(tmp);
     }
@@ -167,15 +165,18 @@ public class SlidingTilesActivity extends GameComponent {
     }
 
 
-    void setGameManager(GameManager m){
-        this.boardManager = (BoardManager)m;
-    }
-    BoardManager getGameManager(){
-        return boardManager;
+    @Override
+    void setGameManager(GameManager m) {
+        this.manager = (MinesweeperManager) m;
     }
 
-    String getName(){
+    @Override
+    GameManager getGameManager() {
+        return manager;
+    }
+
+    @Override
+    String getName() {
         return NAME;
     }
-
 }
