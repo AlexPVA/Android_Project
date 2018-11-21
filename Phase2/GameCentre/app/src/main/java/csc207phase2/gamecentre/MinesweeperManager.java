@@ -9,7 +9,7 @@ import java.util.Iterator;
 /**
  * Manage a board
  */
-class MinesweeperManager implements Serializable {
+class MinesweeperManager extends GameManager {
 
     /**
      * The board being managed.
@@ -157,4 +157,8 @@ class MinesweeperManager implements Serializable {
         return numMoves;
     }
 
+    @Override
+    public void autoSave(String fileName) {
+        game.saveToFile(fileName);
+    }
 }
