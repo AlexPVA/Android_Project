@@ -29,5 +29,6 @@
         <activity android:name="csc207phase2.gamecentre.ProfileActivity"></activity>
         <activity android:name="csc207phase2.gamecentre.ChooseComplexity"></activity>
         <activity android:name="csc207phase2.gamecentre.ScoreViewActivity"></activity>
+        <activity android:name="csc207phase2.gamecentre.MemoryGameActivity"></activity>
     </application>
 </manifest>
