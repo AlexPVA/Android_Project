@@ -18,6 +18,7 @@ public class GameSelectActivity extends AppCompatActivity{
 
         addSlidingTilesButtonListener();
         addMinesweeperButtonListener();
+        addMemoryGameButtonListener();
     }
 
     /**
@@ -59,6 +60,27 @@ public class GameSelectActivity extends AppCompatActivity{
      */
     private void switchToMinesweeper() {
         Intent tmp = new Intent(this, MinesweeperMenuActivity.class);
+        startActivity(tmp);
+    }
+
+    /**
+     * Activate the Memory Game button.
+     */
+    private void addMemoryGameButtonListener() {
+        Button MemoryGameButton = findViewById(R.id.MemoryGame);
+        MemoryGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchToMemoryGame();
+            }
+        });
+    }
+
+    /**
+     * Switch to the MemoryGameStartActivity to start playing Memory Game.
+     */
+    private void switchToMemoryGame() {
+        Intent tmp = new Intent(this, MemoryGameStartActivity.class);
         startActivity(tmp);
     }
 }

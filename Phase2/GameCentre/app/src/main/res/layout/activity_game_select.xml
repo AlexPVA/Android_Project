@@ -30,9 +30,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="129dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="51dp"
         android:layout_marginEnd="138dp"
-        android:layout_marginBottom="480dp"
+        android:layout_marginBottom="481dp"
         android:text="Sliding Tiles" />
 
     <Button
@@ -43,10 +43,24 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="129dp"
-        android:layout_marginTop="153dp"
-        android:layout_marginEnd="138dp"
-        android:layout_marginBottom="352dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="139dp"
+        android:layout_marginBottom="373dp"
         android:text="Minesweeper" />
+
+    <Button
+        android:id="@+id/MemoryGame"
+        android:layout_width="wrap_content"
+        android:layout_height="68dp"
+        android:layout_below="@+id/GameSelect"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="126dp"
+        android:layout_marginTop="275dp"
+        android:layout_marginEnd="141dp"
+        android:layout_marginBottom="259dp"
+        android:text="MemoryGame" />
 
 </RelativeLayout>
