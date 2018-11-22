@@ -41,15 +41,15 @@ public class MemoryGameStartActivity extends GameComponent {
     /**
      * Activate the score button.
      */
-    private void addScoreButtonListener() {
-        Button scoreButton = findViewById(R.id.scoreButton);
-        scoreButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switchToScoreView();
-            }
-        });
-    }
+//    private void addScoreButtonListener() {
+//        Button scoreButton = findViewById(R.id.scoreButton);
+//        scoreButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                switchToScoreView();
+//            }
+//        });
+//    }
 
     /**
      * Activate the start button.

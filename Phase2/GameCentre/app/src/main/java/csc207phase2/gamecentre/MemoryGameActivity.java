@@ -25,7 +25,7 @@ public class MemoryGameActivity extends GameComponent implements Observer {
     /**
      * The buttons to display.
      */
-    private ArrayList<Button> tileButtons;
+    public static ArrayList<Button> tileButtons;
 
     static final String NAME = "MemoryGame";
 
@@ -57,7 +57,7 @@ public class MemoryGameActivity extends GameComponent implements Observer {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        loadFromFile(ChooseComplexity.TEMP_SAVE_FILENAME);
+        loadFromFile(MemoryGameStartActivity.TEMP_SAVE_FILENAME);
         createTileButtons(this);
         setContentView(R.layout.activity_main_memory);
         //addUndoButtonListener();
@@ -115,7 +115,7 @@ public class MemoryGameActivity extends GameComponent implements Observer {
             for (int col = 0; col != memoryBoard.getNumCols(); col++) {
                 Button tmp = new Button(context);
                 tmp.setBackgroundResource(memoryBoard.getTile(row, col).getBackground());
-                this.tileButtons.add(tmp);
+                tileButtons.add(tmp);
             }
         }
     }
@@ -125,11 +125,12 @@ public class MemoryGameActivity extends GameComponent implements Observer {
      */
     private void updateTileButtons() {
         MemoryBoard memoryBoard = memoryBoardManager.getMemoryBoard();
+        MemoryBoard blankMemoryBoard = memoryBoardManager.getBlankMemoryBoard();
         int nextPos = 0;
         for (Button b : tileButtons) {
             int row = nextPos / memoryBoard.getNumRows();
             int col = nextPos % memoryBoard.getNumCols();
-            b.setBackgroundResource(memoryBoard.getTile(row, col).getBackground());
+            b.setBackgroundResource(blankMemoryBoard.getTile(row, col).getBackground());
             nextPos++;
         }
 //        if (memoryBoardManager.puzzleSolved()) {

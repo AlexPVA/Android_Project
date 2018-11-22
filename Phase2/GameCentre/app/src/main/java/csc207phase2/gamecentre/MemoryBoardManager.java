@@ -28,6 +28,8 @@ public class MemoryBoardManager extends GameManager{
         return memoryBoard;
     }
 
+    MemoryBoard getBlankMemoryBoard() {return blankMemoryBoard;}
+
     MemoryBoardManager(int row, int col) {
         List<MemoryTile> memoryTiles = new ArrayList<>();
         List<MemoryTile> blankMemoryTiles = new ArrayList<>();
@@ -49,8 +51,7 @@ public class MemoryBoardManager extends GameManager{
     }
 
     boolean puzzleSolved() {
-        boolean solved = true;
-        if (this.solved.size() == memoryBoard.numTiles()) {
+        if (this.solved.size() == memoryBoard.numTiles() && this.flipped.size() == memoryBoard.numTiles()) {
             return true;
         } else {
             return false;
@@ -67,14 +68,15 @@ public class MemoryBoardManager extends GameManager{
 
     boolean isValidTap(int position) {
 
+        boolean result = true;
+
         int row = position / memoryBoard.getNumCols();
         int col = position % memoryBoard.getNumCols();
 
         MemoryTile current = memoryBoard.getTile(row, col);
-        int currentId = current.getId();
 
         for (MemoryTile m: flipped) {
-            if (m.getId() == currentId) {
+            if (m == current || m == blankMemoryBoard.getTile(row, col)) {
                 return false;
             }
         }
@@ -105,7 +107,13 @@ public class MemoryBoardManager extends GameManager{
     }
 
     void removeFlipped(MemoryTile tile) {
-        flipped.remove(tile);
+        MemoryTile toBeRemoved = null;
+        for (MemoryTile m: flipped) {
+            if (m.getBackground() == tile.getBackground()) {
+                toBeRemoved = m;
+            }
+        }
+        flipped.remove(toBeRemoved);
     }
 
     void addSolved(MemoryTile memoryTile) {
