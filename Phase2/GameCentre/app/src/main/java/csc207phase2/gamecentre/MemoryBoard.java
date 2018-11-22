@@ -102,6 +102,28 @@ public class MemoryBoard extends Observable implements Serializable, Iterable<Me
         return memoryTiles[row][col];
     }
 
+    /**
+     * Flip the tile at (row, col).
+     *
+     * @param position the position of the tile to flip
+     */
+    void flipTile(int position) {
+        int row = position / this.getNumRows();
+        int col = position % this.getNumCols();
+
+        if (memoryTiles[row][col].getFlipped()){
+            memoryTiles[row][col].flipBlank();
+            memoryTiles[row][col].setFlipped(false);
+        }
+        else {
+        memoryTiles[row][col].flipPicture();
+        memoryTiles[row][col].setFlipped(true);
+        }
+
+        setChanged();
+        notifyObservers();
+    }
+
     @Override
     public String toString() {
         return "MemoryBoard{" +

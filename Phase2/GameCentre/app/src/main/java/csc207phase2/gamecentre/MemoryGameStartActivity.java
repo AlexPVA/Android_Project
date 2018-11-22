@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
 import java.util.List;
 
 /**
@@ -148,16 +149,16 @@ public class MemoryGameStartActivity extends GameComponent {
     /**
      * Switch to scoreViewActivity view scores.
      */
-//    private void switchToScoreView() {
-//        List topScores = SlidingTilesBoardManager.getScoreBoard().getListScores();
-//        String[] scoreText = new String[topScores.size()];
-//        for(int i = 0; i < topScores.size(); i ++){
-//            scoreText[i] = topScores.get(i).toString();
-//        }
-//        Intent tmp = new Intent(this, ScoreViewActivity.class);
-//        tmp.putExtra("scoreText", scoreText);
-//        startActivity(tmp);
-//    }
+    private void switchToScoreView() {
+        List topScores = BoardManager.getScoreBoard().getListScores();
+        String[] scoreText = new String[topScores.size()];
+        for(int i = 0; i < topScores.size(); i ++){
+            scoreText[i] = topScores.get(i).toString();
+        }
+        Intent tmp = new Intent(this, ScoreViewActivity.class);
+        tmp.putExtra("scoreText", scoreText);
+        startActivity(tmp);
+    }
 
 
     void setGameManager(GameManager m){

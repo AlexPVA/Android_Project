@@ -125,12 +125,12 @@ public class MemoryGameActivity extends GameComponent implements Observer {
      */
     private void updateTileButtons() {
         MemoryBoard memoryBoard = memoryBoardManager.getMemoryBoard();
-        MemoryBoard blankMemoryBoard = memoryBoardManager.getBlankMemoryBoard();
+        //MemoryBoard blankMemoryBoard = memoryBoardManager.getBlankMemoryBoard();
         int nextPos = 0;
         for (Button b : tileButtons) {
             int row = nextPos / memoryBoard.getNumRows();
             int col = nextPos % memoryBoard.getNumCols();
-            b.setBackgroundResource(blankMemoryBoard.getTile(row, col).getBackground());
+            b.setBackgroundResource(memoryBoard.getTile(row, col).getBackground());
             nextPos++;
         }
 //        if (memoryBoardManager.puzzleSolved()) {

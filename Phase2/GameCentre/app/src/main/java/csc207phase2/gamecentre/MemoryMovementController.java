@@ -18,49 +18,55 @@ public class MemoryMovementController {
 
     public void processTapMovement(Context context, int position, boolean display) {
         if (memoryBoardManager.isValidTap(position)) {
-            updateTileButtons();
-            if (MemoryBoardManager.firstTile == null) {
+            //updateTileButtons();
+            if (memoryBoardManager.getFirstTile() == null) {
                 memoryBoardManager.flipTile1(position);
-                updateTileButtons();
-            } else if (MemoryBoardManager.secondTile == null) {
+                //updateTileButtons();
+            } else if (memoryBoardManager.getSecondTile() == null) {
                 memoryBoardManager.flipTile2(position);
-                updateTileButtons();
-                    if (memoryBoardManager.matchingTile(MemoryBoardManager.firstTile, MemoryBoardManager.secondTile)) {
-                        memoryBoardManager.addSolved(MemoryBoardManager.firstTile);
-                        memoryBoardManager.addSolved(MemoryBoardManager.secondTile);
+                //updateTileButtons();
+                    if (memoryBoardManager.getFirstTile().equals(memoryBoardManager.getSecondTile())) {
+                        //memoryBoardManager.addSolved(MemoryBoardManager.firstTile);
+                        //memoryBoardManager.addSolved(MemoryBoardManager.secondTile);
                         Toast.makeText(context, "CORRECT PAIR!", Toast.LENGTH_SHORT).show();
                         if (memoryBoardManager.puzzleSolved()) {
                             Toast.makeText(context, "YOU WIN!", Toast.LENGTH_SHORT).show();
                         }
+                        else {
+                            memoryBoardManager.setFirstTile(null);
+                            memoryBoardManager.setSecondTile(null);
+                        }
                     } else {
-                        memoryBoardManager.removeFlipped(MemoryBoardManager.firstTile);
-                        memoryBoardManager.removeFlipped(MemoryBoardManager.secondTile);
-                        MemoryBoardManager.firstTile.flipBlank();
-                        MemoryBoardManager.secondTile.flipBlank();
-//                        MemoryBoardManager.firstTile = null;
-//                        MemoryBoardManager.secondTile = null;
+                        memoryBoardManager.getMemoryBoard().flipTile(position);
+                        memoryBoardManager.getMemoryBoard().flipTile(memoryBoardManager.getStoredPosition());
+                        //memoryBoardManager.removeFlipped(MemoryBoardManager.secondTile);
+                        //MemoryBoardManager.firstTile.flipBlank();
+                        //MemoryBoardManager.secondTile.flipBlank();
+                        memoryBoardManager.setFirstTile(null);
+                        memoryBoardManager.setSecondTile(null);
                         Toast.makeText(context, "WRONG PAIR!", Toast.LENGTH_SHORT).show();
-//                        updateTileButtons();
+                        //updateTileButtons();
                     }
-            } else {
-                memoryBoardManager.flipTile1(position);
-                MemoryBoardManager.secondTile = null;
-                updateTileButtons();
             }
+// else {
+//                memoryBoardManager.flipTile1(position);
+//                MemoryBoardManager.secondTile = null;
+//                updateTileButtons();
+//            }
         } else {
             Toast.makeText(context, "Invalid Tap", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void updateTileButtons() {
-        MemoryBoard memoryBoard = memoryBoardManager.getMemoryBoard();
-        MemoryBoard blankMemoryBoard = memoryBoardManager.getBlankMemoryBoard();
-        int nextPos = 0;
-        for (Button b : MemoryGameActivity.tileButtons) {
-            int row = nextPos / memoryBoard.getNumRows();
-            int col = nextPos % memoryBoard.getNumCols();
-            b.setBackgroundResource(blankMemoryBoard.getTile(row, col).getBackground());
-            nextPos++;
-        }
-    }
+//    private void updateTileButtons() {
+//        MemoryBoard memoryBoard = memoryBoardManager.getMemoryBoard();
+//        MemoryBoard blankMemoryBoard = memoryBoardManager.getBlankMemoryBoard();
+//        int nextPos = 0;
+//        for (Button b : MemoryGameActivity.tileButtons) {
+//            int row = nextPos / memoryBoard.getNumRows();
+//            int col = nextPos % memoryBoard.getNumCols();
+//            b.setBackgroundResource(blankMemoryBoard.getTile(row, col).getBackground());
+//            nextPos++;
+//        }
+//    }
 }
