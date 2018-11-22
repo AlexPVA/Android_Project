@@ -34,6 +34,7 @@ abstract class GameComponent extends AppCompatActivity implements Serializable {
      */
     private String accountName;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
@@ -81,18 +82,6 @@ abstract class GameComponent extends AppCompatActivity implements Serializable {
         } catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());
         }
-    }
-
-    /**
-     * Gets the name of the current user.
-     *
-     * @return the account name of the current user.
-     */
-    String getAccountName(){
-        if(accountName == null) {
-            Log.e("account_name", "accountName is null (Game)");
-        }
-        return accountName;
     }
 
     /**

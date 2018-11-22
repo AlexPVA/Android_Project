@@ -13,7 +13,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * The game activity.
+ * The game activity for the memory game.
  */
 public class MemoryGameActivity extends GameComponent implements Observer {
 
@@ -27,6 +27,9 @@ public class MemoryGameActivity extends GameComponent implements Observer {
      */
     public static ArrayList<Button> tileButtons;
 
+    /**
+     * The name of the current game.
+     */
     static final String NAME = "MemoryGame";
 
     /**
@@ -155,20 +158,22 @@ public class MemoryGameActivity extends GameComponent implements Observer {
         saveToFile(SlidingTilesActivity.TEMP_SAVE_FILENAME);
     }
 
+    @Override
     void setGameManager(GameManager m){
         this.memoryBoardManager = (MemoryBoardManager) m;
     }
+
+    @Override
     MemoryBoardManager getGameManager(){
         return memoryBoardManager;
     }
-
-
 
     @Override
     public void update(Observable o, Object arg) {
         display();
     }
 
+    @Override
     String getName(){
         return NAME;
     }

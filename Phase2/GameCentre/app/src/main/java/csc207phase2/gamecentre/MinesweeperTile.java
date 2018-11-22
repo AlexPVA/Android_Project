@@ -1,16 +1,11 @@
 package csc207phase2.gamecentre;
 
-import android.content.Context;
-import android.widget.Button;
-
 import java.io.Serializable;
-import java.util.Observable;
-import java.util.Observer;
 
 /**
- * A Tile in a sliding tiles puzzle.
+ * A Tile in the minesweeper game.
  */
-public class MinesweeperTile implements Comparable<MinesweeperTile>, Serializable, Observer {
+public class MinesweeperTile implements Serializable{
 
     /**
      * The background id to find the tile image.
@@ -60,11 +55,9 @@ public class MinesweeperTile implements Comparable<MinesweeperTile>, Serializabl
      *
      * @param i the new id
      */
-
     public void setId(int i) { id = i; }
 
     /**
-     *
      * @return if the tile has been tapped
      */
     public boolean isTapped() { return tapped; }
@@ -76,10 +69,13 @@ public class MinesweeperTile implements Comparable<MinesweeperTile>, Serializabl
      */
     public MinesweeperTile(int id) {
         this.id = id;
-        updateBackground(id);
+        updateBackground();
     }
 
-    private void updateBackground(int id){
+    /**
+     * Updates the tile's background.
+     */
+    private void updateBackground(){
         if (!tapped) {
             background = R.drawable.unclicked_tile;
             return;
@@ -121,18 +117,14 @@ public class MinesweeperTile implements Comparable<MinesweeperTile>, Serializabl
         }
     }
 
-    @Override
-    public int compareTo(MinesweeperTile o) {
-        return o.id - this.id;
-    }
-
+    /**
+     * Set whether the tile has been tapped, then update the background accordingly.
+     *
+     * @param tapped represents whether the tile has been tapped.
+     */
     public void setTapped(boolean tapped){
         this.tapped = tapped;
-        updateBackground(id);
+        updateBackground();
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
-        updateBackground(id);
-    }
 }

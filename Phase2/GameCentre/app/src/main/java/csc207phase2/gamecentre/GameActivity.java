@@ -105,6 +105,7 @@ public class GameActivity extends GameComponent implements Observer {
           }
        });
     }
+
     /**
      * Create the buttons for displaying the tiles.
      *

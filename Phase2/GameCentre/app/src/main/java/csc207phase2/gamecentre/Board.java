@@ -40,7 +40,6 @@ public class Board extends Observable implements Serializable, Iterable<Tile> {
         this.tiles = new Tile[numRows][numCols];
         Iterator<Tile> iter = tiles.iterator();
 
-
         for (int row = 0; row != numRows; row++) {
             for (int col = 0; col != numCols; col++) {
                 this.tiles[row][col] = iter.next();
