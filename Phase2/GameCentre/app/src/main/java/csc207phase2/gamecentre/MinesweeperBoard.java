@@ -57,9 +57,8 @@ public class MinesweeperBoard extends Observable implements Serializable, Iterab
             int i = random.nextInt(NUM_ROWS);
             int j = random.nextInt(NUM_COLS);
             //find the background id
-            if (tiles[i][j] == null || tiles[i][j].getId() != 9) {
-                tiles[i][j] = new MinesweeperTile(9); //find the background id given the diff board sizes
-                addObserver(tiles[i][j]);
+            if (tiles[i][j] == null || tiles[i][j].getId() != MinesweeperTile.BOMB_ID) {
+                tiles[i][j] = new MinesweeperTile(MinesweeperTile.BOMB_ID);
                 NUM_BOMBS -= 1;
             }
         }
@@ -80,8 +79,9 @@ public class MinesweeperBoard extends Observable implements Serializable, Iterab
     private void setNums() {
         for (int i = 0; i < NUM_ROWS; i++) {
             for (int j = 0; j < NUM_COLS; j++) {
-                tiles[i][j] = new MinesweeperTile(countBombs(i, j)); //background id???
-                addObserver(tiles[i][j]);
+                if(tiles[i][j] == null || tiles[i][j].getId() != MinesweeperTile.BOMB_ID) {
+                    tiles[i][j] = new MinesweeperTile(countBombs(i, j)); //background id???
+                }
             }
         }
     }
@@ -94,8 +94,8 @@ public class MinesweeperBoard extends Observable implements Serializable, Iterab
      */
     private int countBombs(int x, int y){
         int count = 0;
-        for(int i = Math.max(0, x - 1); i < Math.min(x + 1, NUM_ROWS); i ++){
-            for(int j = Math.max(0, y - 1); j < Math.min(y + 1, NUM_ROWS); j ++){
+        for(int i = Math.max(0, x - 1); i < Math.min(x + 2, NUM_ROWS); i ++){
+            for(int j = Math.max(0, y - 1); j < Math.min(y + 2, NUM_ROWS); j ++){
                 if(tiles[i][j] != null && tiles[i][j].getId() == MinesweeperTile.BOMB_ID){
                     count++;
                 }
