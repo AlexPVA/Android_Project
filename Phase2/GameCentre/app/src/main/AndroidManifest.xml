@@ -32,5 +32,6 @@
         <activity android:name="csc207phase2.gamecentre.MemoryGameActivity"></activity>
         <activity android:name="csc207phase2.gamecentre.MinesweeperMenuActivity"></activity>
         <activity android:name="csc207phase2.gamecentre.MinesweeperComplexity"></activity>
+        <activity android:name="csc207phase2.gamecentre.MinesweeperGameActivity"></activity>
     </application>
 </manifest>

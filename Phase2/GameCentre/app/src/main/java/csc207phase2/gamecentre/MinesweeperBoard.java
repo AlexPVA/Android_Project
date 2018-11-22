@@ -16,17 +16,17 @@ public class MinesweeperBoard extends Observable implements Serializable, Iterab
     /**
      * The number of rows.
      */
-    private static int NUM_ROWS;
+    private int NUM_ROWS;
 
     /**
      * The number of rows.
      */
-    private static int NUM_COLS;
+    private int NUM_COLS;
 
     /**
      * The number of bombs.
      */
-    private static int NUM_BOMBS;
+    private int NUM_BOMBS;
 
     /**
      * The tiles on the board in row-major order.
@@ -57,13 +57,20 @@ public class MinesweeperBoard extends Observable implements Serializable, Iterab
             int i = random.nextInt(NUM_ROWS);
             int j = random.nextInt(NUM_COLS);
             //find the background id
-            if (tiles[i][j].getId() != 9) {
-                tiles[i][j] = new MinesweeperTile(9, findBackground(i, j)); //find the background id given the diff board sizes
+            if (tiles[i][j] == null || tiles[i][j].getId() != 9) {
+                tiles[i][j] = new MinesweeperTile(9); //find the background id given the diff board sizes
+                addObserver(tiles[i][j]);
                 NUM_BOMBS -= 1;
             }
         }
         //Add values that correspond to the bombs around it
         setNums();
+    }
+
+    void tapTile(int x, int y){
+        getTile(x, y).setTapped(true);
+        setChanged();
+        notifyObservers();
     }
 
     /**
@@ -73,53 +80,47 @@ public class MinesweeperBoard extends Observable implements Serializable, Iterab
     private void setNums() {
         for (int i = 0; i < NUM_ROWS; i++) {
             for (int j = 0; j < NUM_COLS; j++) {
-                int count = 0;
-                if (tiles[i-1][j].getId() == 9) {
-                    count++;
-
-                } else if (tiles[i-1][j+1].getId() == 9) {
-                    count++;
-
-                } else if (tiles[i-1][j-1].getId() == 9) {
-                    count++;
-
-                } else if (tiles[i][j-1].getId() == 9) {
-                    count++;
-
-                } else if (tiles[i][j+1].getId() == 9) {
-                    count++;
-
-                } else if (tiles[i+1][j].getId() == 9) {
-                    count++;
-
-                } else if (tiles[i+1][j-1].getId() == 9) {
-                    count++;
-
-                } else if (tiles[i+1][j+1].getId() == 9) {
-                    count++;
-                }
-                tiles[i][j] = new MinesweeperTile(count, findBackground(i, j)); //background id???
+                tiles[i][j] = new MinesweeperTile(countBombs(i, j)); //background id???
+                addObserver(tiles[i][j]);
             }
         }
+    }
+
+    /**
+     * Counts the number of bombs around a given tile
+     * @param x the x coordinate
+     * @param y the y coordinate
+     * @return the number of bombs around the given tile
+     */
+    private int countBombs(int x, int y){
+        int count = 0;
+        for(int i = Math.max(0, x - 1); i < Math.min(x + 1, NUM_ROWS); i ++){
+            for(int j = Math.max(0, y - 1); j < Math.min(y + 1, NUM_ROWS); j ++){
+                if(tiles[i][j] != null && tiles[i][j].getId() == MinesweeperTile.BOMB_ID){
+                    count++;
+                }
+            }
+        }
+        return count;
     }
 
     /**
      * Set the number of Rows
      * @param i the number of rows
      */
-    private static void setNumRows(int i) {NUM_ROWS = i;}
+    private void setNumRows(int i) {NUM_ROWS = i;}
 
     /**
      * Set the number of Cols
      * @param i the number of columbs
      */
-    private static void setNumCols(int i) {NUM_COLS = i;}
+    private void setNumCols(int i) {NUM_COLS = i;}
 
     /**
      * Set the number of bombs
      * @param i the number of bombs
      */
-    private static void setNumBombs(int i) {NUM_BOMBS = i;}
+    private void setNumBombs(int i) {NUM_BOMBS = i;}
 
     /**
      * find the background id of a tile given the i,j positions

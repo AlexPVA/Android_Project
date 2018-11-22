@@ -22,4 +22,15 @@ abstract class GameManager extends AppCompatActivity implements Serializable {
      * @param game the game object this is a part of
      */
     abstract public void setGame(GameComponent game);
+
+    abstract boolean isValidTap(int position);
+
+    void touchMove(int position){
+
+    }
+
+    abstract boolean puzzleSolved();
+
+
+
 }

@@ -71,24 +71,25 @@ class MinesweeperManager extends GameManager {
      */
     boolean puzzleSolved() {
         int untapped = 0;
-        boolean result = false;
 
         //find the number of untapped tiles
         for (MinesweeperTile tile: board) {
-            if (tile.getId() == 10) {
+            if (!tile.isTapped()) {
                 untapped++;
             }
         }
         if (board.numBombs() == untapped) {
-            result = true;
             Score newScore = new Score(this.getAccountName(),
                     "Sliding Tiles: " + this.getBoard().getNumRows());
             newScore.setScorePoint(this.getNumMoves());
             this.scores.addScore(newScore);
+            //if number of bombs == number of untapped spaces the game ends
+            return board.numBombs() == untapped;
+        }else{
+            return false;
         }
 
-        //if number of bombs == number of untapped spaces the game ends
-        return board.numBombs() == untapped;
+
     }
 
     /**
@@ -99,10 +100,10 @@ class MinesweeperManager extends GameManager {
      */
     boolean isValidTap(int position) {
         int row = position / board.getNumCols();
-        int col = position / board.getNumRows();
+        int col = position % board.getNumCols();
 
         //if it hasn't been tapped before
-        return board.getTile(row, col).getId() == 10;
+        return !(board.getTile(row, col).isTapped());
     }
 
     /**
@@ -112,25 +113,16 @@ class MinesweeperManager extends GameManager {
      */
     void touchMove(int position) {
         int row = position / board.getNumCols();
-        int col = position / board.getNumRows();
-        //if a player touches a bomb it ends
+        int col = position % board.getNumRows();
 
         MinesweeperTile tile = board.getTile(row, col);
-
-        if (tile.getId() == 9) {
-            //ends the game
-            tile.setTapped(true);
+        if(!tile.isTapped()){
             numMoves++;
+            board.tapTile(row, col);
         }
-        //if a player touches a number it shows up
-        if (tile.getId() != 9 || tile.getId() != 10) {
-            tile.setTapped(true);
-            numMoves++;
+        if(tile.getId() == MinesweeperTile.BOMB_ID){
+            // end game
         }
-        //if the player touches a blank it shows all blank tiles until it reaches a number
-
-        //recursion
-
 
     }
 
