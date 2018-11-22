@@ -33,6 +33,11 @@ public class MinesweeperTile implements Comparable<MinesweeperTile>, Serializabl
     static final int BOMB_ID = 9;
 
     /**
+     * The ID of an exploded bomb.
+     */
+    static final int EXPLODED_BOMB_ID = 10;
+
+    /**
      * Return the background id.
      *
      * @return the background id

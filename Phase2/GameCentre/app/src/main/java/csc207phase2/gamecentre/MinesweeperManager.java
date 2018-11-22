@@ -1,11 +1,5 @@
 package csc207phase2.gamecentre;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Iterator;
-
 /**
  * Manage a board
  */
@@ -58,6 +52,11 @@ class MinesweeperManager extends GameManager {
     transient private GameComponent game;
 
     /**
+     * Whether the current game has been lost (waits for next tap to reset)
+     */
+    private boolean gameLost;
+
+    /**
      * Manage a new shuffled board.
      */
     MinesweeperManager(int row, int col) {
@@ -70,6 +69,10 @@ class MinesweeperManager extends GameManager {
      * @return whether the tiles are in row-major order
      */
     boolean puzzleSolved() {
+        if(gameLost){
+            return false;
+        }
+
         int untapped = 0;
 
         //find the number of untapped tiles
@@ -84,7 +87,7 @@ class MinesweeperManager extends GameManager {
             newScore.setScorePoint(this.getNumMoves());
             this.scores.addScore(newScore);
             //if number of bombs == number of untapped spaces the game ends
-            return board.numBombs() == untapped;
+            return true;
         }else{
             return false;
         }
@@ -102,8 +105,7 @@ class MinesweeperManager extends GameManager {
         int row = position / board.getNumCols();
         int col = position % board.getNumCols();
 
-        //if it hasn't been tapped before
-        return !(board.getTile(row, col).isTapped());
+        return !(board.getTile(row, col).isTapped()) || gameLost;
     }
 
     /**
@@ -120,10 +122,28 @@ class MinesweeperManager extends GameManager {
             numMoves++;
             board.tapTile(row, col);
         }
-        if(tile.getId() == MinesweeperTile.BOMB_ID){
-            // end game
+
+        if(gameLost){
+            setGameLost(false);
+        }else if(tile.getId() == MinesweeperTile.BOMB_ID){
+            tile.setId(MinesweeperTile.EXPLODED_BOMB_ID);
+            setGameLost(true);
         }
 
+    }
+
+    void setGameLost(boolean lost){
+        this.gameLost = lost;
+
+        if(lost){
+            for(int i = 0; i < board.getNumRows(); i++){
+                for(int j = 0; j < board.getNumCols(); j++){
+                    board.tapTile(i, j);
+                }
+            }
+        }else{
+            board.generateBoard(board.getNumRows(), board.getNumCols());
+        }
     }
 
     /**

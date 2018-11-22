@@ -5,7 +5,6 @@ import java.util.Observable;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -39,6 +38,11 @@ public class MinesweeperBoard extends Observable implements Serializable, Iterab
     MinesweeperBoard(int rows, int cols) {
         setNumRows(rows);
         setNumCols(cols);
+        generateBoard(rows, cols);
+    }
+
+    void generateBoard(int rows, int cols){
+        tiles = new MinesweeperTile[NUM_ROWS][NUM_COLS];
 
         //set number of bombs
         if (cols == 9) {
@@ -48,9 +52,6 @@ public class MinesweeperBoard extends Observable implements Serializable, Iterab
         } else {
             setNumBombs(60);
         }
-
-        tiles = new MinesweeperTile[NUM_ROWS][NUM_COLS];
-
         //populate the board with bombs
         while (NUM_BOMBS != 0) {
             Random random = new Random();
@@ -64,6 +65,8 @@ public class MinesweeperBoard extends Observable implements Serializable, Iterab
         }
         //Add values that correspond to the bombs around it
         setNums();
+        setChanged();
+        notifyObservers();
     }
 
     void tapTile(int x, int y){
