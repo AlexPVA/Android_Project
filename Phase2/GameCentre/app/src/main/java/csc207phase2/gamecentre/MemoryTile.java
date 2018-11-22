@@ -79,6 +79,54 @@ public class MemoryTile implements Comparable<MemoryTile>, Serializable {
             case 2:
                 picture = R.drawable.mg_tile_2;
                 break;
+            case 3:
+                picture = R.drawable.mg_tile_3;
+                break;
+            case 4:
+                picture = R.drawable.mg_tile_4;
+                break;
+            case 5:
+                picture = R.drawable.mg_tile_5;
+                break;
+            case 6:
+                picture = R.drawable.mg_tile_6;
+                break;
+            case 7:
+                picture = R.drawable.mg_tile_7;
+                break;
+            case 8:
+                picture = R.drawable.mg_tile_8;
+                break;
+            case 9:
+                picture = R.drawable.mg_tile_9;
+                break;
+            case 10:
+                picture = R.drawable.mg_tile_10;
+                break;
+            case 11:
+                picture = R.drawable.mg_tile_11;
+                break;
+            case 12:
+                picture = R.drawable.mg_tile_12;
+                break;
+            case 13:
+                picture = R.drawable.mg_tile_13;
+                break;
+            case 14:
+                picture = R.drawable.mg_tile_14;
+                break;
+            case 15:
+                picture = R.drawable.mg_tile_15;
+                break;
+            case 16:
+                picture = R.drawable.mg_tile_16;
+                break;
+            case 17:
+                picture = R.drawable.mg_tile_17;
+                break;
+            case 18:
+                picture = R.drawable.mg_tile_18;
+                break;
             default:
                 picture = R.drawable.mg_tile_0;
         }
