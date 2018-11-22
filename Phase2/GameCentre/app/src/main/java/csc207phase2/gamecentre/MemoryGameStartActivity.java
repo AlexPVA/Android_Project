@@ -60,8 +60,7 @@ public class MemoryGameStartActivity extends GameComponent {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                memoryBoardManager = new MemoryBoardManager(2, 2);
-                startGame();
+                goToComplexity();
             }
         });
     }
@@ -144,6 +143,14 @@ public class MemoryGameStartActivity extends GameComponent {
         Intent tmp = new Intent(this, GameActivity.class);
         saveToFile(SlidingTilesActivity.TEMP_SAVE_FILENAME);
         startActivity(tmp);
+    }
+
+    /**
+     * Goes to complexity selection activity.
+     */
+    private void goToComplexity(){
+        Intent chooseComplex = new Intent(this, MemoryChooseComplexity.class);
+        startActivity(chooseComplex);
     }
 
     /**
