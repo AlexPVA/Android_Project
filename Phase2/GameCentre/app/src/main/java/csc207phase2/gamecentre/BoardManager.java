@@ -105,6 +105,9 @@ class BoardManager extends GameManager {
 
         Collections.shuffle(tiles);
         this.board = new Board(row, col, tiles);
+        while (!this.boardSolvability(board)){
+            this.board = new Board(row, col, tiles);
+        }
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
@@ -239,5 +242,12 @@ class BoardManager extends GameManager {
         this.game = game;
     }
 
+
+
+    private boolean boardSolvability(Board board){
+        boolean solvable = false;
+
+    return solvable;
+    }
 
 }
