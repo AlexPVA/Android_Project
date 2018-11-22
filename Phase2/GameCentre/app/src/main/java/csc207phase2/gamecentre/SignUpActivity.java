@@ -24,7 +24,6 @@ public class SignUpActivity extends AppCompatActivity{
     /**
      * The username and password fields the user wishes to sign up with.
      */
-
     private FirebaseAuth mAuth;
     private EditText txt_password;
     private EditText txt_email;

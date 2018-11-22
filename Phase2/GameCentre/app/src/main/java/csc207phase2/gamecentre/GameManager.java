@@ -1,7 +1,6 @@
 package csc207phase2.gamecentre;
 
 import android.support.v7.app.AppCompatActivity;
-
 import java.io.Serializable;
 
 /**
@@ -23,12 +22,22 @@ abstract class GameManager extends AppCompatActivity implements Serializable {
      */
     abstract public void setGame(GameComponent game);
 
+    /**
+     * Checks the validity of a tap at a given position.
+     *
+     * @param position the position to check
+     */
     abstract boolean isValidTap(int position);
 
     void touchMove(int position){
 
     }
 
+    /**
+     * Returns true when the game's puzzle has been completed.
+     *
+     * @return whether the game's puzzle has been completed
+     */
     abstract boolean puzzleSolved();
 
 

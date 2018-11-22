@@ -10,16 +10,21 @@ import android.widget.TextView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+/**
+ * Displays the scores for a given game/user
+ */
 public class ScoreViewActivity extends AppCompatActivity {
 
     /**
      * The linear layout to draw to.
      */
-    LinearLayout layout;
+    private LinearLayout layout;
+
     /**
      * The size of the title.
      */
     static final float TITLE_SIZE = 30;
+
     /**
      * The size of each line of text drawn to the layout (other than the title).
      */

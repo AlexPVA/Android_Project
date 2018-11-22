@@ -16,7 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
-        tools:context="csc207phase1.gamecentre.MemoryGameActivity">
+        tools:context="csc207phase2.gamecentre.MemoryGameActivity">
 
     </csc207phase1.gamecentre.MemoryGestureDetectGridView>
 

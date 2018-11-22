@@ -9,10 +9,12 @@ import android.widget.Button;
  * Choosing for the sliding puzzle tile game.
  */
 public class ChooseComplexity extends GameComponent {
+
     /**
      * The board manager.
      */
     private BoardManager boardManager;
+
     /**
      * A temporary save file.
      */

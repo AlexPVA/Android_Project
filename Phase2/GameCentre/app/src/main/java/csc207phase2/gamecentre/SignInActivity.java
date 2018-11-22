@@ -22,7 +22,6 @@ public class SignInActivity extends AppCompatActivity{
     /**
      * The username and password fields the user entered.
      */
-
     private EditText txt_email;
     private EditText txt_password;
     private FirebaseAuth mAuth;
