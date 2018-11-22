@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.Button;
 import android.widget.Toast;
 import java.util.concurrent.TimeUnit;
+import android.os.Handler;
 
 public class MemoryMovementController {
 
@@ -16,7 +17,7 @@ public class MemoryMovementController {
         this.memoryBoardManager = memoryBoardManager;
     }
 
-    public void processTapMovement(Context context, int position, boolean display) {
+    public void processTapMovement(final Context context, final int position, boolean display) {
         if (memoryBoardManager.isValidTap(position)) {
             //updateTileButtons();
             if (memoryBoardManager.getFirstTile() == null) {
@@ -37,15 +38,21 @@ public class MemoryMovementController {
                             memoryBoardManager.setSecondTile(null);
                         }
                     } else {
-                        memoryBoardManager.getMemoryBoard().flipTile(position);
-                        memoryBoardManager.getMemoryBoard().flipTile(memoryBoardManager.getStoredPosition());
-                        //memoryBoardManager.removeFlipped(MemoryBoardManager.secondTile);
-                        //MemoryBoardManager.firstTile.flipBlank();
-                        //MemoryBoardManager.secondTile.flipBlank();
-                        memoryBoardManager.setFirstTile(null);
-                        memoryBoardManager.setSecondTile(null);
-                        Toast.makeText(context, "WRONG PAIR!", Toast.LENGTH_SHORT).show();
-                        //updateTileButtons();
+                        final Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                memoryBoardManager.getMemoryBoard().flipTile(position);
+                                memoryBoardManager.getMemoryBoard().flipTile(memoryBoardManager.getStoredPosition());
+                                                    //memoryBoardManager.removeFlipped(MemoryBoardManager.secondTile);
+                                                    //MemoryBoardManager.firstTile.flipBlank();
+                                                    //MemoryBoardManager.secondTile.flipBlank();
+                                memoryBoardManager.setFirstTile(null);
+                                memoryBoardManager.setSecondTile(null);
+                                Toast.makeText(context, "WRONG PAIR!", Toast.LENGTH_SHORT).show();
+                                                    //updateTileButtons();
+                            }
+                        }, 500);
                     }
             }
 // else {
