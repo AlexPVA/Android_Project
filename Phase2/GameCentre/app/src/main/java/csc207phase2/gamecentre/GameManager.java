@@ -40,6 +40,10 @@ abstract class GameManager extends AppCompatActivity implements Serializable {
      */
     abstract boolean puzzleSolved();
 
-
+    /**
+     * Return the name of the current user account.
+     * @return the name of the current user account.
+     */
+    abstract public String getAccountName();
 
 }

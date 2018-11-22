@@ -163,4 +163,11 @@ public class MemoryBoardManager extends GameManager{
         this.game = game;
     }
 
+    /**
+     * Return the name of the current user account.
+     * @return the name of the current user account.
+     */
+    public String getAccountName(){
+        return accountName;
+    }
 }
