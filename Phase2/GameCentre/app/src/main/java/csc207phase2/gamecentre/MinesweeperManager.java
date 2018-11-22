@@ -1,7 +1,7 @@
 package csc207phase2.gamecentre;
 
 /**
- * Manage a board
+ * Manage a minesweeper board
  */
 class MinesweeperManager extends GameManager {
 
@@ -21,15 +21,6 @@ class MinesweeperManager extends GameManager {
     private int numMoves;
 
     /**
-     * Manage a board that has been pre-populated.
-     *
-     * @param board the board
-     */
-    MinesweeperManager(MinesweeperBoard board) {
-        this.board = board;
-    }
-
-    /**
      * Return the current board.
      */
     MinesweeperBoard getBoard() {
@@ -42,7 +33,7 @@ class MinesweeperManager extends GameManager {
     private static ScoreSorter<Score> scoreSorter = new MinimumSorter<Score>();
 
     /**
-     * Stores the scores for sliding tiles game.
+     * Stores the scores for minesweeper game.
      */
     private static ScoreBoard<Score> scores = new ScoreBoard<Score>(scoreSorter);
 
@@ -64,9 +55,9 @@ class MinesweeperManager extends GameManager {
     }
 
     /**
-     * Return whether the tiles are in row-major order.
+     * Return whether all the non-bomb tiles have been tapped
      *
-     * @return whether the tiles are in row-major order
+     * @return whether all the non-bomb tiles have been tapped
      */
     boolean puzzleSolved() {
         if(gameLost){
@@ -96,10 +87,11 @@ class MinesweeperManager extends GameManager {
     }
 
     /**
-     * Return whether any of the four surrounding tiles is the blank tile.
+     * Return whether the tap is valid (the tile hasn't been tapped before or the game is in a
+     * losing state.
      *
      * @param position the tile to check
-     * @return
+     * @return whether the tap is valid
      */
     boolean isValidTap(int position) {
         int row = position / board.getNumCols();
@@ -125,6 +117,7 @@ class MinesweeperManager extends GameManager {
 
         if(gameLost){
             setGameLost(false);
+            board.generateBoard(board.getNumRows(), board.getNumCols());
         }else if(tile.getId() == MinesweeperTile.BOMB_ID){
             tile.setId(MinesweeperTile.EXPLODED_BOMB_ID);
             setGameLost(true);
@@ -132,7 +125,16 @@ class MinesweeperManager extends GameManager {
 
     }
 
+    /**
+     * Sets whether the game has been lost. If it matches the current state, do nothing. Otherwise,
+     * if it is changing from not lost to lost then it reveals the board.
+     *
+     * @param lost whether the game has been lost
+     */
     void setGameLost(boolean lost){
+        if(lost == this.gameLost){
+            return;
+        }
         this.gameLost = lost;
 
         if(lost){
@@ -141,8 +143,6 @@ class MinesweeperManager extends GameManager {
                     board.tapTile(i, j);
                 }
             }
-        }else{
-            board.generateBoard(board.getNumRows(), board.getNumCols());
         }
     }
 
