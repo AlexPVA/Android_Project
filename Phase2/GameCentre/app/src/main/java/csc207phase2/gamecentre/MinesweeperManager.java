@@ -35,7 +35,7 @@ class MinesweeperManager extends BoardManager {
     /**
      * Stores the scores for minesweeper game.
      */
-    private static ScoreBoard<Score> scores = new ScoreBoard<Score>(scoreSorter);
+    private static ScoreBoard scores = new ScoreBoard(scoreSorter);
 
     /**
      * The game this is a part of.

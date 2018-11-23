@@ -85,15 +85,6 @@ public class SlidingTilesBoard extends Board implements Serializable, Iterable<S
 
 
     /**
-     * Return the number of tiles on the board.
-     *
-     * @return the number of tiles on the board
-     */
-    int numTiles() {
-        return numRows * numCols;
-    }
-
-    /**
      * Return the tile at (row, col)
      *
      * @param row the tile row

@@ -8,6 +8,8 @@ import java.io.Serializable;
  */
 abstract class BoardManager extends AppCompatActivity implements Serializable {
 
+
+
     /**
      * Autosaves the game manager to fileName.
      *

@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * A score board for a game.
  */
-public class ScoreBoard<T> implements Iterable<Score> {
+public class ScoreBoard implements Iterable<Score> {
 
     /**
      * This is the list of Scores within the score board.

@@ -34,8 +34,6 @@ abstract class GameActivity extends GameComponent implements Observer {
         gridView.setAdapter(new CustomAdapter(tileButtons, columnWidth, columnHeight));
     }
 
-    abstract public int getContentView();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,6 +115,8 @@ abstract class GameActivity extends GameComponent implements Observer {
             editor.commit();
         }
     }
+
+    abstract public int getContentView();
 
     /**
      * Dispatch onPause() to fragments.
