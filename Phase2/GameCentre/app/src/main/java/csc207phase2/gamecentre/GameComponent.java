@@ -48,7 +48,7 @@ abstract class GameComponent extends AppCompatActivity implements Serializable {
      * @param fileName the name of the file
      */
     protected void loadFromFile(String fileName) {
-        fileName = accountName + "_" + fileName;
+        fileName = getName() + "_" + accountName + "_" + fileName;
 
         try {
             InputStream inputStream = this.openFileInput(fileName);
@@ -72,7 +72,7 @@ abstract class GameComponent extends AppCompatActivity implements Serializable {
      * @param fileName the name of the file
      */
     public void saveToFile(String fileName) {
-        fileName = accountName + "_" + fileName;
+        fileName = getName() + "_" + accountName + "_" + fileName;
 
         try {
             ObjectOutputStream outputStream = new ObjectOutputStream(
