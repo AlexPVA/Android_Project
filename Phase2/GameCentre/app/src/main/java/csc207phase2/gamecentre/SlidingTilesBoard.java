@@ -11,7 +11,7 @@ import android.support.annotation.NonNull;
 /**
  * The sliding tiles board.
  */
-public class SlidingTilesBoard extends Observable implements Serializable, Iterable<Tile> {
+public class SlidingTilesBoard extends Observable implements Serializable, Iterable<SlidingTilesTile> {
 
     /**
      * The number of rows.
@@ -26,7 +26,7 @@ public class SlidingTilesBoard extends Observable implements Serializable, Itera
     /**
      * The tiles on the board in row-major order.
      */
-    private Tile[][] tiles;
+    private SlidingTilesTile[][] tiles;
 
     /**
      * A new board of tiles in row-major order.
@@ -34,11 +34,11 @@ public class SlidingTilesBoard extends Observable implements Serializable, Itera
      *
      * @param tiles the tiles for the board
      */
-    SlidingTilesBoard(int rows, int cols, List<Tile> tiles) {
+    SlidingTilesBoard(int rows, int cols, List<SlidingTilesTile> tiles) {
         setNumRows(rows);
         setNumCols(cols);
-        this.tiles = new Tile[numRows][numCols];
-        Iterator<Tile> iter = tiles.iterator();
+        this.tiles = new SlidingTilesTile[numRows][numCols];
+        Iterator<SlidingTilesTile> iter = tiles.iterator();
 
         for (int row = 0; row != numRows; row++) {
             for (int col = 0; col != numCols; col++) {
@@ -100,7 +100,7 @@ public class SlidingTilesBoard extends Observable implements Serializable, Itera
      * @param col the tile column
      * @return the tile at (row, col)
      */
-    Tile getTile(int row, int col) {
+    SlidingTilesTile getTile(int row, int col) {
         return tiles[row][col];
     }
 
@@ -114,7 +114,7 @@ public class SlidingTilesBoard extends Observable implements Serializable, Itera
      */
     void swapTiles(int row1, int col1, int row2, int col2) {
 
-        Tile temp = getTile(row1, col1);
+        SlidingTilesTile temp = getTile(row1, col1);
         tiles[row1][col1] = getTile(row2, col2);
         tiles[row2][col2] = temp;
 
@@ -131,17 +131,17 @@ public class SlidingTilesBoard extends Observable implements Serializable, Itera
 
     @NonNull
     @Override
-    public Iterator<Tile> iterator() {
+    public Iterator<SlidingTilesTile> iterator() {
         return new BoardIterator();
     }
 
     /**
      * Iterates through the Tiles in the SlidingTilesBoard in row-major order.
      */
-    private class BoardIterator implements Iterator<Tile> {
+    private class BoardIterator implements Iterator<SlidingTilesTile> {
 
         /**
-         * The current location of the next Tile in the board
+         * The current location of the next SlidingTilesTile in the board
          */
         private int rowIndex = 0, colIndex = 0;
 
@@ -151,8 +151,8 @@ public class SlidingTilesBoard extends Observable implements Serializable, Itera
         }
 
         @Override
-        public Tile next() {
-            Tile result = tiles[rowIndex][colIndex];
+        public SlidingTilesTile next() {
+            SlidingTilesTile result = tiles[rowIndex][colIndex];
 
             if (colIndex == numCols - 1) {
                 colIndex = 0;

@@ -192,7 +192,7 @@ public class MinesweeperBoard extends Observable implements Serializable, Iterab
     private class BoardIterator implements Iterator<MinesweeperTile> {
 
         /**
-         * The current location of the next Tile in the board
+         * The current location of the next SlidingTilesTile in the board
          */
         private int rowIndex = 0, colIndex = 0;
 

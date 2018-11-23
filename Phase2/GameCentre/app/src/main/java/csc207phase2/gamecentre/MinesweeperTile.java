@@ -3,7 +3,7 @@ package csc207phase2.gamecentre;
 import java.io.Serializable;
 
 /**
- * A Tile in the minesweeper game.
+ * A SlidingTilesTile in the minesweeper game.
  */
 public class MinesweeperTile implements Serializable{
 

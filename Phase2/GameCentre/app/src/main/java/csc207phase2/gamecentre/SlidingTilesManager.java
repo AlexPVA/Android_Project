@@ -96,12 +96,12 @@ class SlidingTilesManager extends BoardManager {
      * Manage a new shuffled board.
      */
     SlidingTilesManager(int row, int col) {
-        List<Tile> tiles = new ArrayList<>();
+        List<SlidingTilesTile> tiles = new ArrayList<>();
         final int numTiles = row * col - 1;
         for (int tileNum = 0; tileNum != numTiles; tileNum++) {
-            tiles.add(new Tile(tileNum));
+            tiles.add(new SlidingTilesTile(tileNum));
         }
-        tiles.add(new Tile(24));
+        tiles.add(new SlidingTilesTile(24));
 
         Collections.shuffle(tiles);
         this.board = new SlidingTilesBoard(row, col, tiles);
@@ -122,7 +122,7 @@ class SlidingTilesManager extends BoardManager {
     boolean puzzleSolved() {
         boolean solved = true;
 
-        Iterator<Tile> iter = board.iterator();
+        Iterator<SlidingTilesTile> iter = board.iterator();
 
         int count = 1;
         while (iter.hasNext()) {
@@ -162,10 +162,10 @@ class SlidingTilesManager extends BoardManager {
         int col = position % board.getNumCols();
         int blankId = 25;
         // Are any of the 4 the blank tile?
-        Tile above = row == 0 ? null : board.getTile(row - 1, col);
-        Tile below = row == board.getNumRows() - 1 ? null : board.getTile(row + 1, col);
-        Tile left = col == 0 ? null : board.getTile(row, col - 1);
-        Tile right = col == board.getNumCols() - 1 ? null : board.getTile(row, col + 1);
+        SlidingTilesTile above = row == 0 ? null : board.getTile(row - 1, col);
+        SlidingTilesTile below = row == board.getNumRows() - 1 ? null : board.getTile(row + 1, col);
+        SlidingTilesTile left = col == 0 ? null : board.getTile(row, col - 1);
+        SlidingTilesTile right = col == board.getNumCols() - 1 ? null : board.getTile(row, col + 1);
         return (below != null && below.getId() == blankId)
                 || (above != null && above.getId() == blankId)
                 || (left != null && left.getId() == blankId)
