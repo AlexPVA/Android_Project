@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="csc207phase2.gamecentre.GameActivity"></activity>
+        <activity android:name="csc207phase2.gamecentre.SlidingTilesGameActivity"></activity>
         <activity android:name="csc207phase2.gamecentre.SlidingTilesActivity"></activity>
         <activity android:name="csc207phase2.gamecentre.SignInActivity"></activity>
         <activity android:name="csc207phase2.gamecentre.SignUpActivity"></activity>

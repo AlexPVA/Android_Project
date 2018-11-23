@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
 
@@ -159,7 +158,7 @@ public class MemoryGameActivity extends GameComponent implements Observer {
     }
 
     @Override
-    void setGameManager(GameManager m){
+    void setGameManager(BoardManager m){
         this.memoryBoardManager = (MemoryBoardManager) m;
     }
 

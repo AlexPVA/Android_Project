@@ -11,7 +11,7 @@ import android.support.annotation.NonNull;
 /**
  * The sliding tiles board.
  */
-public class Board extends Observable implements Serializable, Iterable<Tile> {
+public class SlidingTilesBoard extends Observable implements Serializable, Iterable<Tile> {
 
     /**
      * The number of rows.
@@ -34,7 +34,7 @@ public class Board extends Observable implements Serializable, Iterable<Tile> {
      *
      * @param tiles the tiles for the board
      */
-    Board(int rows, int cols, List<Tile> tiles) {
+    SlidingTilesBoard(int rows, int cols, List<Tile> tiles) {
         setNumRows(rows);
         setNumCols(cols);
         this.tiles = new Tile[numRows][numCols];
@@ -124,7 +124,7 @@ public class Board extends Observable implements Serializable, Iterable<Tile> {
 
     @Override
     public String toString() {
-        return "Board{" +
+        return "SlidingTilesBoard{" +
                 "tiles=" + Arrays.toString(tiles) +
                 '}';
     }
@@ -136,7 +136,7 @@ public class Board extends Observable implements Serializable, Iterable<Tile> {
     }
 
     /**
-     * Iterates through the Tiles in the Board in row-major order.
+     * Iterates through the Tiles in the SlidingTilesBoard in row-major order.
      */
     private class BoardIterator implements Iterator<Tile> {
 

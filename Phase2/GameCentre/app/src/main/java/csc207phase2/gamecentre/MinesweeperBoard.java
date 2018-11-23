@@ -176,7 +176,7 @@ public class MinesweeperBoard extends Observable implements Serializable, Iterab
 
     @Override
     public String toString() {
-        return "Board{" +
+        return "SlidingTilesBoard{" +
                 "tiles=" + Arrays.toString(tiles) +
                 '}';
     }
@@ -187,7 +187,7 @@ public class MinesweeperBoard extends Observable implements Serializable, Iterab
     }
 
     /**
-     * Iterates through the Tiles in the Board in row-major order.
+     * Iterates through the Tiles in the SlidingTilesBoard in row-major order.
      */
     private class BoardIterator implements Iterator<MinesweeperTile> {
 

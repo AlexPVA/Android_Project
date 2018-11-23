@@ -83,12 +83,12 @@ public class MinesweeperComplexity extends GameComponent{
 
 
     @Override
-    void setGameManager(GameManager m) {
+    void setGameManager(BoardManager m) {
         this.manager = (MinesweeperManager) m;
     }
 
     @Override
-    GameManager getGameManager() {
+    BoardManager getGameManager() {
         return manager;
     }
     @Override

@@ -26,7 +26,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
-        tools:context="csc207phase2.gamecentre.GameActivity">
+        tools:context="csc207phase2.gamecentre.SlidingTilesGameActivity">
 
     </csc207phase2.gamecentre.GestureDetectGridView>
 

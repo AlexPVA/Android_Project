@@ -54,7 +54,7 @@ abstract class GameComponent extends AppCompatActivity implements Serializable {
             InputStream inputStream = this.openFileInput(fileName);
             if (inputStream != null) {
                 ObjectInputStream input = new ObjectInputStream(inputStream);
-                setGameManager((GameManager) input.readObject());
+                setGameManager((BoardManager) input.readObject());
                 inputStream.close();
             }
         } catch (FileNotFoundException e) {
@@ -89,14 +89,14 @@ abstract class GameComponent extends AppCompatActivity implements Serializable {
      *
      * @param m the manager for the game
      */
-    abstract void setGameManager(GameManager m);
+    abstract void setGameManager(BoardManager m);
 
     /**
      * Get the current game manager.
      *
      * @return the current game manager.
      */
-    abstract GameManager getGameManager();
+    abstract BoardManager getGameManager();
 
     /**
      * Get the name of the current game, needs to be implemented by child class.

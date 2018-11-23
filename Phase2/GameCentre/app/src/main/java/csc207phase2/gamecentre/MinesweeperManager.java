@@ -3,7 +3,7 @@ package csc207phase2.gamecentre;
 /**
  * Manage a minesweeper board
  */
-class MinesweeperManager extends GameManager {
+class MinesweeperManager extends BoardManager {
 
     /**
      * The board being managed.

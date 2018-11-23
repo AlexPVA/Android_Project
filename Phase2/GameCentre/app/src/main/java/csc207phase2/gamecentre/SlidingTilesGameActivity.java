@@ -15,12 +15,12 @@ import java.util.Observer;
 /**
  * The game activity.
  */
-public class GameActivity extends GameComponent implements Observer {
+public class SlidingTilesGameActivity extends GameComponent implements Observer {
 
     /**
      * The board manager.
      */
-    private BoardManager boardManager;
+    private SlidingTilesManager boardManager;
 
     /**
      * The buttons to display.
@@ -112,7 +112,7 @@ public class GameActivity extends GameComponent implements Observer {
      * @param context the context
      */
     private void createTileButtons(Context context) {
-        Board board = boardManager.getBoard();
+        SlidingTilesBoard board = boardManager.getBoard();
         tileButtons = new ArrayList<>();
         for (int row = 0; row != board.getNumRows(); row++) {
             for (int col = 0; col != board.getNumCols(); col++) {
@@ -127,7 +127,7 @@ public class GameActivity extends GameComponent implements Observer {
      * Update the backgrounds on the buttons to match the tiles.
      */
     private void updateTileButtons() {
-        Board board = boardManager.getBoard();
+        SlidingTilesBoard board = boardManager.getBoard();
         int nextPos = 0;
         for (Button b : tileButtons) {
             int row = nextPos / board.getNumRows();
@@ -138,7 +138,7 @@ public class GameActivity extends GameComponent implements Observer {
         if (boardManager.puzzleSolved()) {
             SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
-            ArrayList<String> scores = BoardManager.getScoreBoard().getTopScore();
+            ArrayList<String> scores = SlidingTilesManager.getScoreBoard().getTopScore();
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < scores.size(); i++) {
                 sb.append(scores.get(i)).append(",");
@@ -158,18 +158,18 @@ public class GameActivity extends GameComponent implements Observer {
     }
 
     /**
-     * Sets the current GameManager for this game.
+     * Sets the current BoardManager for this game.
      */
-    void setGameManager(GameManager m){
-        this.boardManager = (BoardManager)m;
+    void setGameManager(BoardManager m){
+        this.boardManager = (SlidingTilesManager)m;
     }
 
     /**
-     * Returns the current BoardManager for this game.
+     * Returns the current SlidingTilesManager for this game.
      *
-     * @return the current BoardManager.
+     * @return the current SlidingTilesManager.
      */
-    BoardManager getGameManager(){
+    SlidingTilesManager getGameManager(){
         return boardManager;
     }
 

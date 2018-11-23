@@ -13,7 +13,7 @@ public class ChooseComplexity extends GameComponent {
     /**
      * The board manager.
      */
-    private BoardManager boardManager;
+    private SlidingTilesManager boardManager;
 
     /**
      * A temporary save file.
@@ -38,7 +38,7 @@ public class ChooseComplexity extends GameComponent {
         Button_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boardManager = new BoardManager(3, 3);
+                boardManager = new SlidingTilesManager(3, 3);
                 switchToGame();
             }
         });
@@ -52,7 +52,7 @@ public class ChooseComplexity extends GameComponent {
         Button_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boardManager = new BoardManager(4, 4);
+                boardManager = new SlidingTilesManager(4, 4);
                 switchToGame();
             }
         });
@@ -66,28 +66,28 @@ public class ChooseComplexity extends GameComponent {
         Button_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boardManager = new BoardManager(5,5);
+                boardManager = new SlidingTilesManager(5,5);
                 switchToGame();
             }
         });
     }
 
     /**
-     * Switch to the GameActivity view to play the game.
+     * Switch to the SlidingTilesGameActivity view to play the game.
      */
     private void switchToGame() {
-        Intent tmp = new Intent(this, GameActivity.class);
+        Intent tmp = new Intent(this, SlidingTilesGameActivity.class);
         saveToFile(ChooseComplexity.TEMP_SAVE_FILENAME);
         startActivity(tmp);
     }
 
     @Override
-    void setGameManager(GameManager m) {
-        boardManager = (BoardManager) m;
+    void setGameManager(BoardManager m) {
+        boardManager = (SlidingTilesManager) m;
     }
 
     @Override
-    GameManager getGameManager() {
+    BoardManager getGameManager() {
         return boardManager;
     }
 

@@ -75,7 +75,7 @@ public class ScoreViewActivity extends AppCompatActivity {
     //String[] getScoreText(){
         //SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
         //SharedPreferences.Editor editor = prefs.edit();
-        //BoardManager board = new BoardManager(3, 3);
+        //SlidingTilesManager board = new SlidingTilesManager(3, 3);
         //ArrayList<String> scores = board.getScoreBoard().getTopScore();
         //StringBuilder sb = new StringBuilder();
         //for (int i = 0; i < scores.size(); i++) {

@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Iterator;
 
-public class MemoryBoardManager extends GameManager{
+public class MemoryBoardManager extends BoardManager {
 
     transient private FirebaseAuth mAuth;
     transient private FirebaseUser currentUser;

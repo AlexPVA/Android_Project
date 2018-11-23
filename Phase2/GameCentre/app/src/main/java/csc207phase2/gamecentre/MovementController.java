@@ -5,12 +5,12 @@ import android.widget.Toast;
 
 public class MovementController {
 
-    private GameManager boardManager = null;
+    private BoardManager boardManager = null;
 
     public MovementController() {
     }
 
-    public void setBoardManager(GameManager boardManager) {
+    public void setBoardManager(BoardManager boardManager) {
         this.boardManager = boardManager;
     }
 

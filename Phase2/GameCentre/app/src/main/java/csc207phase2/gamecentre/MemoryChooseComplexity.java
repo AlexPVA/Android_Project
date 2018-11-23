@@ -8,7 +8,7 @@ import android.widget.Button;
 public class MemoryChooseComplexity extends GameComponent{
 
     /**
-     * The Memory Board manager.
+     * The Memory SlidingTilesBoard manager.
      */
     private MemoryBoardManager memoryBoardManager;
     /**
@@ -69,7 +69,7 @@ public class MemoryChooseComplexity extends GameComponent{
     }
 
     /**
-     * Switch to the GameActivity view to play the game.
+     * Switch to the SlidingTilesGameActivity view to play the game.
      */
     private void switchToGame() {
         Intent tmp = new Intent(this, MemoryGameActivity.class);
@@ -78,12 +78,12 @@ public class MemoryChooseComplexity extends GameComponent{
     }
 
     @Override
-    void setGameManager(GameManager m) {
+    void setGameManager(BoardManager m) {
         memoryBoardManager = (MemoryBoardManager) m;
     }
 
     @Override
-    GameManager getGameManager() {
+    BoardManager getGameManager() {
         return memoryBoardManager;
     }
 

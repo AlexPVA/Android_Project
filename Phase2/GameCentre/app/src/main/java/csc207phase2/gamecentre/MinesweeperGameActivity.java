@@ -122,7 +122,7 @@ public class MinesweeperGameActivity extends GameComponent implements Observer {
         if (manager.puzzleSolved()) {
             SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
-            ArrayList<String> scores = BoardManager.getScoreBoard().getTopScore();
+            ArrayList<String> scores = SlidingTilesManager.getScoreBoard().getTopScore();
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < scores.size(); i++) {
                 sb.append(scores.get(i)).append(",");
@@ -142,12 +142,12 @@ public class MinesweeperGameActivity extends GameComponent implements Observer {
     }
 
     @Override
-    void setGameManager(GameManager m) {
+    void setGameManager(BoardManager m) {
         this.manager = (MinesweeperManager) m;
     }
 
     @Override
-    GameManager getGameManager() {
+    BoardManager getGameManager() {
         return manager;
     }
 

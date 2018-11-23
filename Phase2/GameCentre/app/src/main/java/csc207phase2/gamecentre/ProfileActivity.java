@@ -64,7 +64,7 @@ public class ProfileActivity extends AppCompatActivity {
      */
     private void switchToScore() {
         Intent tmp = new Intent(this, ScoreViewActivity.class);
-        Score topScore = BoardManager.getScoreBoard().getUserHighscore(currentUser.getEmail());
+        Score topScore = SlidingTilesManager.getScoreBoard().getUserHighscore(currentUser.getEmail());
         if(topScore != null){
             String[]scoreText = {topScore.toString()};
             tmp.putExtra("scoreText", scoreText);

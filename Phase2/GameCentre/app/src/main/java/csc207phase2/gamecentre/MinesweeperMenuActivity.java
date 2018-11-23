@@ -142,7 +142,7 @@ public class MinesweeperMenuActivity extends GameComponent{
     }
 
     /**
-     * Switch to the GameActivity view to play the game.
+     * Switch to the SlidingTilesGameActivity view to play the game.
      */
     private void switchToGame() {
         Intent tmp = new Intent(this, MinesweeperGameActivity.class);
@@ -154,7 +154,7 @@ public class MinesweeperMenuActivity extends GameComponent{
      * Switch to scoreViewActivity view scores.
      */
     private void switchToScoreView() {
-        List topScores = BoardManager.getScoreBoard().getListScores();
+        List topScores = SlidingTilesManager.getScoreBoard().getListScores();
         String[] scoreText = new String[topScores.size()];
         for(int i = 0; i < topScores.size(); i ++){
             scoreText[i] = topScores.get(i).toString();
@@ -166,12 +166,12 @@ public class MinesweeperMenuActivity extends GameComponent{
 
 
     @Override
-    void setGameManager(GameManager m) {
+    void setGameManager(BoardManager m) {
         this.manager = (MinesweeperManager) m;
     }
 
     @Override
-    GameManager getGameManager() {
+    BoardManager getGameManager() {
         return manager;
     }
 
