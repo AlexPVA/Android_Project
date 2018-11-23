@@ -168,10 +168,10 @@ public class MemoryGameStartActivity extends GameComponent {
     }
 
 
-    void setGameManager(BoardManager m){
+    void setBoardManager(BoardManager m){
         this.memoryBoardManager = (MemoryBoardManager) m;
     }
-    MemoryBoardManager getGameManager(){
+    MemoryBoardManager getBoardManager(){
         return memoryBoardManager;
     }
 

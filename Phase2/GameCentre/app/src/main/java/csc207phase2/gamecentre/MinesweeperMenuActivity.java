@@ -11,16 +11,6 @@ import java.util.List;
 public class MinesweeperMenuActivity extends GameComponent{
 
     /**
-     * The main save file.
-     */
-    public static final String SAVE_FILENAME = "save_file.ser";
-
-    /**
-     * A temporary save file.
-     */
-    public static final String TEMP_SAVE_FILENAME = "save_file_tmp.ser";
-
-    /**
      * The game's manager.
      */
     private MinesweeperManager manager;
@@ -166,12 +156,12 @@ public class MinesweeperMenuActivity extends GameComponent{
 
 
     @Override
-    void setGameManager(BoardManager m) {
+    void setBoardManager(BoardManager m) {
         this.manager = (MinesweeperManager) m;
     }
 
     @Override
-    BoardManager getGameManager() {
+    BoardManager getBoardManager() {
         return manager;
     }
 

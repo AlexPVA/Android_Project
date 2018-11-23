@@ -10,7 +10,7 @@ import java.util.Random;
 /**
  * The sliding tiles board.
  */
-public class MinesweeperBoard extends Observable implements Serializable, Iterable<MinesweeperTile> {
+public class MinesweeperBoard extends Board implements Serializable, Iterable<MinesweeperTile> {
 
     /**
      * The number of rows.

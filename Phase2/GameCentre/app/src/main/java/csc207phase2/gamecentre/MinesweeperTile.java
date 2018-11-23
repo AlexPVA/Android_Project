@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * A SlidingTilesTile in the minesweeper game.
  */
-public class MinesweeperTile implements Serializable{
+public class MinesweeperTile extends Tile implements Serializable{
 
     /**
      * The background id to find the tile image.

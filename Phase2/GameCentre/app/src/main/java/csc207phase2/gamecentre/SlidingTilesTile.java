@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * A SlidingTilesTile in a sliding tiles puzzle.
  */
-public class SlidingTilesTile implements Comparable<SlidingTilesTile>, Serializable {
+public class SlidingTilesTile extends Tile implements Comparable<SlidingTilesTile>, Serializable {
 
     /**
      * The background id to find the tile image.

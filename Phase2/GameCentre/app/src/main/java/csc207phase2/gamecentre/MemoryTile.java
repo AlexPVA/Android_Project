@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 
 import java.io.Serializable;
 
-public class MemoryTile implements Comparable<MemoryTile>, Serializable {
+public class MemoryTile extends Tile implements Comparable<MemoryTile>, Serializable {
 
     /**
      * The background id to find the tile image.

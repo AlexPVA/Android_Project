@@ -11,7 +11,7 @@ import android.support.annotation.NonNull;
 /**
  * The sliding tiles board.
  */
-public class SlidingTilesBoard extends Observable implements Serializable, Iterable<SlidingTilesTile> {
+public class SlidingTilesBoard extends Board implements Serializable, Iterable<SlidingTilesTile> {
 
     /**
      * The number of rows.

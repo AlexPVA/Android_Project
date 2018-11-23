@@ -167,10 +167,10 @@ public class SlidingTilesActivity extends GameComponent {
     }
 
 
-    void setGameManager(BoardManager m){
+    void setBoardManager(BoardManager m){
         this.boardManager = (SlidingTilesManager)m;
     }
-    SlidingTilesManager getGameManager(){
+    SlidingTilesManager getBoardManager(){
         return boardManager;
     }
 

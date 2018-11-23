@@ -8,7 +8,7 @@ import java.util.List;
 
 import android.support.annotation.NonNull;
 
-public class MemoryBoard extends Observable implements Serializable, Iterable<MemoryTile>{
+public class MemoryBoard extends Board implements Serializable, Iterable<MemoryTile>{
 
     /**
      * The number of rows.

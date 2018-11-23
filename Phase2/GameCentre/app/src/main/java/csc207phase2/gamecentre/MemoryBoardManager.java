@@ -220,4 +220,8 @@ public class MemoryBoardManager extends BoardManager {
 
 
     }
+
+    MemoryBoard getBoard(){
+        return memoryBoard;
+    }
 }

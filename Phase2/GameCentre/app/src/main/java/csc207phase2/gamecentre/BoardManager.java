@@ -47,4 +47,6 @@ abstract class BoardManager extends AppCompatActivity implements Serializable {
      */
     abstract public String getAccountName();
 
+    abstract Board getBoard();
+
 }

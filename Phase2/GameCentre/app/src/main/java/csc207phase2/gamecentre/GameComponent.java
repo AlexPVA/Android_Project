@@ -34,6 +34,17 @@ abstract class GameComponent extends AppCompatActivity implements Serializable {
      */
     private String accountName;
 
+    /**
+     * The main save file.
+     */
+    public static final String SAVE_FILENAME = "save_file.ser";
+
+    /**
+     * A temporary save file.
+     */
+    public static final String TEMP_SAVE_FILENAME = "save_file_tmp.ser";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,20 +60,22 @@ abstract class GameComponent extends AppCompatActivity implements Serializable {
      */
     protected void loadFromFile(String fileName) {
         fileName = getName() + "_" + accountName + "_" + fileName;
-
         try {
             InputStream inputStream = this.openFileInput(fileName);
             if (inputStream != null) {
+                Log.e("load activity", "input stream isn't null");
                 ObjectInputStream input = new ObjectInputStream(inputStream);
-                setGameManager((BoardManager) input.readObject());
+                setBoardManager((BoardManager) input.readObject());
                 inputStream.close();
+            }else{
+                Log.e("load activity", "input stream isn't null");
             }
         } catch (FileNotFoundException e) {
-            Log.e("login activity", "File not found: " + e.toString());
+            Log.e("load activity", "File not found: " + e.toString());
         } catch (IOException e) {
-            Log.e("login activity", "Can not read file: " + e.toString());
+            Log.e("load activity", "Can not read file: " + e.toString());
         } catch (ClassNotFoundException e) {
-            Log.e("login activity", "File contained unexpected data type: " + e.toString());
+            Log.e("load activity", "File contained unexpected data type: " + e.toString());
         }
     }
 
@@ -77,7 +90,7 @@ abstract class GameComponent extends AppCompatActivity implements Serializable {
         try {
             ObjectOutputStream outputStream = new ObjectOutputStream(
                     this.openFileOutput(fileName, MODE_PRIVATE));
-            outputStream.writeObject(getGameManager());
+            outputStream.writeObject(getBoardManager());
             outputStream.close();
         } catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());
@@ -89,14 +102,14 @@ abstract class GameComponent extends AppCompatActivity implements Serializable {
      *
      * @param m the manager for the game
      */
-    abstract void setGameManager(BoardManager m);
+    abstract void setBoardManager(BoardManager m);
 
     /**
      * Get the current game manager.
      *
      * @return the current game manager.
      */
-    abstract BoardManager getGameManager();
+    abstract BoardManager getBoardManager();
 
     /**
      * Get the name of the current game, needs to be implemented by child class.
