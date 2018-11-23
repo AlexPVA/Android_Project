@@ -11,10 +11,17 @@ public class MemoryChooseComplexity extends GameComponent{
      * The Memory SlidingTilesBoard manager.
      */
     private MemoryBoardManager memoryBoardManager;
+
     /**
      * A temporary save file.
      */
     public static final String TEMP_SAVE_FILENAME = "save_file_tmp.ser";
+
+    /**
+     *  The name of the game this is a part of
+     */
+    static final String NAME = "MemoryGame";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,17 +85,17 @@ public class MemoryChooseComplexity extends GameComponent{
     }
 
     @Override
-    void setGameManager(BoardManager m) {
+    void setBoardManager(BoardManager m) {
         memoryBoardManager = (MemoryBoardManager) m;
     }
 
     @Override
-    BoardManager getGameManager() {
+    BoardManager getBoardManager() {
         return memoryBoardManager;
     }
 
     @Override
     String getName() {
-        return null;
+        return NAME;
     }
 }

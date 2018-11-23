@@ -20,6 +20,11 @@ public class ChooseComplexity extends GameComponent {
      */
     public static final String TEMP_SAVE_FILENAME = "save_file_tmp.ser";
 
+    /**
+     *  The name of the game this is a part of
+     */
+    static final String NAME = "SlidingTiles";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,17 +87,17 @@ public class ChooseComplexity extends GameComponent {
     }
 
     @Override
-    void setGameManager(BoardManager m) {
+    void setBoardManager(BoardManager m) {
         boardManager = (SlidingTilesManager) m;
     }
 
     @Override
-    BoardManager getGameManager() {
+    BoardManager getBoardManager() {
         return boardManager;
     }
 
     @Override
     String getName() {
-        return null;
+        return NAME;
     }
 }

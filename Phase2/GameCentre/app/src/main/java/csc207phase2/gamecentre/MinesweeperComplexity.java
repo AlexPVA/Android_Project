@@ -20,6 +20,11 @@ public class MinesweeperComplexity extends GameComponent{
      */
     public static final String TEMP_SAVE_FILENAME = "save_file_tmp.ser";
 
+    /**
+     *  The name of the game this is a part of
+     */
+    static final String NAME = "Minesweeper";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,16 +88,16 @@ public class MinesweeperComplexity extends GameComponent{
 
 
     @Override
-    void setGameManager(BoardManager m) {
+    void setBoardManager(BoardManager m) {
         this.manager = (MinesweeperManager) m;
     }
 
     @Override
-    BoardManager getGameManager() {
+    BoardManager getBoardManager() {
         return manager;
     }
     @Override
     String getName() {
-        return null;
+        return NAME;
     }
 }
