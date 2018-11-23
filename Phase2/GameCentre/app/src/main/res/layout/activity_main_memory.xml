@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="csc207phase2.gamecentre.SlidingTilesActivity">
 
-    <csc207phase2.gamecentre.MemoryGestureDetectGridView xmlns:android="http://schemas.android.com/apk/res/android"
+    <csc207phase2.gamecentre.GestureDetectGridView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/grid"
@@ -18,6 +18,6 @@
         android:layout_marginTop="0dp"
         tools:context="csc207phase2.gamecentre.MemoryGameActivity">
 
-    </csc207phase2.gamecentre.MemoryGestureDetectGridView>
+    </csc207phase2.gamecentre.GestureDetectGridView>
 
 </RelativeLayout>

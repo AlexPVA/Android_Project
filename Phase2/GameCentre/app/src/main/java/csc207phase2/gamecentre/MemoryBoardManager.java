@@ -1,5 +1,8 @@
 package csc207phase2.gamecentre;
 
+import android.os.Handler;
+import android.widget.Toast;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -169,5 +172,52 @@ public class MemoryBoardManager extends GameManager{
      */
     public String getAccountName(){
         return accountName;
+    }
+
+    public void touchMove(int position){
+        //updateTileButtons();
+        if (getFirstTile() == null) {
+            flipTile1(position);
+            //updateTileButtons();
+        } else if (getSecondTile() == null) {
+            flipTile2(position);
+            //updateTileButtons();
+            if (getFirstTile().equals(getSecondTile())) {
+                //addSolved(firstTile);
+                //addSolved(secondTile);
+                Toast.makeText(game.getApplicationContext(), "CORRECT PAIR!", Toast.LENGTH_SHORT).show();
+                if (puzzleSolved()) {
+                    Toast.makeText(game.getApplicationContext(), "YOU WIN!", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    setFirstTile(null);
+                    setSecondTile(null);
+                }
+            } else {
+                final Handler handler = new Handler();
+                final int finalPosition = position;
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        getMemoryBoard().flipTile(finalPosition);
+                        getMemoryBoard().flipTile(getStoredPosition());
+                        //removeFlipped(secondTile);
+                        //firstTile.flipBlank();
+                        //secondTile.flipBlank();
+                        setFirstTile(null);
+                        setSecondTile(null);
+                        Toast.makeText(game.getApplicationContext(), "WRONG PAIR!", Toast.LENGTH_SHORT).show();
+                        //updateTileButtons();
+                    }
+                }, 500);
+            }
+        }
+// else {
+//                flipTile1(position);
+//                secondTile = null;
+//                updateTileButtons();
+//            }
+
+
     }
 }
