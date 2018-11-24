@@ -1,16 +1,12 @@
 package csc207phase2.gamecentre;
 
-import java.util.Observable;
-
-import java.io.Serializable;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.Random;
 
 /**
  * The sliding tiles board.
  */
-public class MinesweeperBoard extends Board implements Serializable, Iterable<MinesweeperTile> {
+public class MinesweeperBoard extends Board<MinesweeperTile>{
 
     /**
      * The number of rows.
@@ -180,42 +176,6 @@ public class MinesweeperBoard extends Board implements Serializable, Iterable<Mi
                 "tiles=" + Arrays.toString(tiles) +
                 '}';
     }
-
-    @Override
-    public Iterator<MinesweeperTile> iterator() {
-        return new BoardIterator();
-    }
-
-    /**
-     * Iterates through the Tiles in the SlidingTilesBoard in row-major order.
-     */
-    private class BoardIterator implements Iterator<MinesweeperTile> {
-
-        /**
-         * The current location of the next SlidingTilesTile in the board
-         */
-        private int rowIndex = 0, colIndex = 0;
-
-        @Override
-        public boolean hasNext() {
-            return rowIndex < numRows - 1 || colIndex < numCols - 1;
-        }
-
-        @Override
-        public MinesweeperTile next() {
-            MinesweeperTile result = tiles[rowIndex][colIndex];
-
-            if (colIndex == numCols - 1) {
-                colIndex = 0;
-                rowIndex++;
-            } else {
-                colIndex++;
-            }
-
-            return result;
-        }
-    }
-
 
 
 }

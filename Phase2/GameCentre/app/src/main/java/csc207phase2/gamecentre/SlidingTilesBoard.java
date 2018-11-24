@@ -1,17 +1,13 @@
 package csc207phase2.gamecentre;
 
-import java.util.Observable;
-import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-import android.support.annotation.NonNull;
-
 /**
  * The sliding tiles board.
  */
-public class SlidingTilesBoard extends Board implements Serializable, Iterable<SlidingTilesTile> {
+public class SlidingTilesBoard extends Board<SlidingTilesTile>{
 
     /**
      * The number of rows.
@@ -120,39 +116,5 @@ public class SlidingTilesBoard extends Board implements Serializable, Iterable<S
                 '}';
     }
 
-    @NonNull
-    @Override
-    public Iterator<SlidingTilesTile> iterator() {
-        return new BoardIterator();
-    }
 
-    /**
-     * Iterates through the Tiles in the SlidingTilesBoard in row-major order.
-     */
-    private class BoardIterator implements Iterator<SlidingTilesTile> {
-
-        /**
-         * The current location of the next SlidingTilesTile in the board
-         */
-        private int rowIndex = 0, colIndex = 0;
-
-        @Override
-        public boolean hasNext() {
-            return rowIndex < numRows - 1 || colIndex < numCols - 1;
-        }
-
-        @Override
-        public SlidingTilesTile next() {
-            SlidingTilesTile result = tiles[rowIndex][colIndex];
-
-            if (colIndex == numCols - 1) {
-                colIndex = 0;
-                rowIndex++;
-            } else {
-                colIndex++;
-            }
-
-            return result;
-        }
-    }
 }

@@ -1,14 +1,10 @@
 package csc207phase2.gamecentre;
 
-import java.util.Observable;
-import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-import android.support.annotation.NonNull;
-
-public class MemoryBoard extends Board implements Serializable, Iterable<MemoryTile>{
+public class MemoryBoard extends Board<MemoryTile>{
 
     /**
      * The number of rows.
@@ -131,40 +127,5 @@ public class MemoryBoard extends Board implements Serializable, Iterable<MemoryT
                 '}';
     }
 
-    @NonNull
-    @Override
-    public Iterator<MemoryTile> iterator() {
-        return new BoardIterator();
-    }
-
-    /**
-     * Iterates through the Tiles in the MemoryBoard in row-major order.
-     */
-    private class BoardIterator implements Iterator<MemoryTile> {
-
-        /**
-         * The current location of the next MemoryTile in the board
-         */
-        private int rowIndex = 0, colIndex = 0;
-
-        @Override
-        public boolean hasNext() {
-            return rowIndex < numRows - 1 || colIndex < numCols - 1;
-        }
-
-        @Override
-        public MemoryTile next() {
-            MemoryTile result = memoryTiles[rowIndex][colIndex];
-
-            if (colIndex == numCols - 1) {
-                colIndex = 0;
-                rowIndex++;
-            } else {
-                colIndex++;
-            }
-
-            return result;
-        }
-    }
 
 }
