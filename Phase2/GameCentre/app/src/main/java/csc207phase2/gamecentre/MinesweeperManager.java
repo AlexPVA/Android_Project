@@ -49,6 +49,9 @@ class MinesweeperManager extends BoardManager {
 
     /**
      * Manage a new shuffled board.
+     *
+     * @param row the number of rows
+     * @param col the number of cols
      */
     MinesweeperManager(int row, int col) {
         this.board = new MinesweeperBoard(row, col);

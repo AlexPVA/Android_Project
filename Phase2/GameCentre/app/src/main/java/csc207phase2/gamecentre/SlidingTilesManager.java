@@ -65,6 +65,7 @@ class SlidingTilesManager extends BoardManager {
 
     /**
      * Return the current board.
+     *
      * @return the current board.
      */
     SlidingTilesBoard getBoard() {
@@ -73,6 +74,7 @@ class SlidingTilesManager extends BoardManager {
 
     /**
      * Return the number of moves this boardmanager has processed.
+     *
      * @return the number of moves this boardmanager has processed.
      */
     public int getNumMoves() {
@@ -81,6 +83,7 @@ class SlidingTilesManager extends BoardManager {
 
     /**
      * Return the score board for this game.
+     *
      * @return the score board for this game.
      */
 
@@ -88,12 +91,16 @@ class SlidingTilesManager extends BoardManager {
 
     /**
      * Return the name of the current user account.
+     *
      * @return the name of the current user account.
      */
     public String getAccountName() {return this.accountName; }
 
     /**
      * Manage a new shuffled board.
+     *
+     * @param row the number of rows.
+     * @param col the number of cols.
      */
     SlidingTilesManager(int row, int col) {
         List<SlidingTilesTile> tiles = new ArrayList<>();

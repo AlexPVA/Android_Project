@@ -28,7 +28,9 @@ public class SlidingTilesBoard extends Board<SlidingTilesTile>{
      * A new board of tiles in row-major order.
      * Precondition: len(tiles) == numRows * numCols
      *
-     * @param tiles the tiles for the board
+     * @param rows the number of rows.
+     * @param cols the number of cols.
+     * @param tiles the tiles for the board.
      */
     SlidingTilesBoard(int rows, int cols, List<SlidingTilesTile> tiles) {
         setNumRows(rows);

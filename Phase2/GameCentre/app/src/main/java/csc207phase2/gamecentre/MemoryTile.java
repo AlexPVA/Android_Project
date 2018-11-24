@@ -28,6 +28,7 @@ public class MemoryTile extends Tile implements Comparable<MemoryTile>, Serializ
 
     /**
      *  Return the picture of the front of the tile when flipped.
+     *
      * @return the picture of the front of the tile when flipped.
      */
     public int getPicture() {return picture;}

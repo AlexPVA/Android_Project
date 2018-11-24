@@ -45,6 +45,8 @@ public class SlidingTilesGameActivity extends GameActivity {
 
     /**
      * Sets the current BoardManager for this game.
+     *
+     * @param m The BoardManager for this game.
      */
     @Override
     void setBoardManager(BoardManager m){

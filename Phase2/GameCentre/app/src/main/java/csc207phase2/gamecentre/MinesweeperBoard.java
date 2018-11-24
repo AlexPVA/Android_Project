@@ -39,6 +39,9 @@ public class MinesweeperBoard extends Board<MinesweeperTile>{
 
     /**
      * Generates A new board and notifies the observers
+     *
+     * @param rows the number of rows
+     * @param cols the number of cols
      */
     void generateBoard(int rows, int cols){
         tiles = new MinesweeperTile[numRows][numCols];
