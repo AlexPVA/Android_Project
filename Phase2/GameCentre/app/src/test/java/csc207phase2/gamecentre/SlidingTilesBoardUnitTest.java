@@ -11,7 +11,6 @@ public class SlidingTilesBoardUnitTest {
         tiles.add(new SlidingTilesTile(tileNum));
     }
         tiles.add(new SlidingTilesTile(24));
-        Collections.shuffle(tiles);
 
     @Test
     public void getNumRows_isCorrect() {
@@ -26,7 +25,7 @@ public class SlidingTilesBoardUnitTest {
     @Test
     public void getTile_isCorrect() {
         SlidingTilesBoard board = new SlidingTilesBoard(4, 4, tiles);
-        assertEquals(board.getTile(1, 1), board.tiles[1][1]);
+        assertEquals(board.getTile(0, 0), tiles[0]);
         //not sure if this is the correct way to check
     }
     @Test
@@ -37,7 +36,4 @@ public class SlidingTilesBoardUnitTest {
         board.swapTiles(0, 0, 1, 1);
         assertEquals(board.getTile(0, 0).equals(t1) && board.getTile(1, 1).equals(t2));
     }
-
-
-
 }
