@@ -1,14 +1,11 @@
 package csc207phase2.gamecentre;
 
-import android.support.v7.app.AppCompatActivity;
 import java.io.Serializable;
 
 /**
  * Handles commonalities between all game managing classes.
  */
-abstract class BoardManager extends AppCompatActivity implements Serializable {
-
-
+abstract class BoardManager implements Serializable {
 
     /**
      * Autosaves the game manager to fileName.
@@ -31,10 +28,12 @@ abstract class BoardManager extends AppCompatActivity implements Serializable {
      */
     abstract boolean isValidTap(int position);
 
-
-
+    /**
+     * Process a touch at the given position.
+     *
+     * @param position the position to process the touch at
+     */
     abstract void touchMove(int position);
-
 
     /**
      * Returns true when the game's puzzle has been completed.
@@ -45,10 +44,14 @@ abstract class BoardManager extends AppCompatActivity implements Serializable {
 
     /**
      * Return the name of the current user account.
-     * @return the name of the current user account.
+     * @return the name of the current user account
      */
     abstract public String getAccountName();
 
+    /**
+     * Return the name of the board this manager is managing.
+     * @return the board this manager is managing
+     */
     abstract Board getBoard();
 
 }

@@ -72,6 +72,7 @@ class MinesweeperManager extends BoardManager {
                 untapped++;
             }
         }
+
         if (board.numBombs() == untapped) {
             Score newScore = new Score(this.getAccountName(),
                     "Sliding Tiles: " + this.getBoard().getNumRows());
@@ -131,7 +132,7 @@ class MinesweeperManager extends BoardManager {
      *
      * @param lost whether the game has been lost
      */
-    void setGameLost(boolean lost){
+    private void setGameLost(boolean lost){
         if(lost == this.gameLost){
             return;
         }

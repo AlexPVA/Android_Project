@@ -15,19 +15,9 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 /**
- * Handles saving and other commonalities between all games for the game centre.
+ * Handles saving and other commonalities between all game activities and game menu activities.
  */
 abstract class GameComponent extends AppCompatActivity implements Serializable {
-
-    /**
-     * Firebase authentication.
-     */
-    private FirebaseAuth mAuth;
-
-    /**
-     * The current Firebase user account.
-     */
-    private FirebaseUser currentUser;
 
     /**
      * The account name of the current user.
@@ -48,8 +38,8 @@ abstract class GameComponent extends AppCompatActivity implements Serializable {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
         accountName = currentUser.getEmail();
     }
 

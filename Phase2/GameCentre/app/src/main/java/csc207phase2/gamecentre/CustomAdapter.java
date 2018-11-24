@@ -15,6 +15,9 @@ import android.widget.Button;
 
 import java.util.ArrayList;
 
+/**
+ * Overrides base adapter class to aid with button placing
+ */
 public class CustomAdapter extends BaseAdapter {
     private ArrayList<Button> mButtons = null;
     private int mColumnWidth, mColumnHeight;

@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- * The sliding tiles board.
+ * The Minesweeper tiles board.
  */
 public class MinesweeperBoard extends Board<MinesweeperTile>{
 
@@ -37,6 +37,9 @@ public class MinesweeperBoard extends Board<MinesweeperTile>{
         generateBoard(rows, cols);
     }
 
+    /**
+     * Generates A new board and notifies the observers
+     */
     void generateBoard(int rows, int cols){
         tiles = new MinesweeperTile[numRows][numCols];
 

@@ -229,6 +229,7 @@ class SlidingTilesManager extends BoardManager {
      *
      * @param fileName the name of the file
      */
+    @Override
     public void autoSave(String fileName) {
         game.saveToFile(fileName);
     }
@@ -238,6 +239,7 @@ class SlidingTilesManager extends BoardManager {
      *
      * @param game the game object this is a part of
      */
+    @Override
     public void setGame(GameComponent game){
         this.game = game;
     }

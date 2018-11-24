@@ -60,14 +60,14 @@ public class MinesweeperTile extends Tile implements Serializable{
     /**
      * @return if the tile has been tapped
      */
-    public boolean isTapped() { return tapped; }
+    boolean isTapped() { return tapped; }
 
     /**
      * A tile with a background id; look up and set the id.
      *
      * @param id the id
      */
-    public MinesweeperTile(int id) {
+    MinesweeperTile(int id) {
         this.id = id;
         updateBackground();
     }
@@ -122,7 +122,7 @@ public class MinesweeperTile extends Tile implements Serializable{
      *
      * @param tapped represents whether the tile has been tapped.
      */
-    public void setTapped(boolean tapped){
+    void setTapped(boolean tapped){
         this.tapped = tapped;
         updateBackground();
     }

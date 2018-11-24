@@ -166,14 +166,17 @@ public class SlidingTilesActivity extends GameComponent {
         startActivity(tmp);
     }
 
-
+    @Override
     void setBoardManager(BoardManager m){
         this.boardManager = (SlidingTilesManager)m;
     }
+
+    @Override
     SlidingTilesManager getBoardManager(){
         return boardManager;
     }
 
+    @Override
     String getName(){
         return NAME;
     }

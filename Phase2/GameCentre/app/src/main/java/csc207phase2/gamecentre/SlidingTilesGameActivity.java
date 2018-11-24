@@ -46,6 +46,7 @@ public class SlidingTilesGameActivity extends GameActivity {
     /**
      * Sets the current BoardManager for this game.
      */
+    @Override
     void setBoardManager(BoardManager m){
         this.boardManager = (SlidingTilesManager)m;
     }
@@ -55,6 +56,7 @@ public class SlidingTilesGameActivity extends GameActivity {
      *
      * @return the current BoardManager.
      */
+    @Override
     SlidingTilesManager getBoardManager(){
         return boardManager;
     }
@@ -64,6 +66,7 @@ public class SlidingTilesGameActivity extends GameActivity {
      *
      * @return this game's name.
      */
+    @Override
     String getName(){
         return NAME;
     }

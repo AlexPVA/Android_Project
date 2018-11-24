@@ -8,6 +8,9 @@ import android.widget.Toast;
 
 import java.util.List;
 
+/**
+ * The Activity for the minesweeper menu
+ */
 public class MinesweeperMenuActivity extends GameComponent{
 
     /**

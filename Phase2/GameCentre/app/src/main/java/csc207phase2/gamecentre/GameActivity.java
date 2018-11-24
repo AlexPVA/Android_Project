@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * Holds common features for the various game activity screens, including button placement
+ */
 abstract class GameActivity extends GameComponent implements Observer {
 
     /**
@@ -116,6 +119,11 @@ abstract class GameActivity extends GameComponent implements Observer {
         }
     }
 
+    /**
+     * Gets the content view (layout) of this activity
+     *
+     * @return the content view (layout) of this activity
+     */
     abstract public int getContentView();
 
     /**
