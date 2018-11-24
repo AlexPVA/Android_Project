@@ -90,7 +90,7 @@ public class MinesweeperBoard extends Board<MinesweeperTile>{
         for (int i = 0; i < numRows; i++) {
             for (int j = 0; j < numCols; j++) {
                 if(tiles[i][j] == null || tiles[i][j].getId() != MinesweeperTile.BOMB_ID) {
-                    tiles[i][j] = new MinesweeperTile(countBombs(i, j)); //background id???
+                    tiles[i][j] = new MinesweeperTile(countBombs(i, j));
                 }
             }
         }
