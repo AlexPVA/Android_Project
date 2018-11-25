@@ -51,12 +51,12 @@ class SlidingTilesManager extends BoardManager {
     /**
      * Sorter for the ScoreBoard
      */
-    private static ScoreSorter<Score> scoreSorter = new MinimumSorter<Score>();
+    private final static ScoreSorter<Score> scoreSorter = new MinimumSorter<Score>();
 
     /**
      * Stores the scores for sliding tiles game.
      */
-    private static ScoreBoard scores = new ScoreBoard(scoreSorter);
+    private final static ScoreBoard scores = new ScoreBoard(scoreSorter, 6);
 
     /**
      * The game this is a part of.
@@ -86,7 +86,6 @@ class SlidingTilesManager extends BoardManager {
      *
      * @return the score board for this game.
      */
-
     public static ScoreBoard getScoreBoard() {return scores;}
 
     /**
@@ -142,16 +141,7 @@ class SlidingTilesManager extends BoardManager {
             Score newScore = new Score(this.getAccountName(),
                     "Sliding Tiles: " + this.getBoard().getNumRows());
             newScore.setScorePoint(this.getNumMoves());
-            this.scores.addScore(newScore);
-            //SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
-            //SharedPreferences.Editor editor = prefs.edit();
-            //ArrayList<String> scores = this.getScoreBoard().getTopScore();
-            //StringBuilder sb = new StringBuilder();
-            //for (int i = 0; i < scores.size(); i++) {
-            //    sb.append(scores.get(i)).append(",");
-            //}
-            //editor.putString("SCOREBOARD", sb.toString());
-            //editor.commit();
+            SlidingTilesManager.getScoreBoard().addScore(newScore);
         }
 
         return solved;

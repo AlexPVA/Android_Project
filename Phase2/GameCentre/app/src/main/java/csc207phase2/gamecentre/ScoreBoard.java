@@ -23,11 +23,13 @@ public class ScoreBoard implements Iterable<Score> {
     private ScoreSorter<Score> sorter;
 
     /**
-     * Constructs a new ScoreBoard
+     * Constructs a new ScoreBoard, with the specified sorter and size.
+     * @param sorter the sorter used to sort the scoreboard.
+     * @param size the number of scores displayed by the scoreboard.
      */
-    public ScoreBoard(ScoreSorter<Score> sorter) {
+    public ScoreBoard(ScoreSorter<Score> sorter, int size) {
         this.sorter = sorter;
-        this.scores = new ArrayList<>();
+        this.scores = new ArrayList<>(size);
     }
 
     /**
@@ -35,14 +37,9 @@ public class ScoreBoard implements Iterable<Score> {
      * @param score the score being added to the scoreboard.
      */
     public void addScore(Score score) {
-        Iterator<Score> iter = scores.iterator();
-        while (iter.hasNext()) {
-            if (score == iter.next()) {
-                break;
-            }
-        }
         scores.add(score);
         this.sortScores();
+        scores.remove(scores.size());
     }
 
     /**
@@ -80,8 +77,8 @@ public class ScoreBoard implements Iterable<Score> {
     }
 
     /**
-     * Get the top 8 scores of the given game type.
-     * @return scoreList an array list of the top 8 scores for the game.
+     * Get the top scores of the given game type into an string array list to be displayed.
+     * @return the top scores of the given game type into an string array list to be displayed.
      */
     public ArrayList<String> getTopScore() {
         ArrayList<String> list = new ArrayList<String>();
