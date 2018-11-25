@@ -54,4 +54,10 @@ abstract class BoardManager implements Serializable {
      */
     abstract Board getBoard();
 
+    /**
+     * Return the score board for this game.
+     * @return the score board for this game.
+     */
+    abstract ScoreBoard getScoreBoard();
+
 }

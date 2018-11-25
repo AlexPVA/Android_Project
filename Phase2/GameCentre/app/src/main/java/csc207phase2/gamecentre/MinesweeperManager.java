@@ -173,6 +173,14 @@ class MinesweeperManager extends BoardManager {
         return numMoves;
     }
 
+    /**
+     * Return the score board for this game.
+     *
+     * @return the score board for this game.
+     */
+    @Override
+    public ScoreBoard getScoreBoard() {return scores;}
+
     @Override
     public void autoSave(String fileName) {
         game.saveToFile(fileName);

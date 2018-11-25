@@ -83,10 +83,10 @@ class SlidingTilesManager extends BoardManager {
 
     /**
      * Return the score board for this game.
-     *
      * @return the score board for this game.
      */
-    public static ScoreBoard getScoreBoard() {return scores;}
+    @Override
+    public ScoreBoard getScoreBoard() {return scores;}
 
     /**
      * Return the name of the current user account.
@@ -141,7 +141,7 @@ class SlidingTilesManager extends BoardManager {
             Score newScore = new Score(this.getAccountName(),
                     "Sliding Tiles: " + this.getBoard().getNumRows());
             newScore.setScorePoint(this.getNumMoves());
-            SlidingTilesManager.getScoreBoard().addScore(newScore);
+            this.getScoreBoard().addScore(newScore);
         }
 
         return solved;

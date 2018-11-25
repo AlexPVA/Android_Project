@@ -109,7 +109,7 @@ abstract class GameActivity extends GameComponent implements Observer {
         if (manager.puzzleSolved()) {
             SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
-            ArrayList<String> scores = SlidingTilesManager.getScoreBoard().getTopScore();
+            ArrayList<String> scores = manager.getScoreBoard().getTopScore();
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < scores.size(); i++) {
                 sb.append(scores.get(i)).append(",");

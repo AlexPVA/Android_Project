@@ -39,7 +39,7 @@ public class ScoreBoard implements Iterable<Score> {
     public void addScore(Score score) {
         scores.add(score);
         this.sortScores();
-        scores.remove(scores.size());
+        scores.remove(scores.size() - 1);
     }
 
     /**

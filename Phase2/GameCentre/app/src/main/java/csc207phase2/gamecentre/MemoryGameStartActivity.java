@@ -157,7 +157,7 @@ public class MemoryGameStartActivity extends GameComponent {
      * Switch to scoreViewActivity view scores.
      */
     private void switchToScoreView() {
-        List topScores = SlidingTilesManager.getScoreBoard().getListScores();
+        List topScores = this.memoryBoardManager.getScoreBoard().getListScores();
         String[] scoreText = new String[topScores.size()];
         for(int i = 0; i < topScores.size(); i ++){
             scoreText[i] = topScores.get(i).toString();
