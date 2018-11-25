@@ -113,6 +113,7 @@ class SlidingTilesManager extends BoardManager {
         Collections.shuffle(tiles);
         this.board = new SlidingTilesBoard(row, col, tiles);
         while (!this.boardSolvability(board)){
+            Collections.shuffle(tiles);
             this.board = new SlidingTilesBoard(row, col, tiles);
         }
 
@@ -255,8 +256,23 @@ class SlidingTilesManager extends BoardManager {
 
     private boolean boardSolvability(SlidingTilesBoard board){
         boolean solvable = false;
+        int rows = board.getNumRows();
+        int cols = board.getNumCols();
+        Iterator<SlidingTilesTile> iter = board.iterator();
+        int[] tiles = new int[rows*cols];
+        int c = 0;
+        while (iter.hasNext()) {
+            tiles[c] = iter.next().getId();
+            c++;
+            }
 
-    return solvable;
+        int count = 0;
+        for (int i = 0; i!=rows*cols-1; i++){
+            for(int j = i+1; j!=rows*cols; j++){
+               if (tiles[i] != 25 && tiles[i] > tiles[j]){count++;}
+            }
+        }
+        if (count%2==0){solvable = true;}
+        return solvable;
     }
-
 }
