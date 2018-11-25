@@ -58,6 +58,37 @@ public class MemoryBoardManager extends BoardManager {
     private int storedPosition;
 
     /**
+     * The number of moves the boardmanager has processed.
+     */
+    private int numMoves;
+
+    /**
+     * Sorter for the ScoreBoard
+     */
+    private final static ScoreSorter<Score> scoreSorter = new MinimumSorter<Score>();
+
+    /**
+     * Stores the scores for sliding tiles game.
+     */
+    private final static ScoreBoard scores = new ScoreBoard(scoreSorter, 6);
+
+    /**
+     * Return the number of moves this boardmanager has processed.
+     *
+     * @return the number of moves this boardmanager has processed.
+     */
+    public int getNumMoves() {
+        return numMoves;
+    }
+
+    /**
+     * Return the score board for this game.
+     *
+     * @return the score board for this game.
+     */
+    public static ScoreBoard getScoreBoard() {return scores;}
+
+    /**
      * Return the first tile that is flipped.
      *
      * @return the first tile that is flipped
@@ -149,6 +180,12 @@ public class MemoryBoardManager extends BoardManager {
                 solved = false;
             }
         }
+        if (solved) {
+            Score newScore = new Score(this.getAccountName(),
+                    "Memory Game: " + this.getBoard().getNumRows());
+            newScore.setScorePoint(this.getNumMoves());
+            MemoryBoardManager.getScoreBoard().addScore(newScore);
+        }
         return solved;
 
     }
@@ -182,6 +219,7 @@ public class MemoryBoardManager extends BoardManager {
         memoryBoard.flipTile(position);
         this.setFirstTile(memoryBoard.getTile(row, col));
         this.storedPosition = position;
+        numMoves++;
     }
 
     /**
@@ -195,6 +233,7 @@ public class MemoryBoardManager extends BoardManager {
 
         memoryBoard.flipTile(position);
         this.setSecondTile(memoryBoard.getTile(row, col));
+        numMoves++;
     }
 
 
