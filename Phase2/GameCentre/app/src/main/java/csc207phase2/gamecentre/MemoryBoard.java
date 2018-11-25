@@ -116,6 +116,11 @@ public class MemoryBoard extends Board<MemoryTile>{
         notifyObservers();
     }
 
+    /**
+     * Returns the string representation of the Memory Game board.
+     *
+     * @return string representation of the Memory Game board
+     */
     @Override
     public String toString() {
         return "MemoryBoard{" +

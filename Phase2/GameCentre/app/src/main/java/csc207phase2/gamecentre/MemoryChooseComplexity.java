@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+
+/**
+ * Choose Complexity for Memory Game.
+ */
 public class MemoryChooseComplexity extends GameComponent{
 
     /**
@@ -84,16 +88,31 @@ public class MemoryChooseComplexity extends GameComponent{
         startActivity(tmp);
     }
 
+    /**
+     * Sets the current memoryBoardManager to be m.
+     *
+     * @param m current board manager
+     */
     @Override
     void setBoardManager(BoardManager m) {
         memoryBoardManager = (MemoryBoardManager) m;
     }
 
+    /**
+     * Returns the current Memory Game board manager.
+     *
+     * @return current Memory Game board manager
+     */
     @Override
     BoardManager getBoardManager() {
         return memoryBoardManager;
     }
 
+    /**
+     * Returns the name of the current game.
+     *
+     * @return current the name of the current game
+     */
     @Override
     String getName() {
         return NAME;

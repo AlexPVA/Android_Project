@@ -167,14 +167,29 @@ public class MemoryGameStartActivity extends GameComponent {
         startActivity(tmp);
     }
 
-
+    /**
+     * Sets the current board manager for the game.
+     *
+     * @param m the manager for the game
+     */
     void setBoardManager(BoardManager m){
         this.memoryBoardManager = (MemoryBoardManager) m;
     }
+
+    /**
+     * Returns the current board manager for the game.
+     *
+     * @return the current board manager
+     */
     MemoryBoardManager getBoardManager(){
         return memoryBoardManager;
     }
 
+    /**
+     * Returns the game's name.
+     *
+     * @return the game's name
+     */
     String getName(){
         return NAME;
     }

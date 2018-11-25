@@ -4,6 +4,10 @@ import android.support.annotation.NonNull;
 
 import java.io.Serializable;
 
+/**
+ * A Memory Tile in the Memory Game.
+ */
+
 public class MemoryTile extends Tile implements Comparable<MemoryTile>, Serializable {
 
     /**
@@ -133,10 +137,16 @@ public class MemoryTile extends Tile implements Comparable<MemoryTile>, Serializ
         }
     }
 
+    /**
+     * Flips the tile, which assigns it's current picture to an animal.
+     */
     void flipPicture() {
         background = picture;
     }
 
+    /**
+     * Flips the tile, which assigns it's current picture to be the question mark.
+     */
     void flipBlank(){
         background = R.drawable.mg_tile_0;
     }
