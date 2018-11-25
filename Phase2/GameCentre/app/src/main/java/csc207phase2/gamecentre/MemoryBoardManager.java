@@ -11,70 +11,134 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Iterator;
 
+/**
+ * Manage a Memory Game board
+ */
+
 public class MemoryBoardManager extends BoardManager {
 
+    /**
+     * Firebase Authentication.
+     */
     transient private FirebaseAuth mAuth;
+
+    /**
+     * Firebase User currently signed in.
+     */
     transient private FirebaseUser currentUser;
+
+    /**
+     * Account name of the current user.
+     */
     private String accountName;
 
+    /**
+     * The Memory Game board currently managed.
+     */
     private MemoryBoard memoryBoard;
-    //private MemoryBoard blankMemoryBoard;
+
+    /**
+     * The game this is a part of.
+     */
     transient private GameComponent game;
 
-    //private ArrayList<MemoryTile> flipped = new ArrayList<>();
-    //private ArrayList<MemoryTile> solved = new ArrayList<>();
-
+    /**
+     * The first tile that is flipped.
+     */
     private MemoryTile firstTile;
+
+    /**
+     * The second tile that is flipped.
+     */
     private MemoryTile secondTile;
 
+    /**
+     * The stored position.
+     */
+    private int storedPosition;
+
+    /**
+     * Return the first tile that is flipped.
+     *
+     * @return the first tile that is flipped
+     */
     public MemoryTile getFirstTile(){
         return firstTile;
     }
 
+    /**
+     * Return the second tile that is flipped.
+     *
+     * @return the second tile that is flipped
+     */
     public MemoryTile getSecondTile() {
         return secondTile;
     }
 
+    /**
+     * Set the first tile that is flipped.
+     *
+     * @param firstTile the first tile that is flipped
+     */
     public void setFirstTile(MemoryTile firstTile) {
         this.firstTile = firstTile;
     }
 
+    /**
+     * Set the second tile that is flipped.
+     *
+     * @param secondTile the second tile that is flipped
+     */
     public void setSecondTile(MemoryTile secondTile) {
         this.secondTile = secondTile;
     }
 
-    private int storedPosition;
-
+    /**
+     * Returns the stored position.
+     *
+     * @return stored position
+     */
     public int getStoredPosition() {
         return storedPosition;
     }
 
+    /**
+     * Returns the current Memory Game board.
+     *
+     * @return current Memory Game board
+     */
     MemoryBoard getMemoryBoard() {
         return memoryBoard;
     }
 
-    //MemoryBoard getBlankMemoryBoard() {return blankMemoryBoard;}
 
+    /**
+     * Manage a shuffled Memory Game board.
+     *
+     * @param col the number of cols
+     * @param row the number of rows
+     */
     MemoryBoardManager(int row, int col) {
         List<MemoryTile> memoryTiles = new ArrayList<>();
-        //List<MemoryTile> blankMemoryTiles = new ArrayList<>();
         final int numTiles = (row * col) / 2;
         for (int tileNum = 0; tileNum < numTiles; tileNum++) {
             memoryTiles.add(new MemoryTile(tileNum));
             memoryTiles.add(new MemoryTile(tileNum));
-            //blankMemoryTiles.add(new MemoryTile(-1));
-            //blankMemoryTiles.add(new MemoryTile(-1));
         }
 
         Collections.shuffle(memoryTiles);
         this.memoryBoard = new MemoryBoard(row, col, memoryTiles);
-        //this.blankMemoryBoard = new MemoryBoard(row, col, blankMemoryTiles);
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
         accountName = currentUser.getEmail();
     }
 
+    /**
+     * Returns whether the game has been solved.
+     *
+     * @return whether the game has been solved
+     */
     boolean puzzleSolved() {
         boolean solved = true;
 
@@ -86,14 +150,15 @@ public class MemoryBoardManager extends BoardManager {
             }
         }
         return solved;
-            //if (this.solved.size() == memoryBoard.numTiles() && this.flipped.size() == memoryBoard.numTiles()) {
-            //    return true;
-            //} else {
-            //    return false;
-            //}
 
     }
 
+    /**
+     * Returns whether the tap is valid (the tile is not current flipped).
+     *
+     * @param position the position of the tile to be checked
+     * @return whether the tap is valid
+     */
     boolean isValidTap (int position) {
 
         int row = position / memoryBoard.getNumRows();
@@ -101,52 +166,37 @@ public class MemoryBoardManager extends BoardManager {
 
         MemoryTile current = memoryBoard.getTile(row, col);
 
-        //for (MemoryTile m: flipped) {
-        //    if (m == current || m == blankMemoryBoard.getTile(row, col)) {
-        //        return false;
-        //    }
-        //}
         return !current.getFlipped();
     }
 
+    /**
+     * Flips the first tile.
+     *
+     * @param position the position of the first tile to be flipped
+     */
     void flipTile1(int position) {
 
         int row = position / memoryBoard.getNumRows();
         int col = position % memoryBoard.getNumCols();
 
         memoryBoard.flipTile(position);
-        //MemoryTile current = blankMemoryBoard.getTile(row, col);
-        //current.flipPicture(pictureTile.getBackground());
-        //flipped.add(current);
         this.setFirstTile(memoryBoard.getTile(row, col));
         this.storedPosition = position;
     }
 
+    /**
+     * Flips the second tile.
+     *
+     * @param position the position of the second tile to be flipped
+     */
     void flipTile2(int position) {
         int row = position / memoryBoard.getNumRows();
         int col = position % memoryBoard.getNumCols();
 
         memoryBoard.flipTile(position);
-        //MemoryTile pictureTile = memoryBoard.getTile(row, col);
-        //MemoryTile current = blankMemoryBoard.getTile(row, col);
-        //current.flipPicture(pictureTile.getBackground());
-       // flipped.add(current);
         this.setSecondTile(memoryBoard.getTile(row, col));
     }
 
-//    void removeFlipped(MemoryTile tile) {
-//        MemoryTile toBeRemoved = null;
-//        for (MemoryTile m: flipped) {
-//            if (m.getBackground() == tile.getBackground()) {
-//                toBeRemoved = m;
-//            }
-//        }
-//        flipped.remove(toBeRemoved);
-//    }
-
-//    void addSolved(MemoryTile memoryTile) {
-//        this.solved.add(memoryTile);
-//    }
 
     /**
      * Autosaves the game manager to fileName.
@@ -174,17 +224,18 @@ public class MemoryBoardManager extends BoardManager {
         return accountName;
     }
 
+    /**
+     * Processes a touch at position in the board
+     *
+     * @param position the position to be processed
+     */
     public void touchMove(int position){
-        //updateTileButtons();
+
         if (getFirstTile() == null) {
             flipTile1(position);
-            //updateTileButtons();
         } else if (getSecondTile() == null) {
             flipTile2(position);
-            //updateTileButtons();
             if (getFirstTile().equals(getSecondTile())) {
-                //addSolved(firstTile);
-                //addSolved(secondTile);
                 Toast.makeText(game.getApplicationContext(), "CORRECT PAIR!", Toast.LENGTH_SHORT).show();
                 if (puzzleSolved()) {
                     Toast.makeText(game.getApplicationContext(), "YOU WIN!", Toast.LENGTH_SHORT).show();
@@ -201,26 +252,20 @@ public class MemoryBoardManager extends BoardManager {
                     public void run() {
                         getMemoryBoard().flipTile(finalPosition);
                         getMemoryBoard().flipTile(getStoredPosition());
-                        //removeFlipped(secondTile);
-                        //firstTile.flipBlank();
-                        //secondTile.flipBlank();
                         setFirstTile(null);
                         setSecondTile(null);
                         Toast.makeText(game.getApplicationContext(), "WRONG PAIR!", Toast.LENGTH_SHORT).show();
-                        //updateTileButtons();
                     }
                 }, 500);
             }
         }
-// else {
-//                flipTile1(position);
-//                secondTile = null;
-//                updateTileButtons();
-//            }
-
-
     }
 
+    /**
+     * Returns the current Memory Game board.
+     *
+     * @return current Memory Game board
+     */
     MemoryBoard getBoard(){
         return memoryBoard;
     }

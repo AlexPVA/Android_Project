@@ -4,6 +4,10 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * The Memory Game board
+ */
+
 public class MemoryBoard extends Board<MemoryTile>{
 
     /**
@@ -17,15 +21,17 @@ public class MemoryBoard extends Board<MemoryTile>{
     private int numCols;
 
     /**
-     * The MemoryTiles on the board in row-major order.
+     * The MemoryTiles on the board.
      */
     private MemoryTile[][] memoryTiles;
 
     /**
-     * A new board of MemoryTiles in row-major order.
+     * A new board of MemoryTiles.
      * Precondition: len(memoryTiles) == numRows * numCols
      *
-     * @param memoryTiles the memoryTiles for the board
+     * @param rows the number of rows.
+     * @param cols the number of columns.
+     * @param memoryTiles the memoryTiles for the board.
      */
     MemoryBoard(int rows, int cols, List<MemoryTile> memoryTiles) {
         setNumRows(rows);
@@ -75,16 +81,6 @@ public class MemoryBoard extends Board<MemoryTile>{
      */
     public int getNumCols(){
         return numCols;
-    }
-
-
-    /**
-     * Return the number of MemoryTiles on the board.
-     *
-     * @return the number of MemoryTiles on the board
-     */
-    int numTiles() {
-        return numRows * numCols;
     }
 
     /**
