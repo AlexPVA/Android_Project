@@ -14,12 +14,12 @@ public class MinesweeperManagerUnitTest {
     @Test
     public void isValidTapTrue_isCorrect() {
         MinesweeperManager m = new MinesweeperManager(9, 9);
-        assertEquals(m.isValidTap(1), True);
+        assertEquals(m.isValidTap(1), true);
     }
     @Test
     public void isValidTapFalse_isCorrect() {
         MinesweeperManager m = new MinesweeperManager(9, 9);
         m.touchMove(1);
-        assertEquals(m.isValidTap(1), True);
+        assertEquals(m.isValidTap(1), true);
     }
 }
