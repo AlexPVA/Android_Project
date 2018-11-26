@@ -254,6 +254,7 @@ class SlidingTilesManager extends BoardManager {
 
     /**
      * Assert if a board is solvable.
+     * Algorithm from https://www.cs.bham.ac.uk/~mdr/teaching/modules04/java2/TilesSolvability.html
      *
      * @param board newly generated/shuffled board
      */
