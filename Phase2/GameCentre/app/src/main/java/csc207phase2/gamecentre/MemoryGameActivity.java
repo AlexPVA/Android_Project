@@ -8,6 +8,9 @@ import android.preference.PreferenceManager;
 import android.widget.Button;
 
 import java.util.ArrayList;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 /**
  * The game activity for the memory game.
@@ -35,10 +38,35 @@ public class MemoryGameActivity extends GameActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        //addUndoButtonListener();
+        addUndoButtonListener();
 
     }
 
+    /**
+     * Activate the undo button.
+     */
+    private void addUndoButtonListener() {
+        Button undoButton = findViewById(R.id.MemoryUndo);
+        undoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (memoryBoardManager.undoable == 0) {
+                    Toast.makeText(getApplicationContext(), "You used up your undoable's!", Toast.LENGTH_SHORT).show();
+                }
+                if (memoryBoardManager.undoable > 0) {
+                    if (memoryBoardManager.getFirstTile() != null && memoryBoardManager.getSecondTile() == null) {
+                        memoryBoardManager.undo();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Invalid Undo!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+    }
+
+    /**
+     * Update the tiles, processing the tiles when being tapped.
+     */
     @Override
     public void updateTileButtons() {
         super.updateTileButtons();

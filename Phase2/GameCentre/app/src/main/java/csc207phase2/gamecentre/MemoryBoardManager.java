@@ -89,6 +89,16 @@ public class MemoryBoardManager extends BoardManager {
     public static ScoreBoard getScoreBoard() {return scores;}
 
     /**
+     * The first tile which is undoable.
+     */
+    private int undoPosition;
+
+    /**
+     * The undoable steps for player.
+     */
+    int undoable = 3;
+
+    /**
      * Return the first tile that is flipped.
      *
      * @return the first tile that is flipped
@@ -266,6 +276,7 @@ public class MemoryBoardManager extends BoardManager {
 
         if (getFirstTile() == null) {
             flipTile1(position);
+            undoPosition = position;
         } else if (getSecondTile() == null) {
             flipTile2(position);
             if (getFirstTile().equals(getSecondTile())) {
@@ -301,5 +312,14 @@ public class MemoryBoardManager extends BoardManager {
      */
     MemoryBoard getBoard(){
         return memoryBoard;
+    }
+
+    /**
+     * Undo the first flipped tile when there is an undoable.
+     */
+    void undo() {
+        memoryBoard.flipTile(undoPosition);
+        undoable--;
+        setFirstTile(null);
     }
 }
