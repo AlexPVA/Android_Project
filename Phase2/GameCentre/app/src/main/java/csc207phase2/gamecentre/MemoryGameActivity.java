@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 /**
  * The game activity for the memory game.
@@ -40,9 +41,14 @@ public class MemoryGameActivity extends GameActivity {
         Button undoButton = findViewById(R.id.MemoryUndo);
         undoButton.setOnClickListener(new View.OnClickListener() {@Override
         public void onClick(View v) {
+            if (memoryBoardManager.undoAllowance == 0){
+                Toast.makeText(getApplicationContext(), "You used up your undo allowance!", Toast.LENGTH_SHORT).show();
+            }
             if(memoryBoardManager.undoAllowance > 0){
             if (memoryBoardManager.getFirstTile() != null && memoryBoardManager.getSecondTile() == null)
-            {memoryBoardManager.undo();} }
+            {memoryBoardManager.undo();}
+             else {
+                Toast.makeText(getApplicationContext(), "Invalid Undo!", Toast.LENGTH_SHORT).show();}}
         }
         });
    }
