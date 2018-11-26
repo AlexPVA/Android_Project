@@ -42,6 +42,12 @@ public class SlidingTilesManagerUnitTest {
         assertEquals(m.getBoard().getTile(r,c).getId(), 25);
     }
 
+    @Test
+    public void solvability_isCorrect(){
+        SlidingTilesManager m = new SlidingTilesManager(3,3);
+        assertTrue(m.boardSolvability(m.getBoard()));
+    }
+
 
  }
 

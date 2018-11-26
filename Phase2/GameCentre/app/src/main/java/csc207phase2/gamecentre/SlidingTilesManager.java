@@ -251,7 +251,7 @@ class SlidingTilesManager extends BoardManager {
      *
      * @param board newly generated/shuffled board
      */
-    private boolean boardSolvability(SlidingTilesBoard board) {
+    boolean boardSolvability(SlidingTilesBoard board) {
         boolean solvable = false;
         int rows = board.getNumRows();
         int cols = board.getNumCols();
