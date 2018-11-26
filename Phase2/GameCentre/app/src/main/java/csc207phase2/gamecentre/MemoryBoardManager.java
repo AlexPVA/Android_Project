@@ -72,7 +72,7 @@ public class MemoryBoardManager extends BoardManager {
      *
      * @return the first tile that is flipped
      */
-    public MemoryTile getFirstTile(){
+    public MemoryTile getFirstTile() {
         return firstTile;
     }
 
@@ -168,7 +168,7 @@ public class MemoryBoardManager extends BoardManager {
      * @param position the position of the tile to be checked
      * @return whether the tap is valid
      */
-    boolean isValidTap (int position) {
+    boolean isValidTap(int position) {
 
         int row = position / memoryBoard.getNumRows();
         int col = position % memoryBoard.getNumCols();
@@ -221,15 +221,16 @@ public class MemoryBoardManager extends BoardManager {
      *
      * @param game the game object this is a part of
      */
-    public void setGame(GameComponent game){
+    public void setGame(GameComponent game) {
         this.game = game;
     }
 
     /**
      * Return the name of the current user account.
+     *
      * @return the name of the current user account.
      */
-    public String getAccountName(){
+    public String getAccountName() {
         return accountName;
     }
 
@@ -238,7 +239,7 @@ public class MemoryBoardManager extends BoardManager {
      *
      * @param position the position to be processed
      */
-    public void touchMove(int position){
+    public void touchMove(int position) {
 
         if (getFirstTile() == null) {
             flipTile1(position);
@@ -249,8 +250,7 @@ public class MemoryBoardManager extends BoardManager {
                 Toast.makeText(game.getApplicationContext(), "CORRECT PAIR!", Toast.LENGTH_SHORT).show();
                 if (puzzleSolved()) {
                     Toast.makeText(game.getApplicationContext(), "YOU WIN!", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     setFirstTile(null);
                     setSecondTile(null);
                 }
@@ -276,17 +276,16 @@ public class MemoryBoardManager extends BoardManager {
      *
      * @return current Memory Game board
      */
-    MemoryBoard getBoard(){
+    MemoryBoard getBoard() {
         return memoryBoard;
     }
 
     /**
      * Undo the first flipped tile when there is an undoable.
-     *
      */
-    void undo(){
-    memoryBoard.flipTile(undoPosition);
-    undoable --;
-    setFirstTile(null);
+    void undo() {
+        memoryBoard.flipTile(undoPosition);
+        undoable--;
+        setFirstTile(null);
     }
 }

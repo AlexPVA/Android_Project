@@ -87,14 +87,18 @@ class SlidingTilesManager extends BoardManager {
      * @return the score board for this game.
      */
 
-    public static ScoreBoard getScoreBoard() {return scores;}
+    public static ScoreBoard getScoreBoard() {
+        return scores;
+    }
 
     /**
      * Return the name of the current user account.
      *
      * @return the name of the current user account.
      */
-    public String getAccountName() {return this.accountName; }
+    public String getAccountName() {
+        return this.accountName;
+    }
 
     /**
      * Manage a new shuffled board.
@@ -112,7 +116,7 @@ class SlidingTilesManager extends BoardManager {
 
         Collections.shuffle(tiles);
         this.board = new SlidingTilesBoard(row, col, tiles);
-        while (!this.boardSolvability(board)){
+        while (!this.boardSolvability(board)) {
             Collections.shuffle(tiles);
             this.board = new SlidingTilesBoard(row, col, tiles);
         }
@@ -228,7 +232,7 @@ class SlidingTilesManager extends BoardManager {
         int b = position[1];
         int c = position[2];
         int d = position[3];
-        board.swapTiles(a,b,c,d);
+        board.swapTiles(a, b, c, d);
     }
 
 
@@ -248,7 +252,7 @@ class SlidingTilesManager extends BoardManager {
      * @param game the game object this is a part of
      */
     @Override
-    public void setGame(GameComponent game){
+    public void setGame(GameComponent game) {
         this.game = game;
     }
 
@@ -258,31 +262,43 @@ class SlidingTilesManager extends BoardManager {
      *
      * @param board newly generated/shuffled board
      */
-    private boolean boardSolvability(SlidingTilesBoard board){
+    private boolean boardSolvability(SlidingTilesBoard board) {
         boolean solvable = false;
         int rows = board.getNumRows();
         int cols = board.getNumCols();
         Iterator<SlidingTilesTile> iter = board.iterator();
-        int[] tiles = new int[rows*cols];
+        int[] tiles = new int[rows * cols];
         int c = 0;
-        int blanktile = rows*cols;
+        int blanktile = rows * cols;
         while (iter.hasNext()) {
             tiles[c] = iter.next().getId();
             c++;
-            }
+        }
         int count = 0;
-        for (int i = 0; i!=rows*cols-1; i++){
-            for(int j = i+1; j!=rows*cols; j++){
-               if (tiles[i] == 25){blanktile = i;}
-               if (tiles[i] != 25 && tiles[i] > tiles[j]){count++;}
+        for (int i = 0; i != rows * cols - 1; i++) {
+            for (int j = i + 1; j != rows * cols; j++) {
+                if (tiles[i] == 25) {
+                    blanktile = i;
+                }
+                if (tiles[i] != 25 && tiles[i] > tiles[j]) {
+                    count++;
+                }
             }
         }
-        if (rows%2==1){
-            if (count%2==0){solvable = true;} }
-        else {if(((blanktile+rows-1)/rows)%2==0){
-            if (count%2==0){solvable = true;} }
-             if(((blanktile+rows-1)/rows)%2==1){
-            if (count%2==1){solvable = true;}
+        if (rows % 2 == 1) {
+            if (count % 2 == 0) {
+                solvable = true;
+            }
+        } else {
+            if (((blanktile + rows - 1) / rows) % 2 == 0) {
+                if (count % 2 == 0) {
+                    solvable = true;
+                }
+            }
+            if (((blanktile + rows - 1) / rows) % 2 == 1) {
+                if (count % 2 == 1) {
+                    solvable = true;
+                }
             }
 
         }

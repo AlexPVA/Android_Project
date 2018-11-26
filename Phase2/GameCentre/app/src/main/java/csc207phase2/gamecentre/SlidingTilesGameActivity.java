@@ -35,11 +35,13 @@ public class SlidingTilesGameActivity extends GameActivity {
      */
     private void addUndoButtonListener() {
         Button undoButton = findViewById(R.id.Undo);
-        undoButton.setOnClickListener(new View.OnClickListener() {@Override
-        public void onClick(View v) {
-            if (!boardManager.stepSaver.empty()){
-                boardManager.undo(boardManager.stepSaver.undo());}
-        }
+        undoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!boardManager.stepSaver.empty()) {
+                    boardManager.undo(boardManager.stepSaver.undo());
+                }
+            }
         });
     }
 
@@ -49,8 +51,8 @@ public class SlidingTilesGameActivity extends GameActivity {
      * @param m The BoardManager for this game.
      */
     @Override
-    void setBoardManager(BoardManager m){
-        this.boardManager = (SlidingTilesManager)m;
+    void setBoardManager(BoardManager m) {
+        this.boardManager = (SlidingTilesManager) m;
     }
 
     /**
@@ -59,7 +61,7 @@ public class SlidingTilesGameActivity extends GameActivity {
      * @return the current BoardManager.
      */
     @Override
-    SlidingTilesManager getBoardManager(){
+    SlidingTilesManager getBoardManager() {
         return boardManager;
     }
 
@@ -69,7 +71,7 @@ public class SlidingTilesGameActivity extends GameActivity {
      * @return this game's name.
      */
     @Override
-    String getName(){
+    String getName() {
         return NAME;
     }
 

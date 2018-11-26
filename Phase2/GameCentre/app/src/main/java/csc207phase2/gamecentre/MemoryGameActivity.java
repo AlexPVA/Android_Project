@@ -42,32 +42,35 @@ public class MemoryGameActivity extends GameActivity {
      */
     private void addUndoButtonListener() {
         Button undoButton = findViewById(R.id.MemoryUndo);
-        undoButton.setOnClickListener(new View.OnClickListener() {@Override
-        public void onClick(View v) {
-            if (memoryBoardManager.undoable == 0){
-                Toast.makeText(getApplicationContext(), "You used up your undoable's!", Toast.LENGTH_SHORT).show();
+        undoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (memoryBoardManager.undoable == 0) {
+                    Toast.makeText(getApplicationContext(), "You used up your undoable's!", Toast.LENGTH_SHORT).show();
+                }
+                if (memoryBoardManager.undoable > 0) {
+                    if (memoryBoardManager.getFirstTile() != null && memoryBoardManager.getSecondTile() == null) {
+                        memoryBoardManager.undo();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Invalid Undo!", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
-            if(memoryBoardManager.undoable > 0){
-            if (memoryBoardManager.getFirstTile() != null && memoryBoardManager.getSecondTile() == null)
-            {memoryBoardManager.undo();}
-             else {
-                Toast.makeText(getApplicationContext(), "Invalid Undo!", Toast.LENGTH_SHORT).show();}}
-        }
         });
-   }
+    }
 
     @Override
-    void setBoardManager(BoardManager m){
+    void setBoardManager(BoardManager m) {
         this.memoryBoardManager = (MemoryBoardManager) m;
     }
 
     @Override
-    MemoryBoardManager getBoardManager(){
+    MemoryBoardManager getBoardManager() {
         return memoryBoardManager;
     }
 
     @Override
-    String getName(){
+    String getName() {
         return NAME;
     }
 
