@@ -164,19 +164,14 @@ public class SlidingTilesActivity extends GameComponent {
      * Switch to scoreViewActivity view scores.
      */
     private void switchToScoreView() {
-        if (this.boardManager != null) {
-            List topScores = this.boardManager.getScoreBoard().getListScores();
-            String[] scoreText = new String[topScores.size()];
-            for (int i = 0; i < topScores.size(); i++) {
-                scoreText[i] = topScores.get(i).toString();
-            }
-            Intent tmp = new Intent(this, SlidingTilesScoreActivity.class);
-            tmp.putExtra("scoreText", scoreText);
-            startActivity(tmp);
+        List topScores = SlidingTilesManager.getScoreBoard().getListScores();
+        String[] scoreText = new String[topScores.size()];
+        for (int i = 0; i < topScores.size(); i++) {
+            scoreText[i] = topScores.get(i).toString();
         }
-        else {
-            makeToastNoScoreText();
-        }
+        Intent tmp = new Intent(this, SlidingTilesScoreActivity.class);
+        tmp.putExtra("scoreText", scoreText);
+        startActivity(tmp);
     }
 
     @Override

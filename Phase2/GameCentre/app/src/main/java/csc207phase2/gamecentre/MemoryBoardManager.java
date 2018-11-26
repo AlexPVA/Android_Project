@@ -86,8 +86,7 @@ public class MemoryBoardManager extends BoardManager {
      *
      * @return the score board for this game.
      */
-    @Override
-    public ScoreBoard getScoreBoard() {return scores;}
+    public static ScoreBoard getScoreBoard() {return scores;}
 
     /**
      * Return the first tile that is flipped.
@@ -183,9 +182,9 @@ public class MemoryBoardManager extends BoardManager {
         }
         if (solved) {
             Score newScore = new Score(this.getAccountName(),
-                    "Memory Game: " + this.getBoard().getNumRows());
+                    "Memory Game " + this.getBoard().getNumRows());
             newScore.setScorePoint(this.getNumMoves());
-            this.getScoreBoard().addScore(newScore);
+            MemoryBoardManager.scores.addScore(newScore);
         }
         return solved;
 

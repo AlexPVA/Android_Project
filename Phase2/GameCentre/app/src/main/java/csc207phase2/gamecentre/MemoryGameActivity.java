@@ -44,7 +44,7 @@ public class MemoryGameActivity extends GameActivity {
         if (memoryBoardManager.puzzleSolved()) {
             SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
-            ArrayList<String> scores = memoryBoardManager.getScoreBoard().getTopScore();
+            ArrayList<String> scores = MemoryBoardManager.getScoreBoard().getTopScore();
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < scores.size(); i++) {
                 sb.append(scores.get(i)).append(",");

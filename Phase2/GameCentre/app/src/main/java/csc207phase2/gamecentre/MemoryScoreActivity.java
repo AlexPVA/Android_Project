@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 public class MemoryScoreActivity extends AppCompatActivity {
 
@@ -30,14 +31,13 @@ public class MemoryScoreActivity extends AppCompatActivity {
      */
     static final float SCORE_SIZE = 20;
 
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score_view);
         View linearLayout = findViewById(R.id.scores);
-        layout = (LinearLayout)linearLayout;
+        layout = (LinearLayout) linearLayout;
         drawText("Top Scores:", TITLE_SIZE);
 
-        Intent getIntent = getIntent();
         SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
         String scores = prefs.getString("MEMORYSCOREBOARD", null);
         if(scores != null) {
@@ -55,7 +55,7 @@ public class MemoryScoreActivity extends AppCompatActivity {
      * @param text the text to draw
      * @param size the font size
      */
-    private void drawText(String text, float size){
+    private void drawText(String text, float size) {
         TextView value = new TextView(this);
         value.setText(text);
         value.setId(View.generateViewId());

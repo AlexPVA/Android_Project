@@ -85,8 +85,7 @@ class SlidingTilesManager extends BoardManager {
      * Return the score board for this game.
      * @return the score board for this game.
      */
-    @Override
-    public ScoreBoard getScoreBoard() {return scores;}
+    public static ScoreBoard getScoreBoard() {return scores;}
 
     /**
      * Return the name of the current user account.

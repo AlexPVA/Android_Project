@@ -78,7 +78,7 @@ class MinesweeperManager extends BoardManager {
 
         if (board.numBombs() == untapped) {
             Score newScore = new Score(this.getAccountName(),
-                    "Sliding Tiles: " + this.getBoard().getNumRows());
+                    "Minesweeper: " + this.getBoard().getNumRows());
             newScore.setScorePoint(this.getNumMoves());
             MinesweeperManager.scores.addScore(newScore);
             //if number of bombs == number of untapped spaces the game ends
@@ -178,8 +178,7 @@ class MinesweeperManager extends BoardManager {
      *
      * @return the score board for this game.
      */
-    @Override
-    public ScoreBoard getScoreBoard() {return scores;}
+    public static ScoreBoard getScoreBoard() {return scores;}
 
     @Override
     public void autoSave(String fileName) {

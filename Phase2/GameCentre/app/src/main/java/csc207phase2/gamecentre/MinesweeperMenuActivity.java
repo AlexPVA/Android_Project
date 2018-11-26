@@ -104,13 +104,6 @@ public class MinesweeperMenuActivity extends GameComponent{
     }
 
     /**
-     *  Display that they attempted to look at score that does not exist.
-     */
-    private void makeToastNoScoreText() {
-        Toast.makeText(this, "No scores to load.", Toast.LENGTH_SHORT).show();
-    }
-
-    /**
      * Activate the save button.
      */
     private void addSaveButtonListener() {
@@ -154,19 +147,14 @@ public class MinesweeperMenuActivity extends GameComponent{
      * Switch to scoreViewActivity view scores.
      */
     private void switchToScoreView() {
-        if (this.manager != null) {
-            List topScores = this.manager.getScoreBoard().getListScores();
-            String[] scoreText = new String[topScores.size()];
-            for (int i = 0; i < topScores.size(); i++) {
-                scoreText[i] = topScores.get(i).toString();
-            }
-            Intent tmp = new Intent(this, MinesweeperScoreActivity.class);
-            tmp.putExtra("scoreText", scoreText);
-            startActivity(tmp);
+        List topScores = MinesweeperManager.getScoreBoard().getListScores();
+        String[] scoreText = new String[topScores.size()];
+        for (int i = 0; i < topScores.size(); i++) {
+            scoreText[i] = topScores.get(i).toString();
         }
-        else {
-            makeToastNoScoreText();
-        }
+        Intent tmp = new Intent(this, MinesweeperScoreActivity.class);
+        tmp.putExtra("scoreText", scoreText);
+        startActivity(tmp);
     }
 
 

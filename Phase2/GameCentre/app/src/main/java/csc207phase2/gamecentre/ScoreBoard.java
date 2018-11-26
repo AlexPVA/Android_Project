@@ -23,6 +23,11 @@ public class ScoreBoard implements Iterable<Score> {
     private ScoreSorter<Score> sorter;
 
     /**
+     * The number of scores this can store.
+     */
+    private int capacity;
+
+    /**
      * Constructs a new ScoreBoard, with the specified sorter and size.
      * @param sorter the sorter used to sort the scoreboard.
      * @param size the number of scores displayed by the scoreboard.
@@ -30,6 +35,7 @@ public class ScoreBoard implements Iterable<Score> {
     public ScoreBoard(ScoreSorter<Score> sorter, int size) {
         this.sorter = sorter;
         this.scores = new ArrayList<>(size);
+        this.capacity = size;
     }
 
     /**
@@ -39,7 +45,9 @@ public class ScoreBoard implements Iterable<Score> {
     public void addScore(Score score) {
         scores.add(score);
         this.sortScores();
-        scores.remove(scores.size() - 1);
+        if (scores.size() > this.capacity) {
+            scores.remove(scores.size() - 1);
+        }
     }
 
     /**
