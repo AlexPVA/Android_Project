@@ -112,6 +112,9 @@ public class MemoryBoardManager extends BoardManager {
     }
 
 
+    private int undoPosition;
+    public int undoAllowance = 3;
+
     /**
      * Manage a shuffled Memory Game board.
      *
@@ -233,6 +236,7 @@ public class MemoryBoardManager extends BoardManager {
 
         if (getFirstTile() == null) {
             flipTile1(position);
+            undoPosition = position;
         } else if (getSecondTile() == null) {
             flipTile2(position);
             if (getFirstTile().equals(getSecondTile())) {
@@ -268,5 +272,12 @@ public class MemoryBoardManager extends BoardManager {
      */
     MemoryBoard getBoard(){
         return memoryBoard;
+    }
+
+
+    void undo(){
+    memoryBoard.flipTile(undoPosition);
+    undoAllowance --;
+    setFirstTile(null);
     }
 }
