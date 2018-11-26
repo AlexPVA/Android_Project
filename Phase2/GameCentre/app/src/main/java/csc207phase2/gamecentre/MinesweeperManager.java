@@ -128,7 +128,7 @@ class MinesweeperManager extends BoardManager {
         }else if(tile.getId() == MinesweeperTile.BOMB_ID){
             tile.setId(MinesweeperTile.EXPLODED_BOMB_ID);
             setGameLost(true);
-        }else if(autosaveCount ==4){
+        }else if(autosaveCount == 4){
             autosaveCount = 0;
             autoSave(MinesweeperGameActivity.SAVE_FILENAME);
         }else{
@@ -136,7 +136,8 @@ class MinesweeperManager extends BoardManager {
         }
 
         if (puzzleSolved()) {
-            Toast.makeText(game.getApplicationContext(), "YOU WIN! Total Moves: " + getNumMoves(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(game.getApplicationContext(),
+                    "YOU WIN! Total Moves: " + getNumMoves(), Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -154,6 +155,8 @@ class MinesweeperManager extends BoardManager {
         this.gameLost = lost;
 
         if(lost){
+            Toast.makeText(game.getApplicationContext(), "YOU LOST! Tap anywhere to try again",
+                    Toast.LENGTH_SHORT).show();
             for(int i = 0; i < board.getNumRows(); i++){
                 for(int j = 0; j < board.getNumCols(); j++){
                     board.tapTile(i, j);
