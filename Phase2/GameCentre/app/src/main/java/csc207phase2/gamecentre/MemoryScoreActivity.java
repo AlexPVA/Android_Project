@@ -10,21 +10,21 @@ import android.widget.TextView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
-/**
- * Displays the scores for a given game/user
- */
-public class ScoreViewActivity extends AppCompatActivity {
+public class MemoryScoreActivity extends AppCompatActivity {
+
+    /**
+     * The game this is a part of.
+     */
+    transient private GameComponent game;
 
     /**
      * The linear layout to draw to.
      */
-    private LinearLayout layout;
-
+    LinearLayout layout;
     /**
      * The size of the title.
      */
     static final float TITLE_SIZE = 30;
-
     /**
      * The size of each line of text drawn to the layout (other than the title).
      */
@@ -39,14 +39,12 @@ public class ScoreViewActivity extends AppCompatActivity {
 
         Intent getIntent = getIntent();
         SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
-        String scores = prefs.getString("SCOREBOARD", null);
-
-        //String[] scoreText = getScoreText();
+        String scores = prefs.getString("MEMORYSCOREBOARD", null);
         if(scores != null) {
             String[] scoreText = scores.split(",");
-                for (String score : scoreText) {
-                    drawText("__________________________________", 20);
-                    drawText(score, SCORE_SIZE);
+            for (String score : scoreText) {
+                drawText("__________________________________", 20);
+                drawText(score, SCORE_SIZE);
             }
         }
     }
@@ -66,28 +64,5 @@ public class ScoreViewActivity extends AppCompatActivity {
         value.setTextSize(size);
         layout.addView(value);
     }
-
-    /**
-     * Get the array of text to draw to the layout from the intent extras.
-     *
-     * @return The array of text to draw to the layout
-     */
-    //String[] getScoreText(){
-        //SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
-        //SharedPreferences.Editor editor = prefs.edit();
-        //SlidingTilesManager board = new SlidingTilesManager(3, 3);
-        //ArrayList<String> scores = board.getScoreBoard().getTopScore();
-        //StringBuilder sb = new StringBuilder();
-        //for (int i = 0; i < scores.size(); i++) {
-        //    sb.append(scores.get(i)).append(",");
-        //}
-        //editor.putString("SCOREBOARD", sb.toString());
-        //editor.commit();
-        //String[] scoreText = {"a", "b", "c"};//getIntent().getStringArrayExtra("scoreText");
-        //if(scoreText == null) {
-        //    Log.e("score_view", "scoreText is null (ScoreViewActivity)");
-        //}
-        //return scoreText;
-    //}
 
 }

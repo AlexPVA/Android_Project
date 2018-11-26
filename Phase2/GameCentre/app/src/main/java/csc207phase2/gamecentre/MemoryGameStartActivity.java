@@ -36,21 +36,21 @@ public class MemoryGameStartActivity extends GameComponent {
         addStartButtonListener();
         //addLoadButtonListener();
         //addSaveButtonListener();
-        //addScoreButtonListener();
+        addScoreButtonListener();
     }
 
     /**
      * Activate the score button.
      */
-//    private void addScoreButtonListener() {
-//        Button scoreButton = findViewById(R.id.scoreButton);
-//        scoreButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                switchToScoreView();
-//            }
-//        });
-//    }
+    private void addScoreButtonListener() {
+        Button scoreButton = findViewById(R.id.scoreButton);
+        scoreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+           public void onClick(View v) {
+                switchToScoreView();
+            }
+        });
+    }
 
     /**
      * Activate the start button.
@@ -107,6 +107,13 @@ public class MemoryGameStartActivity extends GameComponent {
     }
 
     /**
+     *  Display that they attempted to look at score that does not exist.
+     */
+    private void makeToastNoScoreText() {
+        Toast.makeText(this, "No scores to load.", Toast.LENGTH_SHORT).show();
+    }
+
+    /**
      * Activate the save button.
      */
     private void addSaveButtonListener() {
@@ -157,14 +164,19 @@ public class MemoryGameStartActivity extends GameComponent {
      * Switch to scoreViewActivity view scores.
      */
     private void switchToScoreView() {
-        List topScores = this.memoryBoardManager.getScoreBoard().getListScores();
-        String[] scoreText = new String[topScores.size()];
-        for(int i = 0; i < topScores.size(); i ++){
-            scoreText[i] = topScores.get(i).toString();
+        if (this.memoryBoardManager != null) {
+            List topScores = this.memoryBoardManager.getScoreBoard().getListScores();
+            String[] scoreText = new String[topScores.size()];
+            for (int i = 0; i < topScores.size(); i++) {
+                scoreText[i] = topScores.get(i).toString();
+            }
+            Intent tmp = new Intent(this, MemoryScoreActivity.class);
+            tmp.putExtra("scoreText", scoreText);
+            startActivity(tmp);
         }
-        Intent tmp = new Intent(this, ScoreViewActivity.class);
-        tmp.putExtra("scoreText", scoreText);
-        startActivity(tmp);
+        else {
+            makeToastNoScoreText();
+        }
     }
 
     /**

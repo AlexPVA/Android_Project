@@ -51,12 +51,12 @@ class SlidingTilesManager extends BoardManager {
     /**
      * Sorter for the ScoreBoard
      */
-    private final static ScoreSorter<Score> scoreSorter = new MinimumSorter<Score>();
+    private static ScoreSorter<Score> scoreSorter = new MinimumSorter<Score>();
 
     /**
      * Stores the scores for sliding tiles game.
      */
-    private final static ScoreBoard scores = new ScoreBoard(scoreSorter, 6);
+    private static ScoreBoard scores = new ScoreBoard(scoreSorter, 6);
 
     /**
      * The game this is a part of.
@@ -240,8 +240,6 @@ class SlidingTilesManager extends BoardManager {
     public void setGame(GameComponent game){
         this.game = game;
     }
-
-
 
     private boolean boardSolvability(SlidingTilesBoard board){
         boolean solvable = false;

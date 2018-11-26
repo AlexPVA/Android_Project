@@ -1,8 +1,12 @@
 package csc207phase2.gamecentre;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.widget.Button;
+
+import java.util.ArrayList;
 
 /**
  * The game activity for the memory game.
@@ -32,6 +36,22 @@ public class MemoryGameActivity extends GameActivity {
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         //addUndoButtonListener();
 
+    }
+
+    @Override
+    public void updateTileButtons() {
+        super.updateTileButtons();
+        if (memoryBoardManager.puzzleSolved()) {
+            SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            ArrayList<String> scores = memoryBoardManager.getScoreBoard().getTopScore();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < scores.size(); i++) {
+                sb.append(scores.get(i)).append(",");
+            }
+            editor.putString("MEMORYSCOREBOARD", sb.toString());
+            editor.commit();
+        }
     }
 
 //    /**

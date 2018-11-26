@@ -1,8 +1,12 @@
 package csc207phase2.gamecentre;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import java.util.ArrayList;
 
 /**
  * The game activity.
@@ -28,6 +32,22 @@ public class SlidingTilesGameActivity extends GameActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addUndoButtonListener();
+    }
+
+    @Override
+    public void updateTileButtons() {
+        super.updateTileButtons();
+        if (boardManager.puzzleSolved()) {
+            SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            ArrayList<String> scores = boardManager.getScoreBoard().getTopScore();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < scores.size(); i++) {
+                sb.append(scores.get(i)).append(",");
+            }
+            editor.putString("SCOREBOARD", sb.toString());
+            editor.commit();
+        }
     }
 
     /**

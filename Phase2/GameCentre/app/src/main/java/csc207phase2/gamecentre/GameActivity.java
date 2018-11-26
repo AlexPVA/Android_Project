@@ -96,7 +96,7 @@ abstract class GameActivity extends GameComponent implements Observer {
     /**
      * Update the backgrounds on the buttons to match the tiles.
      */
-    private void updateTileButtons() {
+    public void updateTileButtons() {
         BoardManager manager = getBoardManager();
         Board board = manager.getBoard();
         int nextPos = 0;
@@ -105,17 +105,6 @@ abstract class GameActivity extends GameComponent implements Observer {
             int col = nextPos % board.getNumCols();
             b.setBackgroundResource(board.getTile(row, col).getBackground());
             nextPos++;
-        }
-        if (manager.puzzleSolved()) {
-            SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = prefs.edit();
-            ArrayList<String> scores = manager.getScoreBoard().getTopScore();
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < scores.size(); i++) {
-                sb.append(scores.get(i)).append(",");
-            }
-            editor.putString("SCOREBOARD", sb.toString());
-            editor.commit();
         }
     }
 

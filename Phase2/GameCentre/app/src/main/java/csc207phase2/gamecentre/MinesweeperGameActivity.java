@@ -1,6 +1,10 @@
 package csc207phase2.gamecentre;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+
+import java.util.ArrayList;
 
 public class MinesweeperGameActivity extends GameActivity {
 
@@ -22,6 +26,22 @@ public class MinesweeperGameActivity extends GameActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void updateTileButtons() {
+        super.updateTileButtons();
+        if (manager.puzzleSolved()) {
+            SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            ArrayList<String> scores = manager.getScoreBoard().getTopScore();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < scores.size(); i++) {
+                sb.append(scores.get(i)).append(",");
+            }
+            editor.putString("MINESWEEPERSCOREBOARD", sb.toString());
+            editor.commit();
+        }
     }
 
     @Override

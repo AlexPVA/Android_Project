@@ -113,6 +113,14 @@ public class SlidingTilesActivity extends GameComponent {
     }
 
     /**
+     *  Display that they attempted to look at score that does not exist.
+     */
+    private void makeToastNoScoreText() {
+        Toast.makeText(this, "No scores to load.", Toast.LENGTH_SHORT).show();
+    }
+
+
+    /**
      * Activate the save button.
      */
     private void addSaveButtonListener() {
@@ -156,14 +164,19 @@ public class SlidingTilesActivity extends GameComponent {
      * Switch to scoreViewActivity view scores.
      */
     private void switchToScoreView() {
-        List topScores = this.boardManager.getScoreBoard().getListScores();
-        String[] scoreText = new String[topScores.size()];
-        for(int i = 0; i < topScores.size(); i ++){
-            scoreText[i] = topScores.get(i).toString();
+        if (this.boardManager != null) {
+            List topScores = this.boardManager.getScoreBoard().getListScores();
+            String[] scoreText = new String[topScores.size()];
+            for (int i = 0; i < topScores.size(); i++) {
+                scoreText[i] = topScores.get(i).toString();
+            }
+            Intent tmp = new Intent(this, SlidingTilesScoreActivity.class);
+            tmp.putExtra("scoreText", scoreText);
+            startActivity(tmp);
         }
-        Intent tmp = new Intent(this, ScoreViewActivity.class);
-        tmp.putExtra("scoreText", scoreText);
-        startActivity(tmp);
+        else {
+            makeToastNoScoreText();
+        }
     }
 
     @Override

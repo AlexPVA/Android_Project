@@ -8,6 +8,16 @@ import java.io.Serializable;
 abstract class BoardManager implements Serializable {
 
     /**
+     * Sorter for the ScoreBoard
+     */
+    private final static ScoreSorter<Score> scoreSorter = new MinimumSorter<Score>();
+
+    /**
+     * Stores the scores for sliding tiles game.
+     */
+    private final static ScoreBoard scores = new ScoreBoard(scoreSorter, 6);
+
+    /**
      * Autosaves the game manager to fileName.
      *
      * @param fileName the name of the file

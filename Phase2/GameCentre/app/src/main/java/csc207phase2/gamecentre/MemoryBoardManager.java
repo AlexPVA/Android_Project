@@ -65,12 +65,12 @@ public class MemoryBoardManager extends BoardManager {
     /**
      * Sorter for the ScoreBoard
      */
-    private final static ScoreSorter<Score> scoreSorter = new MinimumSorter<Score>();
+    private static ScoreSorter<Score> scoreSorter = new MinimumSorter<Score>();
 
     /**
      * Stores the scores for sliding tiles game.
      */
-    private final static ScoreBoard scores = new ScoreBoard(scoreSorter, 6);
+    private static ScoreBoard scores = new ScoreBoard(scoreSorter, 6);
 
     /**
      * Return the number of moves this boardmanager has processed.

@@ -63,7 +63,7 @@ public class ProfileActivity extends AppCompatActivity {
      * Switch to the ScoreActivity to view the user's highscores.
      */
     private void switchToScore() {
-        Intent tmp = new Intent(this, ScoreViewActivity.class);
+        Intent tmp = new Intent(this, SlidingTilesScoreActivity.class);
         BoardManager m = new SlidingTilesManager(3, 3);
         Score topScore = m.getScoreBoard().getUserHighscore(currentUser.getEmail());
         if(topScore != null){
