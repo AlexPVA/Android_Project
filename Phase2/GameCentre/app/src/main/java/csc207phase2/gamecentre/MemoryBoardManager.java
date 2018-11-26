@@ -180,12 +180,6 @@ public class MemoryBoardManager extends BoardManager {
                 solved = false;
             }
         }
-        if (solved) {
-            Score newScore = new Score(this.getAccountName(),
-                    "Memory Game " + this.getBoard().getNumRows());
-            newScore.setScorePoint(this.getNumMoves());
-            MemoryBoardManager.scores.addScore(newScore);
-        }
         return solved;
 
     }
@@ -275,11 +269,11 @@ public class MemoryBoardManager extends BoardManager {
         } else if (getSecondTile() == null) {
             flipTile2(position);
             if (getFirstTile().equals(getSecondTile())) {
-                Toast.makeText(game.getApplicationContext(), "CORRECT PAIR!", Toast.LENGTH_SHORT).show();
                 if (puzzleSolved()) {
-                    Toast.makeText(game.getApplicationContext(), "YOU WIN!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(game.getApplicationContext(), "YOU WIN! Total Moves: " + getNumMoves(), Toast.LENGTH_SHORT).show();
                 }
                 else {
+                    Toast.makeText(game.getApplicationContext(), "CORRECT PAIR!", Toast.LENGTH_SHORT).show();
                     setFirstTile(null);
                     setSecondTile(null);
                 }

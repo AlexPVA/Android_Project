@@ -1,6 +1,7 @@
 package csc207phase2.gamecentre;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -42,6 +43,10 @@ public class MemoryGameActivity extends GameActivity {
     public void updateTileButtons() {
         super.updateTileButtons();
         if (memoryBoardManager.puzzleSolved()) {
+            Score newScore = new Score(memoryBoardManager.getAccountName(),
+                    "Memory Game " + memoryBoardManager.getBoard().getNumRows());
+            newScore.setScorePoint(memoryBoardManager.getNumMoves() + 1);
+            MemoryBoardManager.getScoreBoard().addScore(newScore);
             SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
             ArrayList<String> scores = MemoryBoardManager.getScoreBoard().getTopScore();
