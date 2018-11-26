@@ -36,7 +36,7 @@ class SlidingTilesManager extends BoardManager {
     /**
      * The board being managed.
      */
-    private SlidingTilesBoard board;
+    public SlidingTilesBoard board;
 
     /**
      * The step saver for undo.
