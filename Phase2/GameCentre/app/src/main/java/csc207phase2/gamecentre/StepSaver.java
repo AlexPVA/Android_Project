@@ -6,9 +6,7 @@ import java.util.Stack;
  * The step saver for undo functionality.
  */
 class StepSaver extends Stack<Integer[]> {
-
-    private int undoAllowance = 3;
-
+    
     /**
      * Initialize the stack for steps.
      */
@@ -40,15 +38,6 @@ class StepSaver extends Stack<Integer[]> {
         }
         else{this.push(pos);}
     }
-
-    void recordMemory(int position){
-        this.clear();
-        Integer[] pos = new Integer[1];
-        pos[0] = position;
-        this.push(pos);
-    }
-
-
 
     /**
      * Return the previous step.
