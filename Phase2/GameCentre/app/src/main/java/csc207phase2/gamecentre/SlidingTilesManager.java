@@ -252,8 +252,11 @@ class SlidingTilesManager extends BoardManager {
         this.game = game;
     }
 
-
-
+    /**
+     * Assert if a board is solvable.
+     *
+     * @param board newly generated/shuffled board
+     */
     private boolean boardSolvability(SlidingTilesBoard board){
         boolean solvable = false;
         int rows = board.getNumRows();
@@ -261,18 +264,27 @@ class SlidingTilesManager extends BoardManager {
         Iterator<SlidingTilesTile> iter = board.iterator();
         int[] tiles = new int[rows*cols];
         int c = 0;
+        int blanktile = rows*cols;
         while (iter.hasNext()) {
             tiles[c] = iter.next().getId();
             c++;
             }
-
         int count = 0;
         for (int i = 0; i!=rows*cols-1; i++){
             for(int j = i+1; j!=rows*cols; j++){
+               if (tiles[i] == 25){blanktile = i;}
                if (tiles[i] != 25 && tiles[i] > tiles[j]){count++;}
             }
         }
-        if (count%2==0){solvable = true;}
+        if (rows%2==1){
+            if (count%2==0){solvable = true;} }
+        else {if(((blanktile+rows-1)/rows)%2==0){
+            if (count%2==0){solvable = true;} }
+             if(((blanktile+rows-1)/rows)%2==1){
+            if (count%2==1){solvable = true;}
+            }
+
+        }
         return solvable;
     }
 }
