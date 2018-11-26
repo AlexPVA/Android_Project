@@ -18,6 +18,11 @@ class MinesweeperManager extends BoardManager {
     private String accountName;
 
     /**
+     * Count for keeping track of when to autosave.
+     */
+    private int autosaveCount = 0;
+
+    /**
      * The number of moves the boardmanager has processed.
      */
     private int numMoves;
@@ -123,6 +128,11 @@ class MinesweeperManager extends BoardManager {
         }else if(tile.getId() == MinesweeperTile.BOMB_ID){
             tile.setId(MinesweeperTile.EXPLODED_BOMB_ID);
             setGameLost(true);
+        }else if(autosaveCount ==4){
+            autosaveCount = 0;
+            autoSave(MinesweeperGameActivity.SAVE_FILENAME);
+        }else{
+            autosaveCount++;
         }
 
         if (puzzleSolved()) {
