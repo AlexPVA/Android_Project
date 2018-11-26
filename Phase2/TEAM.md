@@ -48,3 +48,8 @@ Weekly Meeting Notes:
 - Denny will work on fixing the unsolvable SlidingTile game board while also assisting on both the
   MemoryGame and MineSweeper.
 
+3. Monday, November 26, 2018
+
+- Worked on the Unit Test for all the specific classes
+- Discussed how the presentation shall be setup
+
