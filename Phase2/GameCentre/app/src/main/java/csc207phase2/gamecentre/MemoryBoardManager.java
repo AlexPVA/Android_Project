@@ -58,6 +58,16 @@ public class MemoryBoardManager extends BoardManager {
     private int storedPosition;
 
     /**
+     * The first tile which is undoable.
+     */
+    private int undoPosition;
+
+    /**
+     * The undoable steps for player.
+     */
+    int undoable = 3;
+
+    /**
      * Return the first tile that is flipped.
      *
      * @return the first tile that is flipped
@@ -110,10 +120,6 @@ public class MemoryBoardManager extends BoardManager {
     MemoryBoard getMemoryBoard() {
         return memoryBoard;
     }
-
-
-    private int undoPosition;
-    public int undoAllowance = 3;
 
     /**
      * Manage a shuffled Memory Game board.
@@ -274,10 +280,13 @@ public class MemoryBoardManager extends BoardManager {
         return memoryBoard;
     }
 
-
+    /**
+     * Undo the first flipped tile when there is an undoable.
+     *
+     */
     void undo(){
     memoryBoard.flipTile(undoPosition);
-    undoAllowance --;
+    undoable --;
     setFirstTile(null);
     }
 }

@@ -37,14 +37,17 @@ public class MemoryGameActivity extends GameActivity {
 
     }
 
+    /**
+     * Activate the undo button.
+     */
     private void addUndoButtonListener() {
         Button undoButton = findViewById(R.id.MemoryUndo);
         undoButton.setOnClickListener(new View.OnClickListener() {@Override
         public void onClick(View v) {
-            if (memoryBoardManager.undoAllowance == 0){
-                Toast.makeText(getApplicationContext(), "You used up your undo allowance!", Toast.LENGTH_SHORT).show();
+            if (memoryBoardManager.undoable == 0){
+                Toast.makeText(getApplicationContext(), "You used up your undoable's!", Toast.LENGTH_SHORT).show();
             }
-            if(memoryBoardManager.undoAllowance > 0){
+            if(memoryBoardManager.undoable > 0){
             if (memoryBoardManager.getFirstTile() != null && memoryBoardManager.getSecondTile() == null)
             {memoryBoardManager.undo();}
              else {
