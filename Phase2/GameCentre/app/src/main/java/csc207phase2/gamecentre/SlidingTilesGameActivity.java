@@ -38,6 +38,10 @@ public class SlidingTilesGameActivity extends GameActivity {
     public void updateTileButtons() {
         super.updateTileButtons();
         if (boardManager.puzzleSolved()) {
+            Score newScore = new Score(boardManager.getAccountName(),
+                    "Sliding Tiles " + boardManager.getBoard().getNumRows());
+            newScore.setScorePoint(boardManager.getNumMoves() + 1);
+            boardManager.getScoreBoard().addScore(newScore);
             SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
             ArrayList<String> scores = SlidingTilesManager.getScoreBoard().getTopScore();

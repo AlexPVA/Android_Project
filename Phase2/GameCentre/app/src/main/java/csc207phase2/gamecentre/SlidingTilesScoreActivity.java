@@ -34,8 +34,6 @@ public class SlidingTilesScoreActivity extends AppCompatActivity {
         View linearLayout = findViewById(R.id.scores);
         layout = (LinearLayout)linearLayout;
         drawText("Top Scores:", TITLE_SIZE);
-
-        Intent getIntent = getIntent();
         SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
         String scores = prefs.getString("SCOREBOARD", null);
         if(scores != null) {

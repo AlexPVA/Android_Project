@@ -1,5 +1,7 @@
 package csc207phase2.gamecentre;
 
+import android.widget.Toast;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -136,13 +138,6 @@ class SlidingTilesManager extends BoardManager {
             }
             count++;
         }
-        if (solved) {
-            Score newScore = new Score(this.getAccountName(),
-                    "Sliding Tiles: " + this.getBoard().getNumRows());
-            newScore.setScorePoint(this.getNumMoves());
-            this.getScoreBoard().addScore(newScore);
-        }
-
         return solved;
     }
 
@@ -202,6 +197,10 @@ class SlidingTilesManager extends BoardManager {
             board.swapTiles(row, col, row, col + 1);
             stepSaver.recordMove(row, col, row, col + 1);
             numMoves++;
+        }
+
+        if (puzzleSolved()) {
+            Toast.makeText(game.getApplicationContext(), "YOU WIN! Total Moves: " + getNumMoves(), Toast.LENGTH_SHORT).show();
         }
 
     }

@@ -147,13 +147,7 @@ public class MinesweeperMenuActivity extends GameComponent{
      * Switch to scoreViewActivity view scores.
      */
     private void switchToScoreView() {
-        List topScores = MinesweeperManager.getScoreBoard().getListScores();
-        String[] scoreText = new String[topScores.size()];
-        for (int i = 0; i < topScores.size(); i++) {
-            scoreText[i] = topScores.get(i).toString();
-        }
         Intent tmp = new Intent(this, MinesweeperScoreActivity.class);
-        tmp.putExtra("scoreText", scoreText);
         startActivity(tmp);
     }
 

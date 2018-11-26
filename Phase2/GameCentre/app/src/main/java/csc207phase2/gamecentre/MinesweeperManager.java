@@ -1,5 +1,7 @@
 package csc207phase2.gamecentre;
 
+import android.widget.Toast;
+
 /**
  * Manage a minesweeper board
  */
@@ -77,10 +79,6 @@ class MinesweeperManager extends BoardManager {
         }
 
         if (board.numBombs() == untapped) {
-            Score newScore = new Score(this.getAccountName(),
-                    "Minesweeper: " + this.getBoard().getNumRows());
-            newScore.setScorePoint(this.getNumMoves());
-            MinesweeperManager.scores.addScore(newScore);
             //if number of bombs == number of untapped spaces the game ends
             return true;
         }else{
@@ -125,6 +123,10 @@ class MinesweeperManager extends BoardManager {
         }else if(tile.getId() == MinesweeperTile.BOMB_ID){
             tile.setId(MinesweeperTile.EXPLODED_BOMB_ID);
             setGameLost(true);
+        }
+
+        if (puzzleSolved()) {
+            Toast.makeText(game.getApplicationContext(), "YOU WIN! Total Moves: " + getNumMoves(), Toast.LENGTH_SHORT).show();
         }
 
     }
