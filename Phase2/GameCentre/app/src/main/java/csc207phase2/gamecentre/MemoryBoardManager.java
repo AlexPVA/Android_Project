@@ -148,7 +148,7 @@ public class MemoryBoardManager extends BoardManager {
      *
      * @return current Memory Game board
      */
-    MemoryBoard getMemoryBoard() {
+    MemoryBoard getBoard(){
         return memoryBoard;
     }
 
@@ -170,9 +170,15 @@ public class MemoryBoardManager extends BoardManager {
         Collections.shuffle(memoryTiles);
         this.memoryBoard = new MemoryBoard(row, col, memoryTiles);
 
-        mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
-        accountName = currentUser.getEmail();
+        try {
+            mAuth = FirebaseAuth.getInstance();
+            currentUser = mAuth.getCurrentUser();
+            accountName = currentUser.getEmail();
+        } catch (ExceptionInInitializerError | NoClassDefFoundError firebaseError) {
+            mAuth = null;
+            currentUser = null;
+            accountName = null;
+        }
     }
 
     /**
@@ -294,8 +300,8 @@ public class MemoryBoardManager extends BoardManager {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        getMemoryBoard().flipTile(finalPosition);
-                        getMemoryBoard().flipTile(getStoredPosition());
+                        getBoard().flipTile(finalPosition);
+                        getBoard().flipTile(getStoredPosition());
                         setFirstTile(null);
                         setSecondTile(null);
                         Toast.makeText(game.getApplicationContext(), "WRONG PAIR!", Toast.LENGTH_SHORT).show();
@@ -305,14 +311,6 @@ public class MemoryBoardManager extends BoardManager {
         }
     }
 
-    /**
-     * Returns the current Memory Game board.
-     *
-     * @return current Memory Game board
-     */
-    MemoryBoard getBoard(){
-        return memoryBoard;
-    }
 
     /**
      * Undo the first flipped tile when there is an undoable.

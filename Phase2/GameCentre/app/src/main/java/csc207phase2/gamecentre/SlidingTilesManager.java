@@ -122,9 +122,15 @@ class SlidingTilesManager extends BoardManager {
             this.board = new SlidingTilesBoard(row, col, tiles);
         }
 
-        mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
-        accountName = currentUser.getEmail();
+        try {
+            mAuth = FirebaseAuth.getInstance();
+            currentUser = mAuth.getCurrentUser();
+            accountName = currentUser.getEmail();
+        } catch (ExceptionInInitializerError | NoClassDefFoundError firebaseError) {
+            mAuth = null;
+            currentUser = null;
+            accountName = null;
+        }
     }
 
     /**
