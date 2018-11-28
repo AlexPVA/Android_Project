@@ -189,9 +189,15 @@ class MinesweeperManager extends BoardManager {
     }
 
     /**
+     * Return wether the game has been lost or not
+     * @return gameLost if the game has been lost
+     */
+    public boolean getGameLost() { return gameLost; }
+
+    /**
      * Return the score board for this game.
      *
-     * @return the score board for this game.
+     * @return scores the score board for this game.
      */
     public static ScoreBoard getScoreBoard() {return scores;}
 

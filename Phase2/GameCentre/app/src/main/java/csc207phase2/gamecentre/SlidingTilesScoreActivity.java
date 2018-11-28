@@ -61,27 +61,4 @@ public class SlidingTilesScoreActivity extends AppCompatActivity {
         layout.addView(value);
     }
 
-    /**
-     * Get the array of text to draw to the layout from the intent extras.
-     *
-     * @return The array of text to draw to the layout
-     */
-    //String[] getScoreText(){
-    //SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
-    //SharedPreferences.Editor editor = prefs.edit();
-    //BoardManager board = new BoardManager(3, 3);
-    //ArrayList<String> scores = board.getScoreBoard().getTopScore();
-    //StringBuilder sb = new StringBuilder();
-    //for (int i = 0; i < scores.size(); i++) {
-    //    sb.append(scores.get(i)).append(",");
-    //}
-    //editor.putString("SCOREBOARD", sb.toString());
-    //editor.commit();
-    //String[] scoreText = {"a", "b", "c"};//getIntent().getStringArrayExtra("scoreText");
-    //if(scoreText == null) {
-    //    Log.e("score_view", "scoreText is null (ScoreViewActivity)");
-    //}
-    //return scoreText;
-    //}
-
 }

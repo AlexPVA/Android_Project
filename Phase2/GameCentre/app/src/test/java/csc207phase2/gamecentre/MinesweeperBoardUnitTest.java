@@ -26,10 +26,21 @@ public class MinesweeperBoardUnitTest {
     }
     public void getNumRows_isCorrect() {
         MinesweeperBoard board = new MinesweeperBoard(9, 9);
-        asserEquals(board.getNumRows(), 9);
+        assertEquals(board.getNumRows(), 9);
     }
     public void getNumCols_isCorrect() {
         MinesweeperBoard board = new MinesweeperBoard(9, 9);
-        asserEquals(board.getNumCols(), 9);
+        assertEquals(board.getNumCols(), 9);
     }
+    @Test
+    public void countBombs_isCorrect() {
+        MinesweeperBoard board = new MinesweeperBoard(9, 9);
+        assertEquals
+
+    }
+    @Test
+    public void getTile_isCorrect() {
+
+    }
+
 }

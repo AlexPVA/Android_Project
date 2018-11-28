@@ -26,7 +26,6 @@ public class SlidingTilesBoardUnitTest {
     public void getTile_isCorrect() {
         SlidingTilesBoard board = new SlidingTilesBoard(4, 4, tiles);
         assertEquals(board.getTile(0, 0), tiles[0]);
-        //not sure if this is the correct way to check
     }
     @Test
     public void swapTile_isCorrect() {
