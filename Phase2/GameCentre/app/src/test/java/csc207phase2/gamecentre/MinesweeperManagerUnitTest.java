@@ -22,4 +22,11 @@ public class MinesweeperManagerUnitTest {
         m.touchMove(1);
         assertEquals(m.isValidTap(1), true);
     }
+    @Test
+    public void setGameLost_isCorrect() {
+        MinesweeperManager m = new MinesweeperManager(9, 9);
+        m.setGameLost(true);
+        assertTrue(m.getGameLost());
+
+    }
 }
