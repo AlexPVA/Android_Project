@@ -78,7 +78,7 @@ public class ScoreBoard implements Iterable<Score> {
         while (iter.hasNext()) {
             Score score = iter.next();
             if (username.equals(score.getUser())) {
-                return iter.next();
+                return score;
                 }
             }
         return null;

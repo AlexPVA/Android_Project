@@ -16,11 +16,6 @@ public class MinesweeperComplexity extends GameComponent{
     private MinesweeperManager manager;
 
     /**
-     * A temporary save file.
-     */
-    public static final String TEMP_SAVE_FILENAME = "save_file_tmp.ser";
-
-    /**
      *  The name of the game this is a part of
      */
     static final String NAME = "Minesweeper";

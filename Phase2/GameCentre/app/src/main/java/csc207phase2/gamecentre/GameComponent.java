@@ -53,12 +53,11 @@ abstract class GameComponent extends AppCompatActivity implements Serializable {
         try {
             InputStream inputStream = this.openFileInput(fileName);
             if (inputStream != null) {
-                Log.e("load activity", "input stream isn't null");
                 ObjectInputStream input = new ObjectInputStream(inputStream);
                 setBoardManager((BoardManager) input.readObject());
                 inputStream.close();
             }else{
-                Log.e("load activity", "input stream isn't null");
+                Log.e("load activity", "input stream is null");
             }
         } catch (FileNotFoundException e) {
             Log.e("load activity", "File not found: " + e.toString());

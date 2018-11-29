@@ -24,7 +24,7 @@ iv) Sliding Tiles:
 The Sliding Tiles game is a game where the user must order the tiles in order from lowest to highest where the first tile in the top left would
 be Tile #1 and the tile in the bottom right would be the Blank tile. The user can only select a tile which has a blank tile
 adjacent to it in order to slide the tile, if the user selects a tile which doesn't have the blank tile adjacent to it, it will be
-an invalid tap thus must try again.
+an invalid tap thus must try again. The game impliments autosave (described below) which automatically saves every 4 moves.
 
 v) Memory Game:
 The Memory Game is a game where the user must match all the pairs of tiles on the board to complete the game, the user does this by
@@ -33,7 +33,10 @@ If the image on both tiles is the same both tiles will stay flipped then the use
 If the image on the tiles are different both tiles will flip back to the blank state and the user would have to pick two tiles again.
 The user can only tap tiles that are not flipped.
 
-vi) Mine Sweeper:
+vi) Minesweeper:
+Minesweeper is a classic game where the goal is to discover the location of all the mines without clicking on them. Clicking on a tile reveals a number
+that tells you the number of mines in the adjacent tiles. You win the game when you have clicked on all tiles other than the ones that contain mines and
+you lose if you click on a mine. The game impliments autosave (described below) which automatically saves every 4 moves.
 
 vii) Game Complexity:
 The application allows for the user to choose different board complexities depending on the game. Sliding Tiles provides three different complexities

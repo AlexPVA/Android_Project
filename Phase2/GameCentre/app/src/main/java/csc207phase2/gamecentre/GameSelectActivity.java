@@ -29,7 +29,7 @@ public class GameSelectActivity extends AppCompatActivity{
         SlidingTilesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switchToSlidingTiles();
+                switchToGame(SlidingTilesActivity.class);
             }
         });
     }
@@ -42,25 +42,9 @@ public class GameSelectActivity extends AppCompatActivity{
         SlidingTilesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switchToMinesweeper();
+                switchToGame(MinesweeperMenuActivity.class);
             }
         });
-    }
-
-    /**
-     * Switch to the SlidingTilesActivity to start playing Sliding Tiles.
-     */
-    private void switchToSlidingTiles() {
-        Intent tmp = new Intent(this, SlidingTilesActivity.class);
-        startActivity(tmp);
-    }
-
-    /**
-     * Switch to the MineSweeperMenuActivity to start playing Minesweeper.
-     */
-    private void switchToMinesweeper() {
-        Intent tmp = new Intent(this, MinesweeperMenuActivity.class);
-        startActivity(tmp);
     }
 
     /**
@@ -71,17 +55,18 @@ public class GameSelectActivity extends AppCompatActivity{
         MemoryGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switchToMemoryGame();
+                switchToGame(MemoryGameStartActivity.class);
             }
         });
     }
 
     /**
-     * Switch to the MemoryGameStartActivity to start playing Memory Game.
+     * Switch to the specified game.
      */
-    private void switchToMemoryGame() {
-        Intent tmp = new Intent(this, MemoryGameStartActivity.class);
+    private void switchToGame(Class targetClass){
+        Intent tmp = new Intent(this, targetClass);
         startActivity(tmp);
     }
+
 }
 

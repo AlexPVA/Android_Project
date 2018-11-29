@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -38,20 +39,66 @@ public class SlidingTilesGameActivity extends GameActivity {
     public void updateTileButtons() {
         super.updateTileButtons();
         if (boardManager.puzzleSolved()) {
-            Score newScore = new Score(boardManager.getAccountName(),
-                    "Sliding Tiles " + boardManager.getBoard().getNumRows());
-            newScore.setScorePoint(boardManager.getNumMoves() + 1);
-            boardManager.getScoreBoard().addScore(newScore);
-            SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = prefs.edit();
-            ArrayList<String> scores = SlidingTilesManager.getScoreBoard().getTopScore();
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < scores.size(); i++) {
-                sb.append(scores.get(i)).append(",");
-            }
-            editor.putString("SCOREBOARD", sb.toString());
-            editor.commit();
+            updateScoreBoard();
+            updateUserScoreBoard();
         }
+    }
+
+    /**
+     * Put an updated scoreboard into the shared preferences to be accessed by score view.
+     */
+    public void updateScoreBoard() {
+        Score newScore = new Score(boardManager.getAccountName(),
+                "Sliding Tiles " + boardManager.getBoard().getNumRows());
+        newScore.setScorePoint(boardManager.getNumMoves() + 1);
+        SlidingTilesManager.getScoreBoard().addScore(newScore);
+        SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        ArrayList<String> scores = SlidingTilesManager.getScoreBoard().getTopScore();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < scores.size(); i++) {
+            sb.append(scores.get(i)).append(",");
+        }
+        editor.putString("SCOREBOARD", sb.toString());
+        editor.commit();
+    }
+
+    /**
+     * Put an updated user scoreboard into the shared preferences to be accessed by user score view.
+     */
+    public void updateUserScoreBoard() {
+        SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        String user = boardManager.getAccountName();
+        Score userHighScore = SlidingTilesManager.getScoreBoard().getUserHighscore(user);
+        String userScoreBoard = prefs.getString(user, null);
+        if(userScoreBoard != null) {
+            String[] scoreText = userScoreBoard.split(",");
+            for (int i = 0; i < scoreText.length; i++) {
+                if (scoreText[i].matches("(.*)Sliding(.*)") || !scoreText[i].matches("(.*)Score:(.*)")) {
+                    scoreText[i] = null;
+                }
+            }
+            StringBuilder sb = new StringBuilder();
+            for (int index = 0; index < scoreText.length; index++) {
+                if (scoreText[index] != null) {
+                    sb.append(scoreText[index]).append(index).append(",");
+                }
+            }
+            if (sb.toString().equals("")) {
+                String appendedNewScore = userHighScore.toString();
+                editor.putString(user, appendedNewScore);
+            }
+            else {
+                userScoreBoard = sb.toString();
+                String appendedNewScore = userScoreBoard + ", " + userHighScore.toString();
+                editor.putString(user, appendedNewScore);
+            }
+        }
+        else {
+            editor.putString(user, userHighScore.toString());
+        }
+        editor.commit();
     }
 
     /**
@@ -64,7 +111,8 @@ public class SlidingTilesGameActivity extends GameActivity {
             public void onClick(View v) {
                 if (!boardManager.stepSaver.empty()) {
                     boardManager.undo(boardManager.stepSaver.undo());
-                }
+                } else
+                    Toast.makeText(getApplicationContext(), "Invalid Undo!", Toast.LENGTH_SHORT).show();
             }
         });
     }
