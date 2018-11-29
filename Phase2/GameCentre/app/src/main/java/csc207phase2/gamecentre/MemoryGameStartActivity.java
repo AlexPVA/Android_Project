@@ -152,7 +152,8 @@ public class MemoryGameStartActivity extends GameComponent {
      * Switch to scoreViewActivity view scores.
      */
     private void switchToScoreView() {
-        Intent tmp = new Intent(this, MemoryScoreActivity.class);
+        Intent tmp = new Intent(this, ScoreActivity.class);
+        tmp.putExtra("GAME", getName());
         startActivity(tmp);
     }
 

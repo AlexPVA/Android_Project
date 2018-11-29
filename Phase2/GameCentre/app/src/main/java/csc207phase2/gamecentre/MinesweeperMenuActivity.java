@@ -6,8 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.util.List;
-
 /**
  * The Activity for the minesweeper menu
  */
@@ -147,7 +145,8 @@ public class MinesweeperMenuActivity extends GameComponent{
      * Switch to scoreViewActivity view scores.
      */
     private void switchToScoreView() {
-        Intent tmp = new Intent(this, MinesweeperScoreActivity.class);
+        Intent tmp = new Intent(this, ScoreActivity.class);
+        tmp.putExtra("GAME", getName());
         startActivity(tmp);
     }
 
