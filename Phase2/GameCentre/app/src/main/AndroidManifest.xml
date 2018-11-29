@@ -22,20 +22,18 @@
         </activity>
         <activity android:name="csc207phase2.gamecentre.SlidingTilesGameActivity"></activity>
         <activity android:name="csc207phase2.gamecentre.SlidingTilesActivity"></activity>
-        <activity android:name="csc207phase2.gamecentre.SlidingTilesScoreActivity"></activity>
         <activity android:name="csc207phase2.gamecentre.SignInActivity"></activity>
         <activity android:name="csc207phase2.gamecentre.SignUpActivity"></activity>
         <activity android:name="csc207phase2.gamecentre.GameSelectActivity"></activity>git
         <activity android:name="csc207phase2.gamecentre.OptionsActivity"></activity>
         <activity android:name="csc207phase2.gamecentre.ProfileActivity"></activity>
         <activity android:name="csc207phase2.gamecentre.ChooseComplexity"></activity>
-        <activity android:name="csc207phase2.gamecentre.MemoryScoreActivity"></activity>
         <activity android:name="csc207phase2.gamecentre.MemoryGameActivity"></activity>
         <activity android:name="csc207phase2.gamecentre.MemoryGameStartActivity"></activity>
         <activity android:name="csc207phase2.gamecentre.MemoryChooseComplexity"></activity>
         <activity android:name="csc207phase2.gamecentre.MinesweeperMenuActivity"></activity>
         <activity android:name="csc207phase2.gamecentre.MinesweeperComplexity"></activity>
         <activity android:name="csc207phase2.gamecentre.MinesweeperGameActivity"></activity>
-        <activity android:name="csc207phase2.gamecentre.MinesweeperScoreActivity"></activity>
+        <activity android:name="csc207phase2.gamecentre.ScoreActivity"></activity>
     </application>
 </manifest>
