@@ -13,16 +13,6 @@ import java.util.List;
 public class SlidingTilesActivity extends GameComponent {
 
     /**
-     * The main save file.
-     */
-    public static final String SAVE_FILENAME = "save_file.ser";
-
-    /**
-     * A temporary save file.
-     */
-    public static final String TEMP_SAVE_FILENAME = "save_file_tmp.ser";
-
-    /**
      * The board manager.
      */
     private SlidingTilesManager boardManager;
@@ -156,7 +146,7 @@ public class SlidingTilesActivity extends GameComponent {
      */
     private void switchToGame() {
         Intent tmp = new Intent(this, SlidingTilesGameActivity.class);
-        saveToFile(SlidingTilesActivity.TEMP_SAVE_FILENAME);
+        saveToFile(TEMP_SAVE_FILENAME);
         startActivity(tmp);
     }
 

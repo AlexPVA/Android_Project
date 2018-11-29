@@ -14,18 +14,13 @@ import java.util.List;
 public class MemoryGameStartActivity extends GameComponent {
 
     /**
-     * The main save file.
-     */
-    public static final String SAVE_FILENAME = "save_file.ser";
-    /**
-     * A temporary save file.
-     */
-    public static final String TEMP_SAVE_FILENAME = "save_file_tmp.ser";
-    /**
      * The board manager.
      */
     private MemoryBoardManager memoryBoardManager;
 
+    /**
+     * The name of this game.
+     */
     static final String NAME = "MemoryGame";
 
     @Override

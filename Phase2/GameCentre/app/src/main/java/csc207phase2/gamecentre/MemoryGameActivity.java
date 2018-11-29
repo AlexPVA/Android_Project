@@ -1,7 +1,6 @@
 package csc207phase2.gamecentre;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;

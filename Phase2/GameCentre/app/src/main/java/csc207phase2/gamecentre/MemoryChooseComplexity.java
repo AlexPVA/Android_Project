@@ -17,11 +17,6 @@ public class MemoryChooseComplexity extends GameComponent{
     private MemoryBoardManager memoryBoardManager;
 
     /**
-     * A temporary save file.
-     */
-    public static final String TEMP_SAVE_FILENAME = "save_file_tmp.ser";
-
-    /**
      *  The name of the game this is a part of
      */
     static final String NAME = "MemoryGame";
@@ -84,7 +79,7 @@ public class MemoryChooseComplexity extends GameComponent{
      */
     private void switchToGame() {
         Intent tmp = new Intent(this, MemoryGameActivity.class);
-        saveToFile(MemoryChooseComplexity.TEMP_SAVE_FILENAME);
+        saveToFile(TEMP_SAVE_FILENAME);
         startActivity(tmp);
     }
 
