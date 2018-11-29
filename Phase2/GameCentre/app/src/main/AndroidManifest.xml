@@ -27,6 +27,7 @@
         <activity android:name="csc207phase2.gamecentre.GameSelectActivity"></activity>git
         <activity android:name="csc207phase2.gamecentre.OptionsActivity"></activity>
         <activity android:name="csc207phase2.gamecentre.ProfileActivity"></activity>
+        <activity android:name="csc207phase2.gamecentre.ProfileScoreActivity"></activity>
         <activity android:name="csc207phase2.gamecentre.ChooseComplexity"></activity>
         <activity android:name="csc207phase2.gamecentre.MemoryGameActivity"></activity>
         <activity android:name="csc207phase2.gamecentre.MemoryGameStartActivity"></activity>
