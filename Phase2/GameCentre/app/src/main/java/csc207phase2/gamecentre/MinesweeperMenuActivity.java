@@ -146,7 +146,7 @@ public class MinesweeperMenuActivity extends GameComponent{
      */
     private void switchToScoreView() {
         Intent tmp = new Intent(this, ScoreActivity.class);
-        tmp.putExtra("GAME", getName());
+        tmp.putExtra("NAME", getName());
         startActivity(tmp);
     }
 

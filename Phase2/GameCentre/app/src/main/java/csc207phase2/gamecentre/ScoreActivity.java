@@ -31,7 +31,7 @@ public class ScoreActivity extends AppCompatActivity {
         View linearLayout = findViewById(R.id.scores);
         layout = (LinearLayout)linearLayout;
 
-        String game = getIntent().getStringExtra("GAME");
+        String game = getIntent().getStringExtra("NAME");
         String key;
 
         if(game.equals("MemoryGame")){
