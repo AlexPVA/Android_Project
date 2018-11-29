@@ -76,4 +76,11 @@ public class MemoryBoardManagerTest {
     public void getBoard() {
         assertNotNull(memoryBoardManager.getBoard());
     }
+
+    @Test
+    public void undo() {
+        memoryBoardManager.touchMove(0);
+        memoryBoardManager.undo();
+        assertNull(memoryBoardManager.getFirstTile());
+    }
 }
