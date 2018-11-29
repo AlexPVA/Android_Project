@@ -34,8 +34,8 @@ public class MemoryGameStartActivity extends GameComponent {
         saveToFile(TEMP_SAVE_FILENAME);
         setContentView(R.layout.activity_starting_memory);
         addStartButtonListener();
-        //addLoadButtonListener();
-        //addSaveButtonListener();
+        addLoadButtonListener();
+        addSaveButtonListener();
         addScoreButtonListener();
     }
 
@@ -65,11 +65,6 @@ public class MemoryGameStartActivity extends GameComponent {
         });
     }
 
-    private void startGame(){
-        Intent tmp = new Intent(this, MemoryGameActivity.class);
-        saveToFile(MemoryGameStartActivity.TEMP_SAVE_FILENAME);
-        startActivity(tmp);
-    }
 
     /**
      * Activate the load button.
@@ -137,11 +132,11 @@ public class MemoryGameStartActivity extends GameComponent {
     }
 
     /**
-     * Switch to the SlidingTilesGameActivity view to play the game.
+     * Switch to the MemoryGameActivity view to play the game.
      */
     private void switchToGame() {
-        Intent tmp = new Intent(this, SlidingTilesGameActivity.class);
-        saveToFile(SlidingTilesActivity.TEMP_SAVE_FILENAME);
+        Intent tmp = new Intent(this, MemoryGameActivity.class);
+        saveToFile(TEMP_SAVE_FILENAME);
         startActivity(tmp);
     }
 
