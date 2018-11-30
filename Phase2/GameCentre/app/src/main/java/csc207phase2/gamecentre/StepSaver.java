@@ -10,7 +10,7 @@ class StepSaver extends Stack<Integer[]> {
     /**
      * The default undoable steps.
      */
-    private int undoCount = 4;
+    private int undoCount = 3;
 
     /**
      * Initialize the stack for steps.
@@ -32,15 +32,15 @@ class StepSaver extends Stack<Integer[]> {
         pos[2] = c;
         pos[3] = d;
         if (this.size() >= undoCount) {
-            for(int i=1;i<undoCount;i++){
+            for (int i = 1; i < undoCount; i++) {
                 steps[i] = this.pop();
 
             }
             steps[0] = pos;
             this.clear();
-           for(int j=undoCount-1;j>-1;j--){
+            for (int j = undoCount - 1; j > -1; j--) {
                 this.push(steps[j]);
-           }
+            }
         } else {
             this.push(pos);
         }
