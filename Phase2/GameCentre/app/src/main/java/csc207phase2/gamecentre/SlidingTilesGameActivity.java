@@ -52,15 +52,6 @@ public class SlidingTilesGameActivity extends GameActivity {
                 "Sliding Tiles " + boardManager.getBoard().getNumRows());
         newScore.setScorePoint(boardManager.getNumMoves() + 1);
         SlidingTilesManager.getScoreBoard().addScore(newScore);
-        SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        ArrayList<String> scores = SlidingTilesManager.getScoreBoard().getTopScore();
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < scores.size(); i++) {
-            sb.append(scores.get(i)).append(",");
-        }
-        editor.putString("SCOREBOARD", sb.toString());
-        editor.commit();
     }
 
     /**

@@ -45,15 +45,6 @@ public class MinesweeperGameActivity extends GameActivity {
                 "Minesweeper " + manager.getBoard().getNumRows());
         newScore.setScorePoint(manager.getNumMoves() + 1);
         MinesweeperManager.getScoreBoard().addScore(newScore);
-        SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        ArrayList<String> scores = MinesweeperManager.getScoreBoard().getTopScore();
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < scores.size(); i++) {
-            sb.append(scores.get(i)).append(",");
-        }
-        editor.putString("MINESWEEPERSCOREBOARD", sb.toString());
-        editor.commit();
     }
 
     /**

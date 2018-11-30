@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import java.util.ArrayList;
+
 /**
  * Draws scores to the screen.
  */
@@ -35,24 +37,28 @@ public class ScoreActivity extends AppCompatActivity {
         setContentView(R.layout.activity_score_view);
         View linearLayout = findViewById(R.id.scores);
         layout = (LinearLayout)linearLayout;
+        drawText("Top Scores:", TITLE_SIZE);
 
         String game = getIntent().getStringExtra("NAME");
-        String key;
-
+        StringBuilder sb = new StringBuilder();
+        ArrayList<String> topScore = new ArrayList<String>();
         if(game.equals("MemoryGame")){
-            key = "MEMORYSCOREBOARD";
+            topScore = MemoryBoardManager.getScoreBoard().getTopScore();
         }else if(game.equals("Minesweeper")){
-            key = "MINESWEEPERSCOREBOARD";
+            topScore = MinesweeperManager.getScoreBoard().getTopScore();
         }else if (game.equals("SlidingTiles")){
-            key = "SCOREBOARD";
-        }else {
-            key = getIntent().getStringExtra("NAME");
+            topScore = SlidingTilesManager.getScoreBoard().getTopScore();
+        }
+        for (int i = 0; i < topScore.size(); i++) {
+            sb.append(topScore.get(i)).append(",");
+        }
+        String scores = sb.toString();
+
+        if (topScore.isEmpty()) {
+            SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
+            scores = prefs.getString(game, "");
         }
 
-        SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
-        String scores = prefs.getString(key, null);
-
-        drawText("Top Scores:", TITLE_SIZE);
         if(scores != null) {
             String[] scoreText = scores.split(",");
             for (String score : scoreText) {

@@ -82,15 +82,6 @@ public class MemoryGameActivity extends GameActivity {
                 "Memory Game " + memoryBoardManager.getBoard().getNumRows());
         newScore.setScorePoint(memoryBoardManager.getNumMoves() + 1);
         MemoryBoardManager.getScoreBoard().addScore(newScore);
-        SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        ArrayList<String> scores = MemoryBoardManager.getScoreBoard().getTopScore();
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < scores.size(); i++) {
-            sb.append(scores.get(i)).append(",");
-        }
-        editor.putString("MEMORYSCOREBOARD", sb.toString());
-        editor.commit();
     }
 
     /**
