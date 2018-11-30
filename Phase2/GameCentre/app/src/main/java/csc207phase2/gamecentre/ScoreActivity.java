@@ -43,8 +43,10 @@ public class ScoreActivity extends AppCompatActivity {
             key = "MEMORYSCOREBOARD";
         }else if(game.equals("Minesweeper")){
             key = "MINESWEEPERSCOREBOARD";
-        }else{
+        }else if (game.equals("SlidingTiles")){
             key = "SCOREBOARD";
+        }else {
+            key = getIntent().getStringExtra("NAME");
         }
 
         SharedPreferences prefs = this.getSharedPreferences("myPreferences", Context.MODE_PRIVATE);

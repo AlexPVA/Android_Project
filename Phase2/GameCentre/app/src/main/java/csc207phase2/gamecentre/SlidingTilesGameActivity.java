@@ -91,7 +91,7 @@ public class SlidingTilesGameActivity extends GameActivity {
             }
             else {
                 userScoreBoard = sb.toString();
-                String appendedNewScore = userScoreBoard + ", " + userHighScore.toString();
+                String appendedNewScore = userScoreBoard + userHighScore.toString();
                 editor.putString(user, appendedNewScore);
             }
         }

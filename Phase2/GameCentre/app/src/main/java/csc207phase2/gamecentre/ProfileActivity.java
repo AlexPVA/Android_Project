@@ -63,9 +63,9 @@ public class ProfileActivity extends AppCompatActivity {
      * Switch to the ScoreActivity to view the user's highscores.
      */
     private void switchToScore() {
-        Intent tmp = new Intent(this, ProfileScoreActivity.class);
+        Intent tmp = new Intent(this, ScoreActivity.class);
         String user = currentUser.getEmail();
-        tmp.putExtra("user", user);
+        tmp.putExtra("NAME", user);
         startActivity(tmp);
     }
 
