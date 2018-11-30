@@ -10,13 +10,16 @@ class StepSaver extends Stack<Integer[]> {
     /**
      * The default undoable steps.
      */
-    private int undoCount = 3;
+    private int undoCount;
 
     /**
-     * Initialize the stack for steps.
+     * Initialize the stack for recording steps.
+     *
+     *  @param count number of undo counts
      */
-    StepSaver() {
+    StepSaver(int count) {
         super();
+        this.undoCount = count;
     }
 
     /**

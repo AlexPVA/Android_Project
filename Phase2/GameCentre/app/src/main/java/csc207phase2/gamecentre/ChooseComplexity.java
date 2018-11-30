@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * Choosing for the sliding puzzle tile game.
@@ -16,9 +18,14 @@ public class ChooseComplexity extends GameComponent {
     private SlidingTilesManager boardManager;
 
     /**
-     *  The name of the game this is a part of
+     * The name of the game this is a part of
      */
     static final String NAME = "SlidingTiles";
+
+    /**
+     * The undo count. Default to be 3.
+     */
+    private EditText undoCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +45,14 @@ public class ChooseComplexity extends GameComponent {
         Button_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boardManager = new SlidingTilesManager(3, 3);
+                undoCount = findViewById(R.id.setUndo);
+                String value = undoCount.getText().toString();
+                int count = Integer.parseInt(value);
+                if (count == 0) {
+                    count = 3;
+                    Toast.makeText(getApplicationContext(), "Can't set undo count to 0, set to default 3!", Toast.LENGTH_SHORT).show();
+                }
+                boardManager = new SlidingTilesManager(3, 3, count);
                 switchToGame();
             }
         });
@@ -52,7 +66,14 @@ public class ChooseComplexity extends GameComponent {
         Button_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boardManager = new SlidingTilesManager(4, 4);
+                undoCount = findViewById(R.id.setUndo);
+                String value = undoCount.getText().toString();
+                int count = Integer.parseInt(value);
+                if (count == 0) {
+                    count = 3;
+                    Toast.makeText(getApplicationContext(), "Can't set undo count to 0, set to default 3!", Toast.LENGTH_SHORT).show();
+                }
+                boardManager = new SlidingTilesManager(4, 4, count);
                 switchToGame();
             }
         });
@@ -66,7 +87,14 @@ public class ChooseComplexity extends GameComponent {
         Button_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boardManager = new SlidingTilesManager(5,5);
+                undoCount = findViewById(R.id.setUndo);
+                String value = undoCount.getText().toString();
+                int count = Integer.parseInt(value);
+                if (count == 0) {
+                    count = 3;
+                    Toast.makeText(getApplicationContext(), "Can't set undo count to 0, set to default 3!", Toast.LENGTH_SHORT).show();
+                }
+                boardManager = new SlidingTilesManager(5, 5, count);
                 switchToGame();
             }
         });

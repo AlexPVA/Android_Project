@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:inputType="number">
 
     <Button
         android:id="@+id/threeButton"
@@ -20,4 +22,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="5x5" />
+
+    <EditText
+        android:id="@+id/setUndo"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:ems="10"
+        android:hint="Set undo count"
+        android:inputType="number"
+        android:text="3"/>
+
+
 </LinearLayout>

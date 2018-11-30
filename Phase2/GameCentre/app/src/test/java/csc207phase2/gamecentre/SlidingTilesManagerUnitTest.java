@@ -12,13 +12,13 @@ public class SlidingTilesManagerUnitTest {
 
     @Test
     public void puzzleSolved_isCorrect() {
-        SlidingTilesManager m = new SlidingTilesManager(5, 5);
+        SlidingTilesManager m = new SlidingTilesManager(5, 5,3);
         assertFalse(m.puzzleSolved());
     }
 
     @Test
     public void isValidTapTrue_isCorrect() {
-        SlidingTilesManager m = new SlidingTilesManager(3, 3);
+        SlidingTilesManager m = new SlidingTilesManager(3, 3,3);
         boolean equal = false;
         if (m.getBoard().getTile(0, 1).getId() == 25 ||
                 m.getBoard().getTile(1, 0).getId() == 25) {
@@ -31,7 +31,7 @@ public class SlidingTilesManagerUnitTest {
     public void touchMove() {
         int position = 0;
         int c = 0;
-        SlidingTilesManager m = new SlidingTilesManager(3, 3);
+        SlidingTilesManager m = new SlidingTilesManager(3, 3,3);
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 3; col++) {
                 if (m.getBoard().getTile(row, col).getId() == 25) position = row * 3 + col;
@@ -50,7 +50,7 @@ public class SlidingTilesManagerUnitTest {
         int position = 0;
         int c = 0;
         int r = 0;
-        SlidingTilesManager m = new SlidingTilesManager(3, 3);
+        SlidingTilesManager m = new SlidingTilesManager(3, 3,3);
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 3; col++) {
                 if (m.getBoard().getTile(row, col).getId() == 25) {
@@ -71,7 +71,7 @@ public class SlidingTilesManagerUnitTest {
 
     @Test
     public void solvability_isCorrect() {
-        SlidingTilesManager m = new SlidingTilesManager(3, 3);
+        SlidingTilesManager m = new SlidingTilesManager(3, 3,3);
         assertTrue(m.boardSolvability(m.getBoard()));
     }
 

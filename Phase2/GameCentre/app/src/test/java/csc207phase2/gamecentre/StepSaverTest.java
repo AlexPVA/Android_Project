@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class StepSaverTest {
 
-    private StepSaver stepSaver = new StepSaver();
+    private StepSaver stepSaver = new StepSaver(3);
 
     @Test
     public void recordMove() {
@@ -21,5 +21,16 @@ public class StepSaverTest {
         stepSaver.recordMove(1, 2, 3, 4);
         stepSaver.undo();
         assertEquals(stepSaver.size(), 0);
+    }
+
+    @Test
+    public void recordMove_moreMoves() {
+        stepSaver.recordMove(1, 0, 0, 0);
+        stepSaver.recordMove(2, 0, 0, 0);
+        stepSaver.recordMove(3, 0, 0, 0);
+        stepSaver.recordMove(4, 0, 0, 0);
+        Integer[] integers = new Integer[] {4,0,0,0};
+        Integer[] pos = stepSaver.undo();
+        assertEquals(pos[0], integers[0]);
     }
 }

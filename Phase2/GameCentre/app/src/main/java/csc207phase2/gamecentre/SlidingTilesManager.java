@@ -25,7 +25,7 @@ class SlidingTilesManager extends BoardManager {
     /**
      * The step saver for undo.
      */
-    StepSaver stepSaver = new StepSaver();
+    StepSaver stepSaver;
 
     /**
      * The number of moves the boardmanager has processed.
@@ -80,8 +80,10 @@ class SlidingTilesManager extends BoardManager {
      *
      * @param row the number of rows.
      * @param col the number of cols.
+     * @param count the number of undo counts
      */
-    SlidingTilesManager(int row, int col) {
+    SlidingTilesManager(int row, int col, int count) {
+        this.stepSaver = new StepSaver(count);
         List<SlidingTilesTile> tiles = new ArrayList<>();
         final int numTiles = row * col - 1;
         for (int tileNum = 0; tileNum != numTiles; tileNum++) {
