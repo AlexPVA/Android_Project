@@ -32,6 +32,6 @@ public class MinesweeperManagerUnitTest {
     public void touchMove_isCorrect() {
         MinesweeperManager m = new MinesweeperManager(9, 9);
         m.touchMove(0);
-        assertTrue(m.getTile(0,0).getId() != MinesweeperTile.unclicked_tile);
+        assertTrue(m.getBoard().getTile(0,0).getId() != R.drawable.unclicked_tile);
     }
 }

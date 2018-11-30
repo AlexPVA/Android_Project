@@ -24,7 +24,7 @@ public class MinesweeperBoardUnitTest {
     public void tapTile_isCorrect() {
         MinesweeperBoard board = new MinesweeperBoard(9, 9);
         board.tapTile(1,1);
-        assertEquals(board.getTile(1,1).getBackground() != MinesweeperTile.unclicked_tile);
+        assertNotEquals(board.getTile(1,1).getBackground(), R.drawable.unclicked_tile);
     }
     @Test
     public void getNumRows_isCorrect() {
