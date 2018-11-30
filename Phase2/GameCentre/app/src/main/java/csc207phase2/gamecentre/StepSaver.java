@@ -8,6 +8,11 @@ import java.util.Stack;
 class StepSaver extends Stack<Integer[]> {
 
     /**
+     * The default undoable steps.
+     */
+    private int undoCount = 3;
+
+    /**
      * Initialize the stack for steps.
      */
     StepSaver() {
@@ -21,19 +26,21 @@ class StepSaver extends Stack<Integer[]> {
      */
     void recordMove(Integer a, Integer b, Integer c, Integer d) {
         Integer[] pos = new Integer[4];
-        Integer[] f;
-        Integer[] s;
+        Integer[][] steps = new Integer[undoCount][4];
         pos[0] = a;
         pos[1] = b;
         pos[2] = c;
         pos[3] = d;
-        if (this.size() >= 3) {
-            f = this.pop();
-            s = this.pop();
+        if (this.size() >= undoCount) {
+            for (int i = 1; i < undoCount; i++) {
+                steps[i] = this.pop();
+
+            }
+            steps[0] = pos;
             this.clear();
-            this.push(s);
-            this.push(f);
-            this.push(pos);
+            for (int j = undoCount - 1; j > -1; j--) {
+                this.push(steps[j]);
+            }
         } else {
             this.push(pos);
         }
@@ -44,7 +51,7 @@ class StepSaver extends Stack<Integer[]> {
      *
      * @return pos the positions of two tiles previously swapped
      */
-    Integer[] undo() {
+    public Integer[] undo() {
         Integer[] pos = new Integer[4];
         if (!this.empty()) {
             pos = this.pop();
