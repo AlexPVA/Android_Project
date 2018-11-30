@@ -150,8 +150,10 @@ class MinesweeperManager extends BoardManager {
         this.gameLost = lost;
 
         if(lost){
-            Toast.makeText(game.getApplicationContext(), "YOU LOST! Tap anywhere to try again",
-                    Toast.LENGTH_SHORT).show();
+            if(game != null) {
+                Toast.makeText(game.getApplicationContext(), "YOU LOST! Tap anywhere to try again",
+                        Toast.LENGTH_SHORT).show();
+            }
             for(int i = 0; i < board.getNumRows(); i++){
                 for(int j = 0; j < board.getNumCols(); j++){
                     board.tapTile(i, j);

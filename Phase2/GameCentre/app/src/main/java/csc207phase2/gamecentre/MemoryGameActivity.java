@@ -30,6 +30,9 @@ public class MemoryGameActivity extends GameActivity {
      */
     static final int CONTENT_VIEW = R.layout.activity_main_memory;
 
+    /**
+     * Prefs for managing scores.
+     */
     SharedPreferences prefs;
 
     @Override
