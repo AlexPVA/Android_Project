@@ -26,11 +26,6 @@ class SlidingTilesManager extends BoardManager {
     transient private FirebaseUser currentUser;
 
     /**
-     * Account name of the current user.
-     */
-    private String accountName;
-
-    /**
      * Count for keeping track of when to autosave.
      */
     private int autosaveCount = 0;
@@ -92,14 +87,6 @@ class SlidingTilesManager extends BoardManager {
         return scores;
     }
 
-    /**
-     * Return the name of the current user account.
-     *
-     * @return the name of the current user account.
-     */
-    public String getAccountName() {
-        return this.accountName;
-    }
 
     /**
      * Manage a new shuffled board.
@@ -122,15 +109,6 @@ class SlidingTilesManager extends BoardManager {
             this.board = new SlidingTilesBoard(row, col, tiles);
         }
 
-        try {
-            mAuth = FirebaseAuth.getInstance();
-            currentUser = mAuth.getCurrentUser();
-            accountName = currentUser.getEmail();
-        } catch (ExceptionInInitializerError | NoClassDefFoundError firebaseError) {
-            mAuth = null;
-            currentUser = null;
-            accountName = null;
-        }
     }
 
     /**

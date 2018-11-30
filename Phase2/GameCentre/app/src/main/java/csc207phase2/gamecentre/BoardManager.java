@@ -1,21 +1,14 @@
 package csc207phase2.gamecentre;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.io.Serializable;
 
 /**
  * Handles commonalities between all game managing classes.
  */
 abstract class BoardManager implements Serializable {
-
-    /**
-     * Sorter for the ScoreBoard
-     */
-    private final static ScoreSorter<Score> scoreSorter = new MinimumSorter<Score>();
-
-    /**
-     * Stores the scores for sliding tiles game.
-     */
-    private final static ScoreBoard scores = new ScoreBoard(scoreSorter, 6);
 
     /**
      * Autosaves the game manager to fileName.
@@ -56,7 +49,15 @@ abstract class BoardManager implements Serializable {
      * Return the name of the current user account.
      * @return the name of the current user account
      */
-    abstract public String getAccountName();
+    String getAccountName(){
+        try {
+            FirebaseAuth mAuth = FirebaseAuth.getInstance();
+            FirebaseUser currentUser = mAuth.getCurrentUser();
+            return currentUser.getEmail();
+        } catch (ExceptionInInitializerError | NoClassDefFoundError firebaseError) {
+            return null;
+        }
+    }
 
     /**
      * Return the name of the board this manager is managing.

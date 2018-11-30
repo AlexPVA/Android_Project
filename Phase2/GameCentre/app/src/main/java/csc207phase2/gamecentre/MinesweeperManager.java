@@ -16,11 +16,6 @@ class MinesweeperManager extends BoardManager {
     private MinesweeperBoard board;
 
     /**
-     * Account name of the current user.
-     */
-    private String accountName;
-
-    /**
      * Count for keeping track of when to autosave.
      */
     private int autosaveCount = 0;
@@ -65,14 +60,6 @@ class MinesweeperManager extends BoardManager {
      */
     MinesweeperManager(int row, int col) {
         this.board = new MinesweeperBoard(row, col);
-
-        try {
-            FirebaseAuth mAuth = FirebaseAuth.getInstance();
-            FirebaseUser currentUser = mAuth.getCurrentUser();
-            accountName = currentUser.getEmail();
-        } catch (ExceptionInInitializerError | NoClassDefFoundError firebaseError) {
-            accountName = null;
-        }
     }
 
     /**
@@ -184,12 +171,6 @@ class MinesweeperManager extends BoardManager {
     public void setGame(GameComponent game){
         this.game = game;
     }
-
-    /**
-     * Return the name of the current user account.
-     * @return the name of the current user account.
-     */
-    public String getAccountName() {return this.accountName; }
 
     /**
      * Return the number of moves this boardmanager has processed.

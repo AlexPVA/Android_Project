@@ -18,11 +18,6 @@ import java.util.Iterator;
 public class MemoryBoardManager extends BoardManager {
 
     /**
-     * Account name of the current user.
-     */
-    private String accountName;
-
-    /**
      * The Memory Game board currently managed.
      */
     private MemoryBoard memoryBoard;
@@ -160,13 +155,6 @@ public class MemoryBoardManager extends BoardManager {
         Collections.shuffle(memoryTiles);
         this.memoryBoard = new MemoryBoard(row, col, memoryTiles);
 
-        try {
-            FirebaseAuth mAuth = FirebaseAuth.getInstance();
-            FirebaseUser currentUser = mAuth.getCurrentUser();
-            accountName = currentUser.getEmail();
-        } catch (ExceptionInInitializerError | NoClassDefFoundError firebaseError) {
-            accountName = null;
-        }
     }
 
     /**
@@ -251,14 +239,6 @@ public class MemoryBoardManager extends BoardManager {
      */
     public void setGame(GameComponent game){
         this.game = game;
-    }
-
-    /**
-     * Return the name of the current user account.
-     * @return the name of the current user account.
-     */
-    public String getAccountName(){
-        return accountName;
     }
 
     /**
