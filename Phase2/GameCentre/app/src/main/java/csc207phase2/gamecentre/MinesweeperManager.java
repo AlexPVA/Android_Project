@@ -2,9 +2,6 @@ package csc207phase2.gamecentre;
 
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
 /**
  * Manage a minesweeper board
  */

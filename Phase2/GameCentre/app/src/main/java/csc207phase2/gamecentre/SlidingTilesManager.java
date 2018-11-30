@@ -2,9 +2,6 @@ package csc207phase2.gamecentre;
 
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -14,16 +11,6 @@ import java.util.Iterator;
  * Manage a board, including swapping tiles, checking for a win, and managing taps.
  */
 class SlidingTilesManager extends BoardManager {
-
-    /**
-     * Firebase authentication.
-     */
-    transient private FirebaseAuth mAuth;
-
-    /**
-     * Firebase user currently signed in.
-     */
-    transient private FirebaseUser currentUser;
 
     /**
      * Count for keeping track of when to autosave.
@@ -74,7 +61,7 @@ class SlidingTilesManager extends BoardManager {
      *
      * @return the number of moves this boardmanager has processed.
      */
-    public int getNumMoves() {
+    int getNumMoves() {
         return numMoves;
     }
 
@@ -83,7 +70,7 @@ class SlidingTilesManager extends BoardManager {
      *
      * @return the score board for this game.
      */
-    public static ScoreBoard getScoreBoard() {
+    static ScoreBoard getScoreBoard() {
         return scores;
     }
 
