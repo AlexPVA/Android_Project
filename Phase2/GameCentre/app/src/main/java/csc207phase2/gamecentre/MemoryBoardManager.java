@@ -18,11 +18,6 @@ import java.util.Iterator;
 public class MemoryBoardManager extends BoardManager {
 
     /**
-     * Account name of the current user.
-     */
-    private String accountName;
-
-    /**
      * The Memory Game board currently managed.
      */
     private MemoryBoard memoryBoard;
@@ -67,7 +62,7 @@ public class MemoryBoardManager extends BoardManager {
      *
      * @return the number of moves this boardmanager has processed.
      */
-    public int getNumMoves() {
+    int getNumMoves() {
         return numMoves;
     }
 
@@ -76,7 +71,7 @@ public class MemoryBoardManager extends BoardManager {
      *
      * @return the score board for this game.
      */
-    public static ScoreBoard getScoreBoard() {return scores;}
+    static ScoreBoard getScoreBoard() {return scores;}
 
     /**
      * The first tile which is undoable.
@@ -93,7 +88,7 @@ public class MemoryBoardManager extends BoardManager {
      *
      * @return the first tile that is flipped
      */
-    public MemoryTile getFirstTile(){
+    MemoryTile getFirstTile(){
         return firstTile;
     }
 
@@ -102,7 +97,7 @@ public class MemoryBoardManager extends BoardManager {
      *
      * @return the second tile that is flipped
      */
-    public MemoryTile getSecondTile() {
+    MemoryTile getSecondTile() {
         return secondTile;
     }
 
@@ -111,7 +106,7 @@ public class MemoryBoardManager extends BoardManager {
      *
      * @param firstTile the first tile that is flipped
      */
-    public void setFirstTile(MemoryTile firstTile) {
+    void setFirstTile(MemoryTile firstTile) {
         this.firstTile = firstTile;
     }
 
@@ -120,7 +115,7 @@ public class MemoryBoardManager extends BoardManager {
      *
      * @param secondTile the second tile that is flipped
      */
-    public void setSecondTile(MemoryTile secondTile) {
+    void setSecondTile(MemoryTile secondTile) {
         this.secondTile = secondTile;
     }
 
@@ -129,7 +124,7 @@ public class MemoryBoardManager extends BoardManager {
      *
      * @return stored position
      */
-    public int getStoredPosition() {
+    int getStoredPosition() {
         return storedPosition;
     }
 
@@ -160,13 +155,6 @@ public class MemoryBoardManager extends BoardManager {
         Collections.shuffle(memoryTiles);
         this.memoryBoard = new MemoryBoard(row, col, memoryTiles);
 
-        try {
-            FirebaseAuth mAuth = FirebaseAuth.getInstance();
-            FirebaseUser currentUser = mAuth.getCurrentUser();
-            accountName = currentUser.getEmail();
-        } catch (ExceptionInInitializerError | NoClassDefFoundError firebaseError) {
-            accountName = null;
-        }
     }
 
     /**
@@ -251,14 +239,6 @@ public class MemoryBoardManager extends BoardManager {
      */
     public void setGame(GameComponent game){
         this.game = game;
-    }
-
-    /**
-     * Return the name of the current user account.
-     * @return the name of the current user account.
-     */
-    public String getAccountName(){
-        return accountName;
     }
 
     /**

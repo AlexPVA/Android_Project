@@ -143,7 +143,7 @@ public class MinesweeperBoard extends Board<MinesweeperTile>{
      *
      * @return the number of tiles on the board
      */
-    public int numBombs() {
+    int numBombs() {
         return numBombs;
     }
 

@@ -2,9 +2,6 @@ package csc207phase2.gamecentre;
 
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -14,21 +11,6 @@ import java.util.Iterator;
  * Manage a board, including swapping tiles, checking for a win, and managing taps.
  */
 class SlidingTilesManager extends BoardManager {
-
-    /**
-     * Firebase authentication.
-     */
-    transient private FirebaseAuth mAuth;
-
-    /**
-     * Firebase user currently signed in.
-     */
-    transient private FirebaseUser currentUser;
-
-    /**
-     * Account name of the current user.
-     */
-    private String accountName;
 
     /**
      * Count for keeping track of when to autosave.
@@ -79,7 +61,7 @@ class SlidingTilesManager extends BoardManager {
      *
      * @return the number of moves this boardmanager has processed.
      */
-    public int getNumMoves() {
+    int getNumMoves() {
         return numMoves;
     }
 
@@ -88,18 +70,10 @@ class SlidingTilesManager extends BoardManager {
      *
      * @return the score board for this game.
      */
-    public static ScoreBoard getScoreBoard() {
+    static ScoreBoard getScoreBoard() {
         return scores;
     }
 
-    /**
-     * Return the name of the current user account.
-     *
-     * @return the name of the current user account.
-     */
-    public String getAccountName() {
-        return this.accountName;
-    }
 
     /**
      * Manage a new shuffled board.
@@ -122,15 +96,6 @@ class SlidingTilesManager extends BoardManager {
             this.board = new SlidingTilesBoard(row, col, tiles);
         }
 
-        try {
-            mAuth = FirebaseAuth.getInstance();
-            currentUser = mAuth.getCurrentUser();
-            accountName = currentUser.getEmail();
-        } catch (ExceptionInInitializerError | NoClassDefFoundError firebaseError) {
-            mAuth = null;
-            currentUser = null;
-            accountName = null;
-        }
     }
 
     /**

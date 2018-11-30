@@ -6,6 +6,9 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
+/**
+ * The Game activity for the minesweeper game.
+ */
 public class MinesweeperGameActivity extends GameActivity {
 
     /**

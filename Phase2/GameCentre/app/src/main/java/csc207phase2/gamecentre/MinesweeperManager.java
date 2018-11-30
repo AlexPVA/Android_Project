@@ -2,9 +2,6 @@ package csc207phase2.gamecentre;
 
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
 /**
  * Manage a minesweeper board
  */
@@ -14,11 +11,6 @@ class MinesweeperManager extends BoardManager {
      * The board being managed.
      */
     private MinesweeperBoard board;
-
-    /**
-     * Account name of the current user.
-     */
-    private String accountName;
 
     /**
      * Count for keeping track of when to autosave.
@@ -65,14 +57,6 @@ class MinesweeperManager extends BoardManager {
      */
     MinesweeperManager(int row, int col) {
         this.board = new MinesweeperBoard(row, col);
-
-        try {
-            FirebaseAuth mAuth = FirebaseAuth.getInstance();
-            FirebaseUser currentUser = mAuth.getCurrentUser();
-            accountName = currentUser.getEmail();
-        } catch (ExceptionInInitializerError | NoClassDefFoundError firebaseError) {
-            accountName = null;
-        }
     }
 
     /**
@@ -159,7 +143,7 @@ class MinesweeperManager extends BoardManager {
      *
      * @param lost whether the game has been lost
      */
-    private void setGameLost(boolean lost){
+    void setGameLost(boolean lost){
         if(lost == this.gameLost){
             return;
         }
@@ -184,12 +168,6 @@ class MinesweeperManager extends BoardManager {
     public void setGame(GameComponent game){
         this.game = game;
     }
-
-    /**
-     * Return the name of the current user account.
-     * @return the name of the current user account.
-     */
-    public String getAccountName() {return this.accountName; }
 
     /**
      * Return the number of moves this boardmanager has processed.

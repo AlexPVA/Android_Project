@@ -1,15 +1,15 @@
 #Team Outline
 
 1.
-Name: Justin Phung
+Name: Justin Phung (Justin Phung)
 Email: justin.phung@mail.utoronto.ca
 Phone: 647-674-6192
 2.
-Name: Alex Peters Van Aalst
+Name: Alex Peters Van Aalst (alexpetersvanaalst)
 Email: alex.petersvanaalst@mail.utoronto.ca
 Phone: 646-673-3226
 3.
-Name: Kevin Sangster
+Name: Kevin Sangster (KevinUser)
 Email: ksangster24@hotmail.com
 Phone: 647-833-8200
 4.
@@ -17,7 +17,7 @@ Name: Denny Bojian Li (ssHss)
 Email: lafcadio.li@mail.utoronto.ca
 Phone: 647-937-8503
 5.
-Name: Huan-Lung Hsiao
+Name: Huan-Lung Hsiao (Allen)
 Email: huan.hsiao@mail.utoronto.ca
 Phone: 647-868-3416
 

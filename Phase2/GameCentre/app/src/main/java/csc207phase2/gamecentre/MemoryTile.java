@@ -35,7 +35,7 @@ public class MemoryTile extends Tile implements Comparable<MemoryTile>, Serializ
      *
      * @return the picture of the front of the tile when flipped.
      */
-    public int getPicture() {return picture;}
+    int getPicture() {return picture;}
 
     /**
      * Return the background id.
@@ -59,13 +59,13 @@ public class MemoryTile extends Tile implements Comparable<MemoryTile>, Serializ
      * Return if the tile is flipped.
      * @return whether the tile is flipped.
      */
-    public boolean getFlipped() {return flipped;}
+    boolean getFlipped() {return flipped;}
 
     /**
      * Set whether this tile is flipped or not.
      * @param flip whether this tile is set to flipped or not.
      */
-    public void setFlipped(boolean flip) {
+    void setFlipped(boolean flip) {
         this.flipped = flip;
     }
 
@@ -74,7 +74,7 @@ public class MemoryTile extends Tile implements Comparable<MemoryTile>, Serializ
      *
      * @param backgroundId the background id
      */
-    public MemoryTile(int backgroundId) {
+    MemoryTile(int backgroundId) {
         background = R.drawable.mg_tile_0;
         id = backgroundId + 1;
         switch (backgroundId + 1) {
