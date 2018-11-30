@@ -143,7 +143,7 @@ class MinesweeperManager extends BoardManager {
      *
      * @param lost whether the game has been lost
      */
-    private void setGameLost(boolean lost){
+    void setGameLost(boolean lost){
         if(lost == this.gameLost){
             return;
         }
