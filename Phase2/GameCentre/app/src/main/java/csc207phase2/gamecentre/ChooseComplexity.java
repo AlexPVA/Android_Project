@@ -16,11 +16,6 @@ public class ChooseComplexity extends GameComponent {
     private SlidingTilesManager boardManager;
 
     /**
-     * A temporary save file.
-     */
-    public static final String TEMP_SAVE_FILENAME = "save_file_tmp.ser";
-
-    /**
      *  The name of the game this is a part of
      */
     static final String NAME = "SlidingTiles";

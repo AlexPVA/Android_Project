@@ -1,7 +1,7 @@
 package csc207phase2.gamecentre;
 
 /**
- * Holds all common features of tiles.
+ * Parent class for all tiles.
  */
 abstract class Tile {
 

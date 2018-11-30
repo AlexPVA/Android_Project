@@ -22,7 +22,9 @@ abstract class GameActivity extends GameComponent implements Observer {
      */
     private ArrayList<Button> tileButtons;
 
-    // Grid View and calculated column height and width based on device size
+    /**
+     * Grid View and calculated column height and width based on device size
+     */
     private GestureDetectGridView gridView;
     private static int columnWidth, columnHeight;
 
@@ -31,7 +33,6 @@ abstract class GameActivity extends GameComponent implements Observer {
      * Set up the background image for each button based on the master list
      * of positions, and then call the adapter to set the view.
      */
-    // Display
     public void display() {
         updateTileButtons();
         gridView.setAdapter(new CustomAdapter(tileButtons, columnWidth, columnHeight));
@@ -40,7 +41,6 @@ abstract class GameActivity extends GameComponent implements Observer {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         loadFromFile(TEMP_SAVE_FILENAME);
         createTileButtons(this);
         setContentView(getContentView());
