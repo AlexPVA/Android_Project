@@ -51,6 +51,10 @@ ix) Saves:
 The Game Centre allows for users to save and load their current games, and also has an autosave feature which will save the game's current state
 every 4 moves.
 
+x) Undo:
+Memory Game and Sliding Tiles both have an undo feature. In Sliding Tiles user can set the undo counter to a number greater than 0 (default to be 3)
+and undo previous moves up to that number at anytime. As for Memory Game, user can undo the flip whenever they flipped the first tile, up to 3 times.
+
 ## Setup:
 
 1. The user must be connected to the internet to sign-up or sign-in

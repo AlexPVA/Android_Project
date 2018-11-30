@@ -15,7 +15,7 @@ class StepSaver extends Stack<Integer[]> {
     /**
      * Initialize the stack for recording steps.
      *
-     *  @param count number of undo counts
+     * @param count number of undo counts
      */
     StepSaver(int count) {
         super();

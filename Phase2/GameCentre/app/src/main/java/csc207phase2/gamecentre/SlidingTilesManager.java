@@ -78,8 +78,8 @@ class SlidingTilesManager extends BoardManager {
     /**
      * Manage a new shuffled board.
      *
-     * @param row the number of rows.
-     * @param col the number of cols.
+     * @param row   the number of rows.
+     * @param col   the number of cols.
      * @param count the number of undo counts
      */
     SlidingTilesManager(int row, int col, int count) {
