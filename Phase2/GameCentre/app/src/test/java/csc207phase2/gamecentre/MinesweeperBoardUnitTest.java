@@ -10,37 +10,30 @@ public class MinesweeperBoardUnitTest {
         MinesweeperBoard board = new MinesweeperBoard(9, 9);
         assertEquals(board.numBombs(), 10);
     }
+    @Test
     public void generateBoardMedium_isCorrect() {
         MinesweeperBoard board = new MinesweeperBoard(16, 16);
         assertEquals(board.numBombs(), 40);
     }
+    @Test
     public void generateBoardHard_isCorrect() {
         MinesweeperBoard board = new MinesweeperBoard(20, 20);
         assertEquals(board.numBombs(), 60);
     }
+    @Test
     public void tapTile_isCorrect() {
         MinesweeperBoard board = new MinesweeperBoard(9, 9);
         board.tapTile(1,1);
-        assertEquals(board.getTile(1,1).getBackground() != unclicked.tile);
-        //not sure if this is the right way to check this
+        assertEquals(board.getTile(1,1).getBackground() != MinesweeperTile.unclicked_tile);
     }
+    @Test
     public void getNumRows_isCorrect() {
         MinesweeperBoard board = new MinesweeperBoard(9, 9);
         assertEquals(board.getNumRows(), 9);
     }
+    @Test
     public void getNumCols_isCorrect() {
         MinesweeperBoard board = new MinesweeperBoard(9, 9);
         assertEquals(board.getNumCols(), 9);
     }
-    @Test
-    public void countBombs_isCorrect() {
-        MinesweeperBoard board = new MinesweeperBoard(9, 9);
-        assertEquals
-
-    }
-    @Test
-    public void getTile_isCorrect() {
-
-    }
-
 }

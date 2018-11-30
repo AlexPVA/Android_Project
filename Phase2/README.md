@@ -1,6 +1,5 @@
 # README
 
-
 ## Requirements:
 
 i) Must be connected to the internet
@@ -9,8 +8,9 @@ ii) Emulator must be Pixel2 emulator with the device's OS as Android 8.1 API 27
 ## Features:
 
 i) Sign Up/Sign In/Sign Out:
-The application has a sign up and sign in feature at the home screen, the user must sign up in order to select games to play.
-There is also a sign out feature which would sign the user out and return them back to the home screen. (What does it require to work: Internet)
+The application has a sign up and sign in feature at the home screen, the user must sign up or sign in, in order to select games to play.
+There is also a sign out feature which would sign the user out and return them back to the home screen. Note to do this
+the user must be connected to the internet.
 
 ii) Profile View:
 The user can view their own profile this would includes the user's highest score for all the games they have played. The user
@@ -41,7 +41,7 @@ you lose if you click on a mine. The game impliments autosave (described below) 
 vii) Game Complexity:
 The application allows for the user to choose different board complexities depending on the game. Sliding Tiles provides three different complexities
 a 3x3 board, 4x4 board, and a 5x5 board. The Memory Game also has three different complexities to choose from: 2x2 board, 4x4 board, and a 6x6
-board. The Mine Sweeper game also has "?" different complexities: a "?" board, "?" board, and "?" board.
+board. The Mine Sweeper game also has 3 different complexities: a 9x9 board, 16x16 board, and 20x20 board.
 
 viii) Scores:
 The application also has a score system to keep track of each users top 10 highest scores for each game, the user can view the top 10 highest
@@ -55,7 +55,7 @@ every 4 moves.
 
 1. The user must be connected to the internet to sign-up or sign-in
 2. If the user already has an account they may sign-in directly which would lead to the options screen, they may select to view their
-profile or start playing games. If the user doesn't have an account they must sign-up afterwards it would redirect them to the game selection screen.
+profile or start playing games. If the user doesn't have an account they must sign-up afterwards it would also redirect them to the option screen.
 3. If the user selects the profile screen they may see their high scores or logout, if the user selects to start playing games they would
 select a game from the three choices: Sliding Tiles, Memory Game, and Mine Sweeper.
 4. After selecting the game the user can choose to load a previous saved game or start a new game, if the user selects to start a new game
@@ -67,6 +67,3 @@ they can choose to check out the highscore for that game or go back and select a
 
 Q1. How do I logout?
 A1. The user must navigate to the profile screen where there is an option to logout
-
-Q2.
-A2.

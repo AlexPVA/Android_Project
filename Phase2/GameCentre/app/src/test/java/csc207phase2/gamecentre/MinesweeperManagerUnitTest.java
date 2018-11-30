@@ -9,24 +9,29 @@ public class MinesweeperManagerUnitTest {
     public void puzzleSolved_isCorrect() {
         MinesweeperManager m = new MinesweeperManager(9, 9);
         m.touchMove(1);
-        assertEquals(m.puzzleSolved(), false);
+        assertFalse(m.puzzleSolved());
     }
     @Test
     public void isValidTapTrue_isCorrect() {
         MinesweeperManager m = new MinesweeperManager(9, 9);
-        assertEquals(m.isValidTap(1), true);
+        assertTrue(m.isValidTap(1));
     }
     @Test
     public void isValidTapFalse_isCorrect() {
         MinesweeperManager m = new MinesweeperManager(9, 9);
         m.touchMove(1);
-        assertEquals(m.isValidTap(1), true);
+        assertFalse(m.isValidTap(1));
     }
     @Test
     public void setGameLost_isCorrect() {
         MinesweeperManager m = new MinesweeperManager(9, 9);
         m.setGameLost(true);
         assertTrue(m.getGameLost());
-
+    }
+    @Test
+    public void touchMove_isCorrect() {
+        MinesweeperManager m = new MinesweeperManager(9, 9);
+        m.touchMove(0);
+        assertTrue(m.getTile(0,0).getId() != MinesweeperTile.unclicked_tile);
     }
 }

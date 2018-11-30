@@ -2,6 +2,9 @@ package csc207phase2.gamecentre;
 
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 /**
  * Manage a minesweeper board
  */
@@ -62,6 +65,14 @@ class MinesweeperManager extends BoardManager {
      */
     MinesweeperManager(int row, int col) {
         this.board = new MinesweeperBoard(row, col);
+
+        try {
+            FirebaseAuth mAuth = FirebaseAuth.getInstance();
+            FirebaseUser currentUser = mAuth.getCurrentUser();
+            accountName = currentUser.getEmail();
+        } catch (ExceptionInInitializerError | NoClassDefFoundError firebaseError) {
+            accountName = null;
+        }
     }
 
     /**
@@ -184,7 +195,7 @@ class MinesweeperManager extends BoardManager {
      * Return the number of moves this boardmanager has processed.
      * @return the number of moves this boardmanager has processed.
      */
-    public int getNumMoves() {
+    int getNumMoves() {
         return numMoves;
     }
 
@@ -192,14 +203,14 @@ class MinesweeperManager extends BoardManager {
      * Return wether the game has been lost or not
      * @return gameLost if the game has been lost
      */
-    public boolean getGameLost() { return gameLost; }
+    boolean getGameLost() { return gameLost; }
 
     /**
      * Return the score board for this game.
      *
      * @return scores the score board for this game.
      */
-    public static ScoreBoard getScoreBoard() {return scores;}
+    static ScoreBoard getScoreBoard() {return scores;}
 
     @Override
     public void autoSave(String fileName) {

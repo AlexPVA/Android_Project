@@ -18,16 +18,6 @@ import java.util.Iterator;
 public class MemoryBoardManager extends BoardManager {
 
     /**
-     * Firebase Authentication.
-     */
-    transient private FirebaseAuth mAuth;
-
-    /**
-     * Firebase User currently signed in.
-     */
-    transient private FirebaseUser currentUser;
-
-    /**
      * Account name of the current user.
      */
     private String accountName;
@@ -171,12 +161,10 @@ public class MemoryBoardManager extends BoardManager {
         this.memoryBoard = new MemoryBoard(row, col, memoryTiles);
 
         try {
-            mAuth = FirebaseAuth.getInstance();
-            currentUser = mAuth.getCurrentUser();
+            FirebaseAuth mAuth = FirebaseAuth.getInstance();
+            FirebaseUser currentUser = mAuth.getCurrentUser();
             accountName = currentUser.getEmail();
         } catch (ExceptionInInitializerError | NoClassDefFoundError firebaseError) {
-            mAuth = null;
-            currentUser = null;
             accountName = null;
         }
     }

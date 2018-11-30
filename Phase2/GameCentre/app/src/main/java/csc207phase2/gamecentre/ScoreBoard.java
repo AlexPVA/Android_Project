@@ -106,7 +106,7 @@ public class ScoreBoard implements Iterable<Score> {
     }
 
     /**
-     * Iterates through the Tiles in the SlidingTilesBoard in row-major order.
+     * Iterates through the Scores in the Scoreboard.
      */
     private class ScoreBoardIterator implements Iterator<Score> {
 
